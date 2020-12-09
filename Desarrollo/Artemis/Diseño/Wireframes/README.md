@@ -97,4 +97,7 @@ Fecha | Versión | Descripción | Autor
 ### Otros documentos
 Previos a este | Siguientes a este
 -- | --
-Documento de Negocio | Diseño de mockups de UI
+Documento de Negocio | Documento de diseño de software
+<br>
+
+_Proyecto Artemis&trade;_
