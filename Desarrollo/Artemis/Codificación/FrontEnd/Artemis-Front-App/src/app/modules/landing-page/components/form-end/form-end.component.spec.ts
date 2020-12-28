@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ApiFormComponent } from './api-form.component';
+import { FormEndComponent } from './form-end.component';
 
-describe('ApiFormComponent', () => {
-  let component: ApiFormComponent;
-  let fixture: ComponentFixture<ApiFormComponent>;
+describe('FormEndComponent', () => {
+  let component: FormEndComponent;
+  let fixture: ComponentFixture<FormEndComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ApiFormComponent ]
+      declarations: [ FormEndComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ApiFormComponent);
+    fixture = TestBed.createComponent(FormEndComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
