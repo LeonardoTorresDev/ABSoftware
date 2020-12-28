@@ -42,6 +42,6 @@ let userSchema=new Schema({
     }
 })
 
-userSchema.plugin(uniqueValidator,{message:'{PATH} has to be unique'});
+userSchema.plugin(uniqueValidator,{message:'{PATH} has to be unique'})
 
-module.exports=mongoose.model('User',userSchema);
+module.exports=mongoose.model('User',userSchema)
