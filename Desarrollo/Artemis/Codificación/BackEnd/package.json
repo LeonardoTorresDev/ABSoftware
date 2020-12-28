@@ -1,7 +1,6 @@
 {
-  "name": "backend",
+  "name": "artemis",
   "version": "0.0.1",
-  "description": "",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -13,5 +12,7 @@
     "express": "^4.17.1",
     "mongoose": "^5.11.8",
     "mongoose-unique-validator": "^2.0.3"
-  }
+  },
+  "devDependencies": {},
+  "description": ""
 }
