@@ -1,13 +1,38 @@
-<div class="has-background-primary hero is-fullheight">
+<div class="hero has-background-primary is-fullheight">
   <div class="hero-body">
-    <div class="section">
-      <h3 class="landing-title landing-spacing">
-        Revela tu espíritu artístico
-      </h3>
-      <div class="is-absolute landing-spacing">
-        <app-form-start></app-form-start>
-        <app-form-end></app-form-end>
+    <div class="container">
+      <div class="columns is-flexbox is-align-items-center">
+        <div class="column is-5-desktop">
+          <h3 class="title">Revela tu espíritu artístico</h3>
+          <div class="">
+            <section class="section has-background-light-medium">
+              <app-form-start></app-form-start>
+            </section>
+          </div>
+        </div>
+
+        <div class="column is-2-desktop is-hidden-touch">
+          <!-- Espacio negativo -->
+        </div>
+        
+        <div class="column is-hidden-mobile is-5-desktop">
+          <figure class="image">
+            <img
+              class="has-ratio"
+              width="450"
+              height="352px"
+              src="../../../assets/welcomeToArtemis.svg"
+              alt="¡Bienvenido a Artemis!"
+            />
+          </figure>
+        </div>
       </div>
     </div>
   </div>
 </div>
+
+<div>
+  <!-- Aquí irá lo restante de la landing page -->
+</div>
+
+<app-form-end></app-form-end>

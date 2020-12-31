@@ -6,7 +6,6 @@
       placeholder="Tu correo electrónico"
       formControlName="email"
       ngModel
-      style="width: 321px"
     />
     <div *ngIf="f.email.errors" class="help is-danger">
       <div *ngIf="f.email.errors.required">correo requerido</div>
@@ -19,7 +18,6 @@
       placeholder="Tu contraseña"
       formControlName="password"
       ngModel
-      style="width: 321px"
     />
     <div *ngIf="f.password.errors" class="help is-danger">
       <div *ngIf="f.password.errors.required">contraseña requerida</div>
@@ -34,3 +32,17 @@
     <a href="">O inicia sesión</a>
   </div>
 </form>
+
+<hr />
+
+<div class="is-link">
+  <a href="">Únete a través de</a>
+  <div class="field has-addons">
+    <p class="control">
+      <a class="button is-primary"> Google </a>
+    </p>
+    <p class="control">
+      <a class="button is-info"> Facebook </a>
+    </p>
+  </div>
+</div>
