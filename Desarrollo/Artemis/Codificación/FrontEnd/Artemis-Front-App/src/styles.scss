@@ -1,1 +1,71 @@
-/* You can add global styles to this file, and also import other style files */
+@charset "utf-8";
+
+// Import a Google Font
+@import url('https://fonts.googleapis.com/css2?family=Jost&display=swap');
+
+// Set your brand colors
+$purple: #6200EA;
+$pink: #FA7C91;
+$brown: #757763;
+$blue: #0A00B6;
+$white: #FFFFFF 50%;
+
+$beige-light: #D0D1CD;
+$beige-lighter: #EFF0EB;
+$gradient-primary: linear-gradient(71.07deg, #9965E9 0%, #6200EA 98.25%);
+
+
+// Update Bulma's global variables
+$family-sans-serif: "Jost", sans-serif;
+$grey-dark: $brown;
+$grey-light: $beige-light;
+$primary: $purple;
+$link: $blue;
+$widescreen-enabled: false;
+$fullhd-enabled: false;
+
+
+// Update some of Bulma's component variables
+$control-border-width: 2px;
+$input-border-color: transparent;
+$input-shadow: none;
+$input-radius: 1px;
+$input-width: 321px;
+$primary-font-size: 14px;
+
+.is-absolute{
+    position: absolute;
+}
+
+
+.has-background-primary{
+    background: $gradient-primary;
+}
+
+//.has-background-white{
+//    background: $white;
+//}
+
+.landing-title{
+    color: white; 
+    font-size: 55px;
+    position: absolute;
+    height: 137px;
+    top: 122px;
+}
+
+.landing-spacing{
+    left: 98px;
+    right: 684px;
+}
+
+// Import only what you need from Bulma
+@import "../node_modules/bulma/sass/utilities/_all.sass";
+@import "../node_modules/bulma/sass/base/_all.sass";
+@import "../node_modules/bulma/sass/elements/button.sass";
+@import "../node_modules/bulma/sass/elements/container.sass";
+@import "../node_modules/bulma/sass/elements/title.sass";
+@import "../node_modules/bulma/sass/form/_all.sass";
+@import "../node_modules/bulma/sass/components/navbar.sass";
+@import "../node_modules/bulma/sass/layout/hero.sass";
+@import "../node_modules/bulma/sass/layout/section.sass";

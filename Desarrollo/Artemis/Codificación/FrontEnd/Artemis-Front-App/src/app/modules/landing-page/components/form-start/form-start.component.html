@@ -1,2 +1,36 @@
-<p>form-start works!</p>
-<p>Texto de form start</p>
+<form class="control" [formGroup]="registerForm">
+  <div class="field">
+    <input
+      class="input"
+      type="email"
+      placeholder="Tu correo electrónico"
+      formControlName="email"
+      ngModel
+      style="width: 321px"
+    />
+    <div *ngIf="f.email.errors" class="help is-danger">
+      <div *ngIf="f.email.errors.required">correo requerido</div>
+    </div>
+  </div>
+  <div class="field">
+    <input
+      class="input"
+      type="password"
+      placeholder="Tu contraseña"
+      formControlName="password"
+      ngModel
+      style="width: 321px"
+    />
+    <div *ngIf="f.password.errors" class="help is-danger">
+      <div *ngIf="f.password.errors.required">contraseña requerida</div>
+    </div>
+  </div>
+  <div class="field is-grouped">
+    <button class="button is-primary" [disabled]="loading">
+      ¡ÚNETE A ARTEMIS!
+    </button>
+  </div>
+  <div class="is-link">
+    <a href="">O inicia sesión</a>
+  </div>
+</form>
