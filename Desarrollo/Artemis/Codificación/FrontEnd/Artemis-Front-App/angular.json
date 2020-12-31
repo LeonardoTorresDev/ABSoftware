@@ -24,7 +24,8 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "node_modules/bulma/bulma.sass",
+              "src/styles.scss"
             ],
             "scripts": []
           },
@@ -88,7 +89,7 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.scss"
             ],
             "scripts": []
           }
@@ -119,6 +120,12 @@
           }
         }
       }
-    }},
-  "defaultProject": "Artemis-Front-App"
+    }
+  },
+  "defaultProject": "Artemis-Front-App",
+  "schematics": {
+    "@schematics/angular:component": {
+      "styleext": "scss"
+    }
+  }
 }
