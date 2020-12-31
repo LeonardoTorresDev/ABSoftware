@@ -9,8 +9,9 @@ let workFolderSchema=new Schema({
         unique: true,
         required: [true, 'Name is required']
     },
-    works_id:[{
-        type: String
+    works:[{
+        type: Schema.Types.ObjectId,
+        ref: 'Work'
     }]
 })
 

@@ -12,16 +12,16 @@ let workSchema=new Schema({
     tag:[{
         type: String
     }],
-    owner_id:{
-        type: String,
-        required: [true, "Owner id is required"]
+    owner:{
+        type: Schema.Types.ObjectId,
+        ref: 'User'
     },
     img:{
         type: String
     },
-    stats_id:{
-        type: String,
-        required: [true, "Stats id is required"]
+    stats:{
+        type: Schema.Types.ObjectId,
+        ref: 'WorkStats'
     },
     private:{
         type: Boolean,
@@ -31,18 +31,22 @@ let workSchema=new Schema({
         type: Boolean,
         default: false
     },
-    collabs_ids:[{
-        type: String
+    collabs:[{
+        type: Schema.Types.ObjectId,
+        ref: 'User'
     }],
-    folder_id:{
-        type: String,
-        required: [true, "Folder id is required"]
+    folder:{
+        type: Schema.Types.ObjectId,
+        ref: 'WorkFolder',
+        required: [true, "Folder is required"]
     },
-    past_versions_ids:[{
-        type: String
+    past_versions:[{
+        type: Schema.Types.ObjectId,
+        ref: 'WorkVersion'
     }],
-    current_version_id:{
-        type: String,
+    current_version:{
+        type: Schema.Types.ObjectId,
+        ref: 'WorkVersion',
         required: [true, "Current version id is required"] 
     }
 })
