@@ -8,7 +8,7 @@
       ngModel
     />
     <div *ngIf="f.email.errors" class="help is-danger">
-      <div *ngIf="f.email.errors.required">correo requerido</div>
+      <div *ngIf="f.email.errors.required">Correo requerido</div>
     </div>
   </div>
   <div class="field">
@@ -20,12 +20,12 @@
       ngModel
     />
     <div *ngIf="f.password.errors" class="help is-danger">
-      <div *ngIf="f.password.errors.required">contraseña requerida</div>
+      <div *ngIf="f.password.errors.required">Contraseña requerida</div>
     </div>
   </div>
   <div class="field is-grouped">
-    <button class="button is-primary" [disabled]="loading">
-      ¡ÚNETE A ARTEMIS!
+    <button class="button is-accent" [disabled]="loading">
+      ¡Únete a Artemis!
     </button>
   </div>
   <div class="is-link">
