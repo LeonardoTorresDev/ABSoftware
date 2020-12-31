@@ -1,1 +1,115 @@
-<p>form-end works!</p>
+<section class="section">
+  <div class="container">
+    <div class="columns">
+      <div class="column is-4-desktop">
+        <h2 class="title">¿Qué esperas?</h2>
+        <p class="subtitle">Únete a nuestra gran comunidad</p>
+        <figure class="image is-3by2">
+          <img src="../../../../../assets/team1.svg" alt="Forma parte" />
+        </figure>
+      </div>
+
+      <div class="column is-4 is-hidden-touch">
+        <!-- Espacio negativo -->
+      </div>
+
+      <div class="column is-4-desktop">
+        <form
+          action=""
+          method="post"
+          [formGroup]="forma"
+          (ngSubmit)="guardar()"
+        >
+          <div class="field">
+            <div class="columns">
+              <div class="column">
+                <label class="field-label">Nombres</label>
+                <div class="control">
+                  <input
+                    class="input"
+                    type="text"
+                    placeholder="John"
+                    formControlName="nombre"
+                    [class.is-danger]="noValido('nombre')"
+                  />
+                </div>
+                <small class="help is-danger" *ngIf="noValido('nombre')">
+                  Ingrese al menos 5 caracteres
+                </small>
+              </div>
+
+              <div class="column">
+                <label class="field-label is-normal">Apellidos</label>
+                <div class="control">
+                  <input
+                    class="input"
+                    type="text"
+                    placeholder="Doe"
+                    formControlName="apellido"
+                    [class.is-danger]="noValido('apellido')"
+                  />
+                </div>
+                <small class="help is-danger" *ngIf="noValido('apellido')">
+                  Ingrese al menos 5 caracteres
+                </small>
+              </div>
+            </div>
+          </div>
+
+          <label class="field-label">Nombre artístico</label>
+          <div class="field has-addons">
+            <div class="control">
+              <a class="button is-static">@</a>
+            </div>
+
+            <div class="control is-expanded">
+              <input
+                type="email"
+                class="input"
+                placeholder="somethingCool"
+                formControlName="nickname"
+                [class.is-danger]="noValido('nickname')"
+              />
+              <small class="help is-danger" *ngIf="noValido('nickname')">
+                Nickname no válido
+              </small>
+            </div>
+          </div>
+
+          <div class="field">
+            <div class="control">
+              <label class="checkbox">
+                <input type="checkbox" formGroupName="termsAndConds" (click)="termsCheck()"/>
+                Acepto los <a href="#">términos y condiciones</a>
+              </label>
+            </div>
+          </div>
+
+          <div class="field">
+            <div class="control">
+              <button type="submit" class="button is-link">Unirse</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr />
+
+<!-- SOLO PARA OBJETIVOS DE DESARROLLO -->
+<!-- ELIMINAR ESTA SECCIÓN CUANDO SE TERMINE EL SPRINT -->
+
+<div class="container">
+  <pre>
+      <code class="json">
+        Estado del formulario: {{forma.valid}}
+        <br>
+        Status: {{forma.status}}
+        <br>
+        {{ forma.value | json }}
+      </code>
+        
+    </pre>
+</div>
