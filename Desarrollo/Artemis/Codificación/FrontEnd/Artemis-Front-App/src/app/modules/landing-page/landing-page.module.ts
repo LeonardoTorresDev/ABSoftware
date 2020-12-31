@@ -7,8 +7,9 @@ import { FormEndComponent } from './components/form-end/form-end.component';
 
 @NgModule({
   declarations: [FormStartComponent, FormEndComponent],
+  exports: [FormStartComponent, FormEndComponent],
   imports: [
-    CommonModule
-  ]
+    CommonModule 
+  ],
 })
 export class LandingPageModule { }
