@@ -76,7 +76,10 @@ $overline: 0.625rems;
   font-weight: 700;
   border-radius: 0;
 }
-
+/*Posible uso
+  $button-padding-vertical: $h5;
+  $button-padding-horizontal: $h6;
+*/
 $control-radius: 1px;
 
 // Update some of Bulma's component variables
@@ -88,7 +91,7 @@ $input-radius: 1px;
 //    background: $white;
 //}
 
-// Import only what you need from Bulma
+// Se importan los módulos de Bulma
 @import "../node_modules/bulma/sass/utilities/_all.sass";
 @import "../node_modules/bulma/sass/base/_all.sass";
 @import "../node_modules/bulma/sass/elements/button.sass";
