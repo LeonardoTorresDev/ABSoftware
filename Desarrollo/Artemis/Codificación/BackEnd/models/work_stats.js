@@ -11,8 +11,9 @@ let workStatsSchema=new Schema({
         type: Number,
         default: 0
     },
-    comentaries_id:[{
-        type: String
+    comentaries:[{
+        type: Schema.Types.ObjectId,
+        ref: 'Comentary'
     }],
     reports:{
         type: Number,

@@ -26,11 +26,13 @@ let userSchema=new Schema({
     profile_img:{
         type: String
     },
-    followers_id:[{
-        type: String
+    followers:[{
+        type: Schema.Types.ObjectId,
+        ref: 'User'
     }],
-    folders_id:[{
-        type: String
+    folders:[{
+        type: Schema.Types.ObjectId,
+        ref: 'WorkFolder'
     }],
     signed_google:{
         type: Boolean,

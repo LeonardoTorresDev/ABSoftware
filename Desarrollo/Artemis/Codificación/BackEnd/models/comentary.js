@@ -1,12 +1,12 @@
 const mongoose=require('mongoose')
 
-
 let Schema=mongoose.Schema
 
 let comentarySchema=new Schema({
-    owner_id:{
-        type: String,
-        required: [true, 'Owner is required']
+    owner:{
+        type: Schema.Types.ObjectId,
+        ref: 'User',
+        required: [true, 'User is required']
     },
     text:{
         type: String,
