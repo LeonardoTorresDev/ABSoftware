@@ -1,48 +1,83 @@
-<form class="control" [formGroup]="registerForm">
-  <div class="field">
-    <input
-      class="input"
-      type="email"
-      placeholder="Tu correo electrónico"
-      formControlName="email"
-      ngModel
-    />
-    <div *ngIf="f.email.errors" class="help is-danger">
-      <div *ngIf="f.email.errors.required">Correo requerido</div>
-    </div>
-  </div>
-  <div class="field">
-    <input
-      class="input"
-      type="password"
-      placeholder="Tu contraseña"
-      formControlName="password"
-      ngModel
-    />
-    <div *ngIf="f.password.errors" class="help is-danger">
-      <div *ngIf="f.password.errors.required">Contraseña requerida</div>
-    </div>
-  </div>
-  <div class="field is-grouped">
-    <button class="button is-accent" [disabled]="loading">
-      ¡Únete a Artemis!
-    </button>
-  </div>
-  <div class="is-link">
-    <a href="">O inicia sesión</a>
-  </div>
-</form>
+<div class="hero has-background-primary is-fullheight pt-6">
+  <div class="hero-body">
+    <div class="container">
+      <div class="columns is-flexbox is-align-items-center">
+        <div class="column is-5-desktop">
+          <h3 class="title is-size-1-mobile has-text-centered-mobile">
+            Revela tu espíritu artístico
+          </h3>
+          <div class="">
+            <section class="section has-background-light-medium">
+              <form class="control" [formGroup]="registerForm">
+                <div class="field">
+                  <input
+                    class="input"
+                    type="email"
+                    placeholder="Tu correo electrónico"
+                    formControlName="email"
+                    ngModel
+                  />
+                  <div *ngIf="f.email.errors" class="help is-danger">
+                    <div *ngIf="f.email.errors.required">Correo requerido</div>
+                  </div>
+                </div>
+                <div class="field">
+                  <input
+                    class="input"
+                    type="password"
+                    placeholder="Tu contraseña"
+                    formControlName="password"
+                    ngModel
+                  />
+                  <div *ngIf="f.password.errors" class="help is-danger">
+                    <div *ngIf="f.password.errors.required">
+                      Contraseña requerida
+                    </div>
+                  </div>
+                </div>
+                <div class="field is-grouped">
+                  <button class="button is-accent" [disabled]="loading">
+                    ¡Únete a Artemis!
+                  </button>
+                </div>
+                <div class="is-link">
+                  <a href="">O inicia sesión</a>
+                </div>
+              </form>
 
-<hr />
+              <hr />
 
-<div class="is-link">
-  <a href="">Únete a través de</a>
-  <div class="field has-addons">
-    <p class="control">
-      <a class="button is-primary"> Google </a>
-    </p>
-    <p class="control">
-      <a class="button is-info"> Facebook </a>
-    </p>
+              <div class="is-link">
+                <a href="">Únete a través de</a>
+                <div class="field has-addons">
+                  <p class="control">
+                    <a class="button is-primary"> Google </a>
+                  </p>
+                  <p class="control">
+                    <a class="button is-info"> Facebook </a>
+                  </p>
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+
+        <div class="column is-2-desktop is-hidden-touch">
+          <!-- Espacio negativo -->
+        </div>
+
+        <div class="column is-hidden-mobile is-5-desktop">
+          <figure class="image">
+            <img
+              class="has-ratio"
+              width="450"
+              height="352px"
+              src="../../../assets/welcomeToArtemis.svg"
+              alt="¡Bienvenido a Artemis!"
+            />
+          </figure>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
