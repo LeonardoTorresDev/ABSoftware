@@ -4,12 +4,12 @@ const {get_works}=require('../dao/works/get_works');
 const {create_work}=require('../dao/works/create_work');
 const router=express.Router();
 
-router.route('/works/:user_id?')
+router.route('/works/:nick_name?/:folder_name?')
     .get((req,res)=>{
-        get_works(req.query.user_id, res)
+        get_works(req, res)
     })
     
-router.route('/work/:user_id?/:name?/:stats?/:versions?')
+router.route('/work/:nick_name/:folder_name?/:stats?/:versions?')
     .get((req,res)=>{
         get_work(req, res)
     })

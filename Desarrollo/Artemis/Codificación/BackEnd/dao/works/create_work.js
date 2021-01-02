@@ -3,6 +3,10 @@ const Work=require('../../models/work');
 function create_work(req, res){
     let body = req.body
 
+    //user_id, work_name
+
+    //current version
+
     let work=new Work({
         name: body.name,
         tag: body.tag,
@@ -13,7 +17,6 @@ function create_work(req, res){
         collaborative: body.collaborative,
         collabs_ids: body.collabs_ids,
         folder_id : body.folder_id,
-        past_versions_ids: body.past_versions_ids,
         current_version_id: body.current_version_id
     });
 
