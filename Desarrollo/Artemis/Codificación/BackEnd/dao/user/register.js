@@ -1,9 +1,9 @@
-const User=require('../models/user')
+const User=require('../../models/user')
 
 const bcrypt=require('bcrypt')
 
 let saveUser=(req,res)=>{
-
+    
     let body=req.body
 
     let user=new User({
@@ -26,6 +26,7 @@ let saveUser=(req,res)=>{
         })
     })
 }
+
 
 module.exports={
     saveUser

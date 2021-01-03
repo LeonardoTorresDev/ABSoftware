@@ -1,20 +1,35 @@
 const express=require('express')
 
 const router=express.Router()
-const {saveUser}=require('../dao/register')
 
-router.get('/users',(req,res)=>{
-    res.json({
-        message: 'Hola mundo'
-    })
-})
+const authUser=require('../middlewares/authUser')
+
+const {saveUser}=require('../dao/user/register')
+const {loginUser}=require('../dao/user/login')
+const {logout}=require('../dao/user/logout')
 
 router.post('/users',(req,res)=>{
     saveUser(req,res)
 })
 
 router.post('/login/:externalLogin?',(req,res)=>{  
-
+    let ext=req.params.externalLogin   
+    switch(ext){
+        case 'facebook':
+            console.log('Facebook')
+            break
+        case 'twitter':
+            console.log('Twitter')
+            break
+        default:
+            loginUser(req,res)
+            break
+    }
 })
 
+router.use(authUser)
+
+router.post('/logout',(req,res)=>{
+    logout(req,res)
+})
 module.exports=router
