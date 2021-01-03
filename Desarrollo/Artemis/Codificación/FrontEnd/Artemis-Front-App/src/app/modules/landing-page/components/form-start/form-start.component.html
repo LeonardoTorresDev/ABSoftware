@@ -17,7 +17,7 @@
                     formControlName="email"
                     ngModel
                   />
-                  <div *ngIf="f.email.errors" class="help is-danger">
+                  <div *ngIf="f.email.errors && f.email.touched" class="help is-danger">
                     <div *ngIf="f.email.errors.required">Correo requerido</div>
                   </div>
                 </div>
@@ -29,7 +29,7 @@
                     formControlName="password"
                     ngModel
                   />
-                  <div *ngIf="f.password.errors" class="help is-danger">
+                  <div *ngIf="f.password.errors && f.password.touched" class="help is-danger">
                     <div *ngIf="f.password.errors.required">
                       Contraseña requerida
                     </div>
