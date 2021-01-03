@@ -4,12 +4,12 @@ import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { SignInComponent } from './components/sign-in/sign-in.component';
 import { FormDataComponent } from './components/form-data/form-data.component';
 import { OtherNetworksComponent } from './components/other-networks/other-networks.component';
-import { WlelcomingComponent } from './components/wlelcoming/wlelcoming.component';
+import { WelcomingComponent } from './components/welcoming/welcoming.component';
 
 
 
 @NgModule({
-  declarations: [SignUpComponent, SignInComponent, FormDataComponent, OtherNetworksComponent, WlelcomingComponent],
+  declarations: [SignUpComponent, SignInComponent, FormDataComponent, OtherNetworksComponent, WelcomingComponent],
   imports: [
     CommonModule
   ]
