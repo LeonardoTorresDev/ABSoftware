@@ -5,13 +5,16 @@ import { SignInComponent } from './components/sign-in/sign-in.component';
 import { FormDataComponent } from './components/form-data/form-data.component';
 import { OtherNetworksComponent } from './components/other-networks/other-networks.component';
 import { WelcomingComponent } from './components/welcoming/welcoming.component';
-
-
+import { RouterModule } from '@angular/router';
 
 @NgModule({
-  declarations: [SignUpComponent, SignInComponent, FormDataComponent, OtherNetworksComponent, WelcomingComponent],
-  imports: [
-    CommonModule
-  ]
+  declarations: [
+    SignUpComponent,
+    SignInComponent,
+    FormDataComponent,
+    OtherNetworksComponent,
+    WelcomingComponent,
+  ],
+  imports: [CommonModule, RouterModule],
 })
-export class SignInModule { }
+export class SignModule {}

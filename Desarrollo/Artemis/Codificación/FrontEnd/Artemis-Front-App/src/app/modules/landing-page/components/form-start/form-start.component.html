@@ -36,12 +36,12 @@
                   </div>
                 </div>
                 <div class="field is-grouped">
-                  <button class="button is-accent" [disabled]="loading">
+                  <button class="button is-accent" [disabled]="loading" [routerLink]="['/signup']">
                     ¡Únete a Artemis!
                   </button>
                 </div>
                 <div class="is-link">
-                  <a href="">O inicia sesión</a>
+                  <a href="" [routerLink]="['/signin']">O inicia sesión</a>
                 </div>
               </form>
 

@@ -13,14 +13,10 @@ import { LandingPageComponent } from './modules/landing-page/landing-page.compon
     AppComponent,
     NavbarComponent,
     FooterComponent,
-    LandingPageComponent
+    LandingPageComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    LandingPageModule
-  ],
+  imports: [BrowserModule, AppRoutingModule, LandingPageModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
