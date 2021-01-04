@@ -91,6 +91,10 @@ $input-radius: 1px;
 //    background: $white;
 //}
 
+body {
+  background: $background;
+}
+
 // Se importan los módulos de Bulma
 @import "../node_modules/bulma/sass/utilities/_all.sass";
 @import "../node_modules/bulma/sass/base/_all.sass";
