@@ -1,32 +1,43 @@
 @import "../../../../../styles.scss";
+$google: #db4a39;
 
-.text-normal{
-    font-family: $family-sans-serif;
-    color: rgba(0, 0, 0, 0.6);
-    font-size: 16px;
+.text-normal {
+  color: $text-middle;
+  font-size: $body1;
 }
 
-.is-network-button{
-    font-size: $button;
-    border-radius: 0;
+.is-network-button {
+  font-size: $button;
+  border-radius: 0;
 }
 
-.is-network{
-    color: $white;
-    font-style: normal;
-    font-size: 16px;
-    text-align: left;
-    line-height: 2.5;
+.button {
+  border: none;
+  justify-content: space-between;
+  text-transform: none;
+  font-size: $body1;
+  font-weight: 400;
+  &:hover {
+    border: $button-border-width outset $button-border-color;
+  }
 }
 
-.is-google{
-    background-color: #DB4A39;
-    height: 48px;
-    width: 244px;
+.is-network {
+  color: $white;
+  font-style: normal;
+  font-size: $body1;
+  text-align: left;
+  // line-height: 2.5;
 }
 
-.is-facebook{
-    background-color: $facebook;
-    height: 48px;
-    width: 244px;
+.is-google {
+  background-color: $google;
+}
+
+.is-facebook {
+  background-color: $facebook;
+}
+.is-google,
+.is-facebook {
+  width: 100%;
 }
