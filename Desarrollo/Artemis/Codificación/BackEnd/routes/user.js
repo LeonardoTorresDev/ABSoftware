@@ -6,6 +6,7 @@ const authUser=require('../middlewares/authUser')
 
 const {saveUser}=require('../dao/user/register')
 const {loginUser}=require('../dao/user/login')
+const {googleLogin}=require('../dao/user/loginGoogle')
 const {logout}=require('../dao/user/logout')
 
 router.post('/users',(req,res)=>{
@@ -18,8 +19,8 @@ router.post('/login/:externalLogin?',(req,res)=>{
         case 'facebook':
             console.log('Facebook')
             break
-        case 'twitter':
-            console.log('Twitter')
+        case 'google':
+            googleLogin(req,res)
             break
         default:
             loginUser(req,res)
@@ -32,4 +33,5 @@ router.use(authUser)
 router.post('/logout',(req,res)=>{
     logout(req,res)
 })
+
 module.exports=router

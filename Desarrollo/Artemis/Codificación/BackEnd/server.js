@@ -12,6 +12,8 @@ app.use(cookieParser())
 
 app.use(require('./routes/index'))
 
+app.use(express.static(__dirname+'/public'));
+
 app.listen(process.env.PORT,()=>{
     console.log("Escuchando el puerto",process.env.PORT)
 })
