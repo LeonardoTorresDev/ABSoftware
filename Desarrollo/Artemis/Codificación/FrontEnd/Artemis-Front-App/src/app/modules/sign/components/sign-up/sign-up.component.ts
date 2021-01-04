@@ -7,9 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SignUpComponent implements OnInit {
 
+  //Se agregarán los atributos que se llenarán según el componente padre
+  instance: boolean;
+
+  artisticName: String
+  userName: String
+
   constructor() { }
 
   ngOnInit(): void {
+    this.instance = true
   }
 
 }

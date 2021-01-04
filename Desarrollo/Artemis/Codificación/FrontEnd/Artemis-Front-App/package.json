@@ -23,6 +23,8 @@
     "@angular/platform-browser-dynamic": "~10.2.0",
     "@angular/router": "~10.2.0",
     "bulma": "^0.9.1",
+    "bulma-floating-button": "^1.0.3",
+    "bulma-social": "^2.0.0",
     "node-sass": "^4.14.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",

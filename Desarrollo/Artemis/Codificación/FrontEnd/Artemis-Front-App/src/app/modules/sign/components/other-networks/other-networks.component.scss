@@ -1,0 +1,32 @@
+@import "../../../../../styles.scss";
+
+.text-normal{
+    font-family: $family-sans-serif;
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 16px;
+}
+
+.is-network-button{
+    font-size: $button;
+    border-radius: 0;
+}
+
+.is-network{
+    color: $white;
+    font-style: normal;
+    font-size: 16px;
+    text-align: left;
+    line-height: 2.5;
+}
+
+.is-google{
+    background-color: #DB4A39;
+    height: 48px;
+    width: 244px;
+}
+
+.is-facebook{
+    background-color: $facebook;
+    height: 48px;
+    width: 244px;
+}
