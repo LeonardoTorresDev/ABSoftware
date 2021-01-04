@@ -1,5 +1,20 @@
-<p>sign-in works!</p>
-<app-form-data
-    [instanceSignIn]="instance"
-></app-form-data>
-<a (click)="toHome()">Ir a home</a>
+<app-navbar-sign></app-navbar-sign>
+
+<div class="container mt-6">
+  <app-welcoming></app-welcoming>
+</div>
+
+<div class="columns mt-6">
+    <div class="column"></div>
+    <div class="column">
+        <app-form-data
+            [instanceSignIn]="instance"
+        ></app-form-data>
+    </div>
+    <div class="column">
+        <app-other-networks></app-other-networks>
+    </div>
+</div>
+
+
+

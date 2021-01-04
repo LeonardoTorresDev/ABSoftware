@@ -6,6 +6,7 @@ import { FormDataComponent } from './components/form-data/form-data.component';
 import { OtherNetworksComponent } from './components/other-networks/other-networks.component';
 import { WelcomingComponent } from './components/welcoming/welcoming.component';
 import { RouterModule } from '@angular/router';
+import { NavbarSignComponent } from './components/navbar-sign/navbar-sign.component';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { RouterModule } from '@angular/router';
     FormDataComponent,
     OtherNetworksComponent,
     WelcomingComponent,
+    NavbarSignComponent,
   ],
   imports: [CommonModule, RouterModule],
 })

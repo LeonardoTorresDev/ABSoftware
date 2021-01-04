@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-welcoming',
@@ -7,9 +8,16 @@ import { Component, OnInit, Input, Output } from '@angular/core';
 })
 export class WelcomingComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
+    this.isSignUp();
+  }
+
+  isSignUp(){
+    if(this.router.url === "/signup"){
+      return true;
+    }
   }
 
 }
