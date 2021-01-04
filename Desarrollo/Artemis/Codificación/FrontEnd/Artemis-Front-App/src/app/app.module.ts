@@ -3,19 +3,19 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NavbarComponent } from './shared/components/navbar/navbar.component';
-import { FooterComponent } from './shared/components/footer/footer.component';
 import { LandingPageModule } from './modules/landing-page/landing-page.module';
-import { LandingPageComponent } from './modules/landing-page/landing-page.component';
+import { SignModule } from './modules/sign/sign.module';
+import { HomeModule } from './modules/home/home.module';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    NavbarComponent,
-    FooterComponent,
-    LandingPageComponent,
+  declarations: [AppComponent],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    LandingPageModule,
+    SignModule,
+    HomeModule,
   ],
-  imports: [BrowserModule, AppRoutingModule, LandingPageModule],
   providers: [],
   bootstrap: [AppComponent],
 })

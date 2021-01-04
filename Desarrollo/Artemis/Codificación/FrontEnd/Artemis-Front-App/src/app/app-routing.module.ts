@@ -1,14 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LandingPageComponent } from './modules/landing-page/landing-page.component';
-import { SignInComponent } from './modules/sign/components/sign-in/sign-in.component';
-import { SignUpComponent } from './modules/sign/components/sign-up/sign-up.component';
+import { HomeComponent } from './modules/home/home.component';
 
 const routes: Routes = [
   { path: 'welcome', component: LandingPageComponent },
-  { path: 'signup', component: SignUpComponent },
-  { path: 'signin', component: SignInComponent },
-  { path: '**', pathMatch: 'full', redirectTo: 'welcome' },
+  { path: 'home', component: HomeComponent }, // Se necesitará de un guard para que el usuario no entre a home si no está logueado
+  { path: '', redirectTo: 'welcome', pathMatch: 'full' }, //Por mientras, redirigirá a la landing page: se necesita de una página 404
 ];
 
 @NgModule({
