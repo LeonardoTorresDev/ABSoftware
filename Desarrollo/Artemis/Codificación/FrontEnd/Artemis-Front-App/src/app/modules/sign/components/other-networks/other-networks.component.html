@@ -5,7 +5,7 @@
     <div class="columns">
       <div class="column mx-3-mobile">
         <div class="control">
-          <a class="button is-google">
+          <button class="button is-google" (click)="signInWithGoogle(); onLogin()">
             <div class="">
               <span class="icon-text">
                 <span class="icon is-large has-text-light">
@@ -14,11 +14,11 @@
                 <span class="is-network">Google</span>
               </span>
             </div>
-          </a>
+          </button>
         </div>
 
         <div class="control">
-          <a class="button is-facebook">
+          <button class="button is-facebook" (click)="signInWithFB()">
             <div class="">
               <span class="icon-text">
                 <span class="icon is-large has-text-light">
@@ -27,7 +27,7 @@
                 <span class="is-network">Facebook</span>
               </span>
             </div>
-          </a>
+          </button>
         </div>
       </div>
       <div class="column is-hidden-touch"></div>
