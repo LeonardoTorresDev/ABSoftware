@@ -6,7 +6,6 @@ let Schema=mongoose.Schema
 let workSchema=new Schema({
     name:{
         type: String,
-        unique: true,
         required: [true, 'Name is required']
     },
     tag:[{

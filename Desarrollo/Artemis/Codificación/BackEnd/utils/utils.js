@@ -1,7 +1,7 @@
 
 function error_response(code, res, err)
 {
-    res.status(code).json({
+    return res.status(code).json({
         ok: false,
         err
     })
@@ -15,4 +15,23 @@ function custom_error_response(code, res, text)
     })
 }
 
-module.exports={error_response, custom_error_response}
+function custom_response(res, text)
+{
+    return res.json({
+        ok:true,
+        msg: text
+    })
+}
+
+function unique_with_name(array, valuetofind)
+{
+    var unique = true;
+    for(i=0;i<array.length && unique;i++) {
+        if(array[i].name == valuetofind) {
+            unique = false;
+        }
+    }
+    return unique;
+}
+
+module.exports={error_response, custom_error_response, custom_response, unique_with_name}

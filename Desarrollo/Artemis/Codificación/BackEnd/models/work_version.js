@@ -9,6 +9,10 @@ let workVersionSchema=new Schema({
         unique: true,
         required: [true, 'Name is required']
     },
+    work:{
+        type: Schema.Types.ObjectId,
+        ref: 'Work'
+    },
     modified_by:[{
         type: Schema.Types.ObjectId,
         ref: 'User'
