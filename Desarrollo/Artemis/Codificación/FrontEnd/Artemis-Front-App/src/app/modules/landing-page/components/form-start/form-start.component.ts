@@ -1,17 +1,25 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { SocialAuthService } from "angularx-social-login";
+import { SocialUser } from "angularx-social-login";
+import { FacebookLoginProvider, GoogleLoginProvider } from "angularx-social-login";
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-form-start',
   templateUrl: './form-start.component.html',
   styleUrls: ['./form-start.component.scss'],
+  providers: [SocialUser, SocialAuthService]
 })
 export class FormStartComponent implements OnInit {
-  registerForm: FormGroup;
-  loading = false;
+  user: SocialUser
+  loginIn: boolean
 
-  constructor(private router: Router) {}
+  registerForm: FormGroup
+  loading = false
+
+  constructor(private router: Router,
+              private authService: SocialAuthService) {}
 
   ngOnInit(): void {
     this.registerForm = new FormGroup({
@@ -22,6 +30,18 @@ export class FormStartComponent implements OnInit {
 
   get f() {
     return this.registerForm.controls;
+  }
+
+  signInWithGoogle(): void {
+    this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
+  }
+
+  signInWithFB(): void {
+    this.authService.signIn(FacebookLoginProvider.PROVIDER_ID);
+  }
+
+  signOut(): void {
+    this.authService.signOut();
   }
 
   onClick() {
