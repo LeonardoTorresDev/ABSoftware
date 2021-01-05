@@ -4,7 +4,7 @@ const User=require('../../models/user')
 const {generateToken}=require('../../utils/generateToken')
 
 let loginUser=(req,res)=>{
-
+    ///sihaycookiepuestadesloguear
     let body=req.body
 
     User.findOne({email: body.email},(err,userDB)=>{
@@ -42,7 +42,6 @@ let loginUser=(req,res)=>{
             ok: true,
             user: userDB
         })
-
     })
 }
 

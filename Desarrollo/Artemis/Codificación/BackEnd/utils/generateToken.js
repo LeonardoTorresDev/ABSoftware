@@ -3,9 +3,7 @@ const jwt=require('jsonwebtoken')
 const generateToken=(userDB)=>{
 
     let token=jwt.sign(
-        {
-            user:userDB
-        },
+        {user:userDB},
         process.env.SEED,
         {expiresIn: process.env.EXPIRATION_TOKEN}
     )

@@ -17,7 +17,7 @@ router.post('/login/:externalLogin?',(req,res)=>{
     let ext=req.params.externalLogin   
     switch(ext){
         case 'facebook':
-            console.log('Facebook')
+            //facebookLogin(req,res)
             break
         case 'google':
             googleLogin(req,res)
@@ -28,9 +28,7 @@ router.post('/login/:externalLogin?',(req,res)=>{
     }
 })
 
-router.use(authUser)
-
-router.post('/logout',(req,res)=>{
+router.get('/logout',authUser,(req,res)=>{
     logout(req,res)
 })
 

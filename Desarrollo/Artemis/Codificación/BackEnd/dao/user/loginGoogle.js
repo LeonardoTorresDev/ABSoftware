@@ -1,7 +1,3 @@
-
-const {OAuth2Client} = require('google-auth-library')
-const client = new OAuth2Client(process.env.CLIENT_ID)
-
 const User=require('../../models/user')
 
 const {verify}=require('../../utils/verify')
@@ -10,7 +6,7 @@ const {generateToken}=require('../../utils/generateToken')
 let googleLogin= async (req,res)=>{
 
     if(!req.body.idtoken){
-         return res.status(200).json({
+         return res.status(400).json({
             ok: false,
             message: "No idToken founded, please use a correct route"
         })
@@ -48,8 +44,6 @@ let googleLogin= async (req,res)=>{
 
                 let token=generateToken(userDB)
 
-                //console.log('Google login')
-
                 res.cookie('jwt',token,{httpOnly: true, maxAge: process.env.EXPIRATION_TOKEN})
 
                 res.status(200).json({
@@ -66,6 +60,7 @@ let googleLogin= async (req,res)=>{
             user.nick_name=googleUser.name
             user.email=googleUser.email
             user.signed_google=true
+            user.profile_img=googleUser.img
             user.password='google'
 
             user.save((err,userDB)=>{
@@ -77,8 +72,6 @@ let googleLogin= async (req,res)=>{
                 }
                 
                 let token=generateToken(userDB)
-
-               //console.log('Google register')
 
                 res.cookie('jwt',token,{httpOnly: true, maxAge: process.env.EXPIRATION_TOKEN})
 
