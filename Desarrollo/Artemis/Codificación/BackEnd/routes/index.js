@@ -1,8 +1,12 @@
-const express=require('express')
-const app=express()
+const express=require('express');
+const app=express();
 
-const user=require('./user')
+const work=require('./work');
+const user=require('./user');
+const folder=require('./folder')
 
-app.use('/',user)
+app.use('/', work);
+app.use('/', user);
+app.use('/', folder);
 
-module.exports=app
+module.exports=app;

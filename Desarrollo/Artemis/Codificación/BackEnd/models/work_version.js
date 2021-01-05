@@ -9,8 +9,13 @@ let workVersionSchema=new Schema({
         unique: true,
         required: [true, 'Name is required']
     },
-    modified_by_id:[{
-        type: String
+    work:{
+        type: Schema.Types.ObjectId,
+        ref: 'Work'
+    },
+    modified_by:[{
+        type: Schema.Types.ObjectId,
+        ref: 'User'
     }],
     created_date:{
         type: Date,
@@ -24,4 +29,4 @@ let workVersionSchema=new Schema({
 
 workVersionSchema.plugin(uniqueValidator,{message:'{PATH} has to be unique'});
 
-module.exports=mongoose.model('WorkFolder', workVersionSchema);
+module.exports=mongoose.model('WorkVersion', workVersionSchema);
