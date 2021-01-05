@@ -8,6 +8,8 @@ process.env.EXPIRATION_TOKEN=1000*60*60*24*30
 
 process.env.GOOGLE_CLIENT_ID='12773282290-heah8rpv61jhoppeetnodg0rnqhufupt.apps.googleusercontent.com'
 
+mongoose.set('useFindAndModify', false)
+
 mongoose.connect(process.env.MONGO_URL,{ 
     useNewUrlParser: true, 
     useUnifiedTopology: true,
