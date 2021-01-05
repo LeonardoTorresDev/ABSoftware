@@ -18,7 +18,7 @@ function get_work(req, res){
 
             if(folder==null){ return custom_error_response(400, res, "Folder no encontrado") }
 
-            Work.findOne({})
+            
         })
     })
 }

@@ -1,6 +1,6 @@
 const User=require('../../models/user');
 const Folder=require('../../models/work_folder');
-const {error_response, custom_error_response}=require('../../utils/utils')
+const {error_response, custom_error_response, custom_response}=require('../../utils/utils')
 
 function update_folder(req, res){
 
@@ -22,7 +22,7 @@ function update_folder(req, res){
             folder.save((err)=>{
                 if(err){ return error_response(400, res, err) }
 
-                res.send(folder)
+                return custom_response(res, "Folder actualizado con exito")
             })
         })
     })
