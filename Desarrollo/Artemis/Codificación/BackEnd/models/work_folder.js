@@ -4,13 +4,17 @@ const uniqueValidator=require('mongoose-unique-validator')
 let Schema=mongoose.Schema
 
 let workFolderSchema=new Schema({
+    owner:{
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+    },
     name:{
         type: String,
-        unique: true,
         required: [true, 'Name is required']
     },
-    works_id:[{
-        type: String
+    works:[{
+        type: Schema.Types.ObjectId,
+        ref: 'Work'
     }]
 })
 
