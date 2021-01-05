@@ -1,6 +1,6 @@
 const Folder=require('../../models/work_folder');
 const User=require('../../models/user');
-const {error_response, custom_error_response, unique_with_name}=require('../../utils/utils')
+const {error_response, custom_error_response, unique_with_name, custom_response}=require('../../utils/utils')
 
 function create_folder(req, res)
 {
@@ -27,7 +27,7 @@ function create_folder(req, res)
             user.save((err)=>{
                 if(err){ return error_response(400, res, err) }
 
-                res.send(folder)
+                return custom_response(res, "Folder creado con exito")
             })
         })
     })

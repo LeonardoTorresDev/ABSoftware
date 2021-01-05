@@ -1,6 +1,6 @@
 const User=require('../../models/user');
 const Folder=require('../../models/work_folder');
-const {error_response, custom_error_response}=require('../../utils/utils')
+const {error_response, custom_error_response, custom_response}=require('../../utils/utils')
 
 function delete_folder(req, res){
 
@@ -16,14 +16,14 @@ function delete_folder(req, res){
 
             if(err){ return error_response(400, res, err) }
 
-            if(user==null){ return custom_error_response(400, res, "Folder no encontrado") }
+            if(folder==null){ return custom_error_response(400, res, "Folder no encontrado") }
 
             user.folders.splice(user.folders.indexOf(folder._id), 1)
 
             user.save((err)=>{
                 if(err){ return error_response(400, res, err) }
 
-                res.send(folder)
+                return custom_response(res, "Folder borrado con exito")
             })
         })    
     })
