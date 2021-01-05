@@ -4,14 +4,18 @@ const {get_folders}=require('../dao/folders/get_folders');
 const {update_folder}=require('../dao/folders/update_folder');
 const {delete_folder}=require('../dao/folders/delete_folder');
 const {create_folder}=require('../dao/folders/create_folder');
+const authUser=require('../../BackEnd/middlewares/authUser')
 const router=express.Router();
 
-router.route('/folders/:nick_name?')
+router.use('/folder', authUser)
+router.use('/folders', authUser)
+
+router.route('/folders')
     .get((req,res)=>{
         get_folders(req, res)
     })
     
-router.route('/folder/:nick_name?/:folder_name?')
+router.route('/folder/:folder_name?')
     .get((req,res)=>{
         get_folder(req, res)
     })

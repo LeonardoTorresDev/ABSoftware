@@ -4,7 +4,7 @@ const {error_response, custom_error_response, custom_response}=require('../../ut
 
 function delete_folder(req, res){
 
-    User.findOne({nick_name: req.query.nick_name})
+    User.findOne({nick_name: req.user.nick_name})
     .exec(function (err, user){
 
         if(err){ return error_response(400, res, err) }

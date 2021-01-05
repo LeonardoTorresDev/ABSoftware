@@ -4,7 +4,7 @@ const {error_response, custom_error_response, unique_with_name, custom_response}
 
 function create_folder(req, res)
 {
-    User.findOne({nick_name: req.query.nick_name})
+    User.findOne({nick_name: req.user.nick_name})
     .populate('folders')
     .exec(function (err, user){
 

@@ -3,7 +3,7 @@ const {error_response, custom_error_response}=require('../../utils/utils')
 
 function get_folders(req, res){
 
-    User.findOne({nick_name: req.query.nick_name})
+    User.findOne({nick_name: req.user.nick_name})
     .populate('folders')
     .exec(function (err, user){
 
