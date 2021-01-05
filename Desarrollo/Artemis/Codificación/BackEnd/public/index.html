@@ -35,7 +35,7 @@
                 //SENT AJAX REQUEST
 
                 var xhr = new XMLHttpRequest();//create request
-                xhr.open('POST', 'login/google');//create POST request
+                xhr.open('POST', 'users/login/google');//create POST request
                 xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');//send info
                 xhr.onload = function() {
                     console.log('Signed in as: ' + xhr.responseText);

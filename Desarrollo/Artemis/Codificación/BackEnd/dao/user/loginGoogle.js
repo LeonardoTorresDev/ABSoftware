@@ -2,58 +2,50 @@ const User=require('../../models/user')
 
 const {verify}=require('../../utils/verify')
 const {generateToken}=require('../../utils/generateToken')
+const {
+    error_response,
+    custom_error_response,
+    custom_response,
+    destroyCookieWhenLogged
+}=require('../../utils/utils')
 
 let googleLogin= async (req,res)=>{
 
+    destroyCookieWhenLogged(req,res)
+
     if(!req.body.idtoken){
-         return res.status(400).json({
-            ok: false,
-            message: "No idToken founded, please use a correct route"
-        })
+         return custom_error_response(400,res,"No idToken founded, please use a correct route")
     }
 
     let idToken=req.body.idtoken;
 
     let googleUser=await verify(idToken)
-        .catch(e=>{
-            res.status(403).json({
-                ok:false,
-                err:e
-            })
+    .catch(e=>{
+        e
     })
+
+    if(googleUser===undefined){
+        return  custom_error_response(403,res,"Unvalid token")
+    }     
 
     User.findOne({email: googleUser.email},(err,userDB)=>{
 
-        if(err){
-            return res.status(500).json({
-                ok:false,
-                err
-            })
-        }
+        if(err){ return error_response(500,res,err)}
 
         if(userDB){
             if(userDB.signed_google===false){
-                return res.status(400).json({
-                    ok:false,
-                    err:{
-                        message:"Should use your normal login"
-                    }
-                })
-            }//user authenticated with google
+                return custom_error_response(400,res,"Should use your normal login")
+            }
             else{
-
+                
                 let token=generateToken(userDB)
 
                 res.cookie('jwt',token,{httpOnly: true, maxAge: process.env.EXPIRATION_TOKEN})
 
-                res.status(200).json({
-                    ok: true,
-                    user: userDB
-                })
+                custom_response(res,"User login succesfully done")
             }
         }
         else{
-
             let user=new User()
 
             user.artistic_name=googleUser.name
@@ -64,21 +56,14 @@ let googleLogin= async (req,res)=>{
             user.password='google'
 
             user.save((err,userDB)=>{
-                if(err){
-                    return res.status(500).json({
-                        ok:false,
-                        err
-                    })
-                }
-                
+
+                if(err){ return error_response(500,res,err)}
+
                 let token=generateToken(userDB)
 
                 res.cookie('jwt',token,{httpOnly: true, maxAge: process.env.EXPIRATION_TOKEN})
 
-                res.status(200).json({
-                    ok: true,
-                    user: userDB
-                })
+                custom_response(res,"User login and register succesfully done")
             })
         }
     })

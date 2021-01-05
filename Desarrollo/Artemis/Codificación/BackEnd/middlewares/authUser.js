@@ -3,6 +3,8 @@ const jwt=require('jsonwebtoken')
 
 const router=express.Router()
 
+const {custom_error_response}=require('../utils/utils')
+
 router.use((req,res,next)=>{
     
     const token=req.cookies.jwt
@@ -10,12 +12,7 @@ router.use((req,res,next)=>{
     if(token){
         jwt.verify(token,process.env.SEED,(err,decoded)=>{
             if(err){
-                return res.status(401).json({
-                    ok: false,
-                    err:{
-                        message: "Unvalid token"
-                    }
-                })
+                return custom_error_response(401,res,"Unvalid token")
             }
             else{
                 req.user=decoded.user
@@ -24,12 +21,7 @@ router.use((req,res,next)=>{
         })
     }
     else{
-        return res.status(400).json({
-            ok: false,
-            err:{
-                message: "User not logged"
-            }
-        })
+        return custom_error_response(400,res,"User not logged")
     }
     
 })

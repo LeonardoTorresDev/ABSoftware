@@ -34,4 +34,16 @@ function unique_with_name(array, valuetofind)
     return unique;
 }
 
-module.exports={error_response, custom_error_response, custom_response, unique_with_name}
+function destroyCookieWhenLogged(req,res){
+    if(req.cookies.jwt){
+        return res.cookie('jwt','',{maxAge: 1})
+    }
+}
+
+module.exports={
+    error_response, 
+    custom_error_response, 
+    custom_response, 
+    unique_with_name,
+    destroyCookieWhenLogged
+}

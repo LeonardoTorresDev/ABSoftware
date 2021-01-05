@@ -1,9 +1,8 @@
-let logout=(req,res)=>{
+const {custom_response}=require('../../utils/utils')
+
+let logout=(_,res)=>{
     res.cookie('jwt','',{maxAge: 1})
-    res.json({
-        ok: true,
-        message: "User logout"
-    })
+    custom_response(res,"User logout succesfully done")
 }
 
 module.exports={
