@@ -12,7 +12,7 @@ router.use((req,res,next)=>{
     if(token){
         jwt.verify(token,process.env.SEED,(err,decoded)=>{
             if(err){
-                return custom_error_response(401,res,"Unvalid token")
+                return custom_error_response(401,res,"Token inválido")
             }
             else{
                 req.user=decoded.user
@@ -21,7 +21,7 @@ router.use((req,res,next)=>{
         })
     }
     else{
-        return custom_error_response(400,res,"User not logged")
+        return custom_error_response(400,res,"Usuario no ha iniciado sesión")
     }
     
 })
