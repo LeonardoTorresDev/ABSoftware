@@ -1,13 +1,17 @@
 const express=require('express')
 
 const {saveUser}=require('../dao/user/register')
+
 const {loginUser}=require('../dao/user/login')
 const {googleLogin}=require('../dao/user/loginGoogle')
 const {logout}=require('../dao/user/logout')
-const {updateUser}=require('../dao/user/updateUser')
+
 const {getUser}=require('../dao/user/getUser')
 const {getUsers}=require('../dao/user/getUsers')
 const {searchUsers} = require('../dao/user/searchUsers')
+
+const {updateUser}=require('../dao/user/updateUser')
+const {deleteUser}=require('../dao/user/deleteUser')
 
 const router=express.Router()
 const authUser=require('../middlewares/authUser')
@@ -30,6 +34,9 @@ router.route('/users')
     })
     .put(authUser,(req,res)=>{
         updateUser(req,res)
+    })
+    .delete(authUser,(req,res)=>{
+        deleteUser(req,res)
     })
 
 
