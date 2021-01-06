@@ -18,7 +18,7 @@ let saveUser=(req,res)=>{
 
         if(err){return error_response(400,res,err)}
         
-        custom_response(res,"User created successfully")
+        custom_response(res,"Usuario creado con éxito")
 
     })
 }

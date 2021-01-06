@@ -11,6 +11,8 @@ const {
     custom_response
 }=require('../../utils/utils')
 
+const {sendCookie}=require('../../utils/sendCookie')
+
 let loginUser=(req,res)=>{
     
     destroyCookieWhenLogged(req,res)
@@ -21,20 +23,19 @@ let loginUser=(req,res)=>{
 
         if(err){ return error_response(500,res,err)}
 
-        if(!userDB){ return custom_error_response(400,res,"User doesn't exist") }
+        if(!userDB){ return custom_error_response(400,res,"El usuario no existe") }
 
         if(!bcrypt.compareSync(body.password,userDB.password)){
-            return custom_error_response(401,res,"Password doesn't match")
+            return custom_error_response(401,res,"La contraseña es incorrecta")
         }
 
         let token=generateToken(userDB)
 
-        res.cookie('jwt',token,{httpOnly: true, maxAge: process.env.EXPIRATION_TOKEN})
+        sendCookie(res,'jwt',token)
 
-        custom_response(res,"User login succesfully done")
+        custom_response(res,"Usuario logueado con éxito")
     })
 }
-
 
 module.exports={
     loginUser
