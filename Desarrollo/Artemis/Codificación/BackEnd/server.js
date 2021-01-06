@@ -2,8 +2,11 @@ require('./config/config')
 const express=require('express')
 const bodyParser=require('body-parser')
 const cookieParser=require('cookie-parser')
+const {cors_config}=require('./config/cors_config')
 
 const app=express()
+
+cors_config(app)
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
