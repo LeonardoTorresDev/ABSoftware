@@ -9,7 +9,18 @@ const {error_response,
 
 let deleteUser=(req,res)=>{
 
-    custom_response(res,"DELETE")
+    let id=req.user._id
+
+    User.deleteOne({_id: id},(err,deletedUser)=>{
+
+        if(err){return error_response(500,res,err)}
+
+        if(!deletedUser){return custom_error_response(500,res,"Usuario no encontrado")}
+
+        destroyCookieWhenLogged(req,res)
+
+        custom_response(res,"Usuario borrado exitosamente")
+    })
 
 }
 
