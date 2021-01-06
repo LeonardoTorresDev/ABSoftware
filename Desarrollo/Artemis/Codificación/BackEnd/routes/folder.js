@@ -5,7 +5,7 @@ const {update_folder}=require('../dao/folders/update_folder')
 const {delete_folder}=require('../dao/folders/delete_folder')
 const {create_folder}=require('../dao/folders/create_folder')
 const authUser=require('../../BackEnd/middlewares/authUser')
-const router=express.Router();
+const router=express.Router()
 
 router.use('/folder', authUser)
 router.use('/folders', authUser)

@@ -11,6 +11,8 @@ const {
     custom_response
 }=require('../../utils/utils')
 
+const {sendCookie}=require('../../utils/sendCookie')
+
 let loginUser=(req,res)=>{
     
     destroyCookieWhenLogged(req,res)
@@ -29,12 +31,11 @@ let loginUser=(req,res)=>{
 
         let token=generateToken(userDB)
 
-        res.cookie('jwt',token,{httpOnly: true, maxAge: process.env.EXPIRATION_TOKEN})
+        sendCookie(res,'jwt',token)
 
         custom_response(res,"Usuario logueado con éxito")
     })
 }
-
 
 module.exports={
     loginUser

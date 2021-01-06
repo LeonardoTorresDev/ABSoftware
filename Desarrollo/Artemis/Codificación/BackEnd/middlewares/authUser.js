@@ -6,7 +6,7 @@ const router=express.Router()
 const {custom_error_response}=require('../utils/utils')
 
 router.use((req,res,next)=>{
-    
+
     const token=req.cookies.jwt
 
     if(token){

@@ -2,12 +2,15 @@ const User=require('../../models/user')
 
 const {verify}=require('../../utils/verify')
 const {generateToken}=require('../../utils/generateToken')
+
 const {
     error_response,
     custom_error_response,
     custom_response,
     destroyCookieWhenLogged
 }=require('../../utils/utils')
+
+const {sendCookie}=require('../../utils/sendCookie')
 
 let googleLogin= async (req,res)=>{
 
@@ -40,7 +43,7 @@ let googleLogin= async (req,res)=>{
                 
                 let token=generateToken(userDB)
 
-                res.cookie('jwt',token,{httpOnly: true, maxAge: process.env.EXPIRATION_TOKEN})
+                sendCookie(res,'jwt',token)
 
                 custom_response(res,"Usuario logueado con éxito")
             }
@@ -61,7 +64,7 @@ let googleLogin= async (req,res)=>{
 
                 let token=generateToken(userDB)
 
-                res.cookie('jwt',token,{httpOnly: true, maxAge: process.env.EXPIRATION_TOKEN})
+                sendCookie(res,'jwt',token)
 
                 custom_response(res,"Usuario logueado y registrado con éxito")
             })
