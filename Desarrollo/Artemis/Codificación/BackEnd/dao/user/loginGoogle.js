@@ -6,7 +6,7 @@ const {generateToken}=require('../../utils/generateToken')
 const {
     error_response,
     custom_error_response,
-    custom_response,
+    custom_response_user,
     destroyCookieWhenLogged
 }=require('../../utils/utils')
 
@@ -45,7 +45,7 @@ let googleLogin= async (req,res)=>{
 
                 sendCookie(res,'jwt',token)
 
-                custom_response(res,"Usuario logueado con éxito")
+                custom_response_user(res,"Usuario logueado con éxito",userDB)
             }
         }
         else{
@@ -66,7 +66,7 @@ let googleLogin= async (req,res)=>{
 
                 sendCookie(res,'jwt',token)
 
-                custom_response(res,"Usuario logueado y registrado con éxito")
+                custom_response_user(res,"Usuario logueado con éxito",userDB)
             })
         }
     })
