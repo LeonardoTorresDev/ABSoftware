@@ -21,7 +21,7 @@ router.get('/user',authUser,(req,res)=>{
     getUser(req,res)
 })
 
-router.get('/users/search/:term',authUser,(req,res)=>{
+router.get('/users/search/:term?',authUser,(req,res)=>{
     searchUsers(req,res)
 })
 

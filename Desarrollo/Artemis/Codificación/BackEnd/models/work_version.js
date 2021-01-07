@@ -22,7 +22,7 @@ let workVersionSchema=new Schema({
         required: [true, "Created date is required"]
     },
     file:{
-        type: File,
+        type: String,
         required: [true, "File is required"]
     }
 })
