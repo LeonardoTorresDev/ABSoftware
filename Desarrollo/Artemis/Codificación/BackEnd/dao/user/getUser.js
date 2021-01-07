@@ -3,7 +3,7 @@ const {error_response, custom_error_response}=require('../../utils/utils')
 
 let getUser=(req,res)=>{
 
-    let nick_name=req.query.nick_name
+    let nick_name=req.user.nick_name
 
     User.findOne({nick_name: nick_name})
         .populate('folders','name')
@@ -15,7 +15,6 @@ let getUser=(req,res)=>{
 
             res.send(user)
         })
-
 }
 
 module.exports={

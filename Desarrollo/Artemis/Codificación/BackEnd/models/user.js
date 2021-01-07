@@ -55,8 +55,8 @@ userSchema.methods.toJSON=function(){
 }
 
 
-userSchema.pre('deleteOne',function(next){
-    
+userSchema.pre('deleteOne',function(next){   
+
     let id=this._conditions._id
 
     Folder.deleteMany({owner:id}).exec()

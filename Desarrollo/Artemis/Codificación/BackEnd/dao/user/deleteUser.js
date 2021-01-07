@@ -1,5 +1,4 @@
 const User=require('../../models/user')
-const Folder=require('../../models/work_folder')
 
 const {error_response, 
     custom_error_response, 
@@ -20,8 +19,8 @@ let deleteUser=(req,res)=>{
         destroyCookieWhenLogged(req,res)
 
         custom_response(res,"Usuario borrado exitosamente")
-    })
 
+    })
 }
 
 module.exports={

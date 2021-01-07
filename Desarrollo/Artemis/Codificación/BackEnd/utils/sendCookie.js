@@ -6,7 +6,7 @@ let sendCookie=(res,name,token)=>{
         httpOnly: process.env.HTTPONLY,
         sameSite: 'None'
     })
-    
+
 }
 
 module.exports={
