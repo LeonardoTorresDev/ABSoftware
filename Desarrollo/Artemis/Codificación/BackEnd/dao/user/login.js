@@ -8,7 +8,7 @@ const {
     error_response,
     custom_error_response,
     destroyCookieWhenLogged,
-    custom_response
+    custom_response_user
 }=require('../../utils/utils')
 
 const {sendCookie}=require('../../utils/sendCookie')
@@ -33,7 +33,8 @@ let loginUser=(req,res)=>{
 
         sendCookie(res,'jwt',token)
 
-        custom_response(res,"Usuario logueado con éxito")
+        custom_response_user(res,"Usuario logueado con éxito",userDB)
+        
     })
 }
 
