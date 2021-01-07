@@ -1,124 +1,131 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
-        <title>Google Sign-In Demo</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Artemis Back Side</title>
 
-        <script src="https://apis.google.com/js/platform.js" async defer></script>
-        <meta name="google-signin-client_id" content="12773282290-heah8rpv61jhoppeetnodg0rnqhufupt.apps.googleusercontent.com"/>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <meta
+      name="google-signin-client_id"
+      content="12773282290-heah8rpv61jhoppeetnodg0rnqhufupt.apps.googleusercontent.com"
+    />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&family=Open+Sans:wght@400;700&display=swap");
 
-    </head>
-    <body>
-        <h1>Sign-In with Google</h1>
-        <div class="g-signin2" data-onsuccess="onSignIn"></div>
-        <a href="#" onclick="signOut();">Sign out</a>
-        <script>
-            function signOut() {
-                var auth2 = gapi.auth2.getAuthInstance();
-                auth2.signOut().then(function() {
-                    console.log('User signed out.');
-                });
+      body {
+        background: linear-gradient(71.07deg, #9965e9 0%, #6200ea 98.25%);
+        color: white;
+        font-family: "Open Sans", sans-serif;
+        min-height: 100vh;
+        text-align: center;
+      }
+
+      .container {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+      }
+      h1 {
+        text-transform: uppercase;
+        letter-spacing: 1rem;
+      }
+
+      h2 {
+        font-weight: 300;
+      }
+
+      h1,
+      h2 {
+        font-family: "Jost", sans-serif;
+      }
+
+      a {
+        margin-top: 1rem;
+        background: #0a00b6;
+        padding: 0.5rem 1rem;
+        text-decoration: none;
+        text-transform: uppercase;
+        font-weight: 700;
+        font-size: 16px;
+        color: white;
+        transition: all 0.5s ease;
+      }
+
+      a:hover {
+        background: #310885;
+      }
+
+      .google-button {
+        margin: 0 auto;
+        }
+
+        .container-google {
+        margin: 0 auto;
+        max-width: 50%;
+        }
+
+        .abcRioButton {
+            margin: 0 auto;
+            max-width: 50%;
             }
-        </script>
-         <script>
-            function onSignIn(googleUser) {           
-                var profile = googleUser.getBasicProfile();
-                console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-                console.log('Name: ' + profile.getName());
-                console.log('Image URL: ' + profile.getImageUrl());
-                console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
-                
-                var id_token = googleUser.getAuthResponse().id_token;
-                console.log(id_token);
-                //SENT AJAX REQUEST
+        hr{
+            margin-left: 20%;
+            margin-right: 20%;
+        }
+    </style>
+  </head>
+  <body>
+      
+    <div class="container">
+      <h1>Artemis</h1>
+      <hr/>
+      <h2>Back-End Side</h2>
 
-                var xhr = new XMLHttpRequest();//create request
-                xhr.open('POST', 'users/login/google');//create POST request
-                xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');//send info
-                xhr.onload = function() {
-                    console.log('Signed in as: ' + xhr.responseText);
-                };
-                xhr.send('idtoken='+id_token);
-            }
-        </script>  
+      <p>Página de back-end de Artemis.</p>
+      <div class="container-google">
+        <div class="g-signin2 google-button" data-onsuccess="onSignIn"></div>
+     </div>
+     <br/>
+      <a href="#" onclick="signOut();">Sign out</a>
+    </div>
 
-        <!--Facebook LOGIN--> 
+    <script>
+      function signOut() {
+        var auth2 = gapi.auth2.getAuthInstance();
+        auth2.signOut().then(function () {
+          console.log("User signed out.");
+        });
+      }
+    </script>
 
-        <script>
- 
-            function checkFacebookLoginStatusCallback(response) {  // Called with the results from FB.getLoginStatus().
-                console.log('statusChangeCallback');
-                console.log(response);                   // The current login status of the person.
-                if (response.status === 'connected') {   // Logged into your webpage and Facebook.
-                getUserProfile();  
-                } else {                                 // Not logged into your webpage or we are unable to tell.
-                document.getElementById('status').innerHTML = 'Please log ' +
-                    'into this webpage.';
-                }
-            }
+    <script>
+      function onSignIn(googleUser) {
+        var profile = googleUser.getBasicProfile();
+        console.log("ID: " + profile.getId()); // Do not send to your backend! Use an ID token instead.
+        console.log("Name: " + profile.getName());
+        console.log("Image URL: " + profile.getImageUrl());
+        console.log("Email: " + profile.getEmail()); // This is null if the 'email' scope is not present.
 
+        var id_token = googleUser.getAuthResponse().id_token;
+        console.log(id_token);
+        //SENT AJAX REQUEST
 
-            function checkLoginState() {               // Called when a person is finished with the Login Button.
-                FB.getLoginStatus(function(response) {   // See the onlogin handler
-                checkFacebookLoginStatusCallback(response);
-                });
-            }
+        var xhr = new XMLHttpRequest(); //create request
+        xhr.open("POST", "users/login/google"); //create POST request
+        xhr.setRequestHeader(
+          "Content-Type",
+          "application/x-www-form-urlencoded"
+        ); //send info
+        xhr.onload = function () {
+          console.log("Signed in as: " + xhr.responseText);
+        };
+        xhr.send("idtoken=" + id_token);
+      }
+    </script>
 
-
-            window.fbAsyncInit = function() {
-                FB.init({
-                appId      : '1363646147311769',
-                cookie     : true,                     // Enable cookies to allow the server to access the session.
-                xfbml      : true,                     // Parse social plugins on this webpage.
-                version    : 'v9.0'           // Use this Graph API version for this call.
-                });
-
-
-                FB.getLoginStatus(function(response) {   // Called after the JS SDK has been initialized.
-                checkFacebookLoginStatusCallback(response);        // Returns the login status.
-                });
-            };
-            
-            function getUserProfile() {                      // Get User Profile using Facebook Graph API after login.
-                console.log('Welcome!  Fetching your profile information.... ');
-                FB.api('/me', function(response) {
-                    console.log('Successful login for: ' + response.name);
-                    document.getElementById('status').innerHTML =
-                        'Thanks for logging in, ' + response.name + '!';
-                    
-                    console.log(response)
-                    console.log(response.email.value)
-                    console.log(response.photos[0].value)
-                    
-                    var xhr = new XMLHttpRequest();//create request
-                    xhr.open('POST', 'login/facebook');//create POST request
-                    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');//send info
-                    xhr.onload = function() {
-                        console.log('Signed in as: ' + xhr.responseText);
-                    };
-                    xhr.send('idtoken='+response);
-
-                });
-
-                
-            }
-
-           
-
-        </script>
-
-        <!-- The JS SDK Login Button -->
-
-        <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
-        </fb:login-button>
-
-        <div id="status">
-        </div>
-
-        <!-- Load the JS SDK asynchronously -->
-        <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>        
-          
-    </body>
+  </body>
 </html>
