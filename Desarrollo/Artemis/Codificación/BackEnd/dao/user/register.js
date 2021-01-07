@@ -1,5 +1,7 @@
 const User=require('../../models/user')
-const {error_response,custom_response}=require('../../utils/utils')
+
+const {loginUser}=require('../../dao/user/login')
+const {error_response}=require('../../utils/utils')
 
 const bcrypt=require('bcrypt')
 
@@ -17,8 +19,8 @@ let saveUser=(req,res)=>{
     user.save((err,_)=>{
 
         if(err){return error_response(400,res,err)}
-        
-        custom_response(res,"Usuario creado con éxito")
+
+        loginUser(req,res)
 
     })
 }
