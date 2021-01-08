@@ -55,7 +55,7 @@ let googleLogin= async (req,res)=>{
             user.nick_name=googleUser.name
             user.email=googleUser.email
             user.signed_google=true
-            user.profile_img=googleUser.img
+            user.profile_img_url=googleUser.img
             user.password='google'
 
             user.save((err,userDB)=>{

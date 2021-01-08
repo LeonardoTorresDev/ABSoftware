@@ -15,7 +15,7 @@ let workSchema=new Schema({
         ref: 'User',
         required: [true, 'User is required']
     },
-    img:{
+    img_url:{
         type: String
     },
     stats:{

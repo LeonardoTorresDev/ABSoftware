@@ -25,7 +25,7 @@ let userSchema=new Schema({
         type: String,
         required:[true,'Password is required']
     },
-    profile_img:{
+    profile_img_url:{
         type: String
     },
     followers:[{
