@@ -7,17 +7,17 @@ const authUser=require('../middlewares/authUser')
 
 const router=express.Router();
 
-router.route('/works/:nick_name?/:folder_name?')
+router.route('/works/:folder_name?')
     .get((req,res)=>{
         get_works(req, res)
     })
     
-router.route('/work/:folder_name?/:stats?/:versions?')
+router.route('/work/:folder_name?/:work_name?/:stats?/:versions?')
     .get((req,res)=>{
-        //get_work(req, res)
+        get_work(req, res)
     })
     .post(authUser,(req,res)=>{
-        create_work(req, res)
+        //create_work(req, res)
     })
     .put((req,res)=>{
         //res.send('Obra actualizada con id ' + req.query.work_id)
