@@ -1,0 +1,15 @@
+@import '../../../../../styles.scss';
+
+.title{
+    font-size: $h4;
+    font-family: $family-secondary;
+}
+
+.post-tag,
+.title{
+    font-family: $family-secondary;
+}
+
+.post-text{
+    font-family: $family-primary;
+}

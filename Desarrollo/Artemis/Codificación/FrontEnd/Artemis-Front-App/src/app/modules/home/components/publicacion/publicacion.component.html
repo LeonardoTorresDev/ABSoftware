@@ -1,1 +1,35 @@
-<p>publicacion works!</p>
+<div class="control">
+    <figure class="">
+        <img src="{{imagen}}" alt="imagen 1">
+    </figure>
+    <p class="title">{{titulo}}</p>
+    <div class="columns">
+        <div class="column">
+            <div class="icon-text">
+                <span class="icon">
+                    <i class="far fa-user"></i>
+                </span>
+                <span class="post-text">{{autor}}</span>
+            </div>
+            <p class="post-text">{{fecha | date:'shortDate'}}</p>
+            <span *ngFor="let tag of tags">
+                <span class="post-tag">{{tag}}    </span>
+            </span>
+        </div>
+        <div class="column">
+            <div class="icon-text is-pulled-right">
+                <span class="icon is-pulled-right">
+                    <i class="far fa-thumbs-up"></i>
+                </span>
+                <span class="post-text">{{likes}}k</span>
+            </div><br>           
+            <div class="icon-text is-pulled-right">
+                <span class="icon is-pulled-right">
+                    <i class="far fa-comment"></i>
+                </span>
+                <span class="post-text">{{comentarios}}k</span>
+            </div>           
+        </div>
+    </div>
+</div>
+
