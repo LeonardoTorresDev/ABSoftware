@@ -50,6 +50,6 @@ let workSchema=new Schema({
     }
 })
 
-workSchema.plugin(uniqueValidator,{message:'{PATH} has to be unique'});
+workSchema.plugin(uniqueValidator,{message:'{PATH} tiene que ser único'})
 
-module.exports=mongoose.model('workSchema', workSchema);
+module.exports=mongoose.model('workSchema', workSchema)

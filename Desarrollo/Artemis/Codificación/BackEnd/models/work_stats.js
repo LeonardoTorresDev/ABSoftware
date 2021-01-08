@@ -27,6 +27,7 @@ let workStatsSchema=new Schema({
     }
 })
 
-module.exports=mongoose.model('WorkStats',workStatsSchema)
 
-workSchema.plugin(uniqueValidator,{message:'{PATH} has to be unique'});
+workSchema.plugin(uniqueValidator,{message:'{PATH} tiene que ser único'})
+
+module.exports=mongoose.model('WorkStats',workStatsSchema)

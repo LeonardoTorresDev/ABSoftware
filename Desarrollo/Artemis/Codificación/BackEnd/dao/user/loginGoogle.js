@@ -66,7 +66,7 @@ let googleLogin= async (req,res)=>{
 
                 sendCookie(res,'jwt',token)
 
-                custom_response_user(res,"Usuario logueado con éxito",userDB)
+                custom_response_user(res,"Usuario creado y logueado con éxito",userDB)
             })
         }
     })

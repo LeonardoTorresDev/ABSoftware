@@ -1,14 +1,14 @@
 const User = require("../../models/user")
-const {error_response,custom_error_response}=require('../../utils/utils')
+const {error_response,custom_response,custom_error_response}=require('../../utils/utils')
 
 let getUsers=(req,res)=>{
 
     if(req.query.from<0){
-        custom_error_response(400,res,"From no debe ser un número negativo")
+        return custom_error_response(400,res,"From no debe ser un número negativo")
     }
 
     if(req.query.limit<0){
-        custom_error_response(400,res,"Limit no debe ser un número negativo")
+        return custom_error_response(400,res,"Limit no debe ser un número negativo")
     }
 
     let from=req.query.from || 0
@@ -24,10 +24,12 @@ let getUsers=(req,res)=>{
 
             if(err){ return error_response(400, res, err) }
 
+            if(users.length===0){ 
+                return custom_response(res,"No se encontraron usuarios con los parametros de busqueda enviados")
+            }
+
             res.send(users)
-
         })
-
 }
 
 module.exports={

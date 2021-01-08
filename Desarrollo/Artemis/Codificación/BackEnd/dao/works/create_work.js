@@ -8,9 +8,9 @@ let create_work=(req, res)=>{
     let work=new Work({
         name: body.name,
         tag: body.tag,
-        owner_id: req.user._id,
+        owner: req.user._id,
         img: body.img,
-        stats_id: body.stats_id,
+        stats: body.stats,
         private: body.private,
         collaborative: body.collaborative,
         collabs: body.collabs,
@@ -22,8 +22,9 @@ let create_work=(req, res)=>{
         if(err){
             return error_response(400,res,err)
         } 
-        res.send("Creada nueva obra para el usuario: " + req.user.nick_name)     
+        res.send("Creada nueva obra para el usuario: " + userDB.nick_name)     
     })
+    
 }
 
 module.exports={create_work}
