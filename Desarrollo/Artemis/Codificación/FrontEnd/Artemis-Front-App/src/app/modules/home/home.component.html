@@ -1,1 +1,15 @@
-<p>home works!</p>
+<app-navbar></app-navbar>
+
+<main class="columns">
+    <section class="column">
+        <app-sidebar></app-sidebar>
+    </section>
+    <section class="column">
+        <app-publicacion></app-publicacion>
+        <!--Para cargar todos los posts se usará el siguiente template-->
+        <div *ngFor="let post of postsLoaded">
+            <app-publicacion [this]="post"></app-publicacion>
+        </div>
+    </section>
+    <section class="column"></section>
+</main>
