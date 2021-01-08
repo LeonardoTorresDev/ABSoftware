@@ -43,7 +43,6 @@ function unique_with_name(array, valuetofind)
 }
 
 function destroyCookieWhenLogged(req,res){
-    console.log("Deslogueando...")
     if(req.cookies.jwt){
         return res.cookie('jwt','',{maxAge: 1})
     }

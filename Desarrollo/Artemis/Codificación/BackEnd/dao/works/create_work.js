@@ -3,12 +3,12 @@ const Folder=require('../../models/work_folder');
 const Work=require('../../models/work');
 const Stats=require('../../models/work_stats')
 const Version=require('../../models/work_version')
-const {error_response, custom_error_response}=require('../../utils/utils')
+const {error_response, custom_error_response,unique_with_name}=require('../../utils/utils')
 
 function create_work(req, res){
 
     User.findById(req.user._id)
-    .exec(function (err, user){
+    .exec((err, user)=>{
 
         if(err){ return error_response(400, res, err) }
 
@@ -16,8 +16,9 @@ function create_work(req, res){
 
         //Encontró el usuario
 
-        Folder.findOne({name: req.query.folder_name, owner: user._id})
-        .exec(function (err, folder){
+        Folder.findOne({name: req.params.folder_name, owner: user._id})
+        .exec((err, folder)=>{
+
             if(err){ return error_response(400, res, err) }
 
             if(folder==null){ return custom_error_response(400, res, "Folder no encontrado") }
@@ -32,16 +33,23 @@ function create_work(req, res){
                 reports: 0
             })
 
+            console.log(req.files.name)
+
+           
+
             let version=new Version({
                 name: req.body.name,
                 created_date: new Date(),
-                file: new File()
+                file: req.files.file
             })
+
+            stats._id=1
+            version._id=2
 
             let work=new Work({
                 name: req.body.name,
                 tag: req.body.tag,
-                owner_id: req.query.user_id,
+                owner_id: req.user._id,
                 img: req.body.img,
                 stats: stats._id,
                 private: req.body.private,
@@ -54,7 +62,14 @@ function create_work(req, res){
             stats.work = work._id
             version.work = work._id
 
-            
+            console.log(stats)
+            console.log(version)
+            console.log(work)
+
+             res.json({
+                ok:true
+            })
+    
         })
     })
     

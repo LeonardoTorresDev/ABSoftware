@@ -2,6 +2,8 @@ require('./config/config')
 const express=require('express')
 const bodyParser=require('body-parser')
 const cookieParser=require('cookie-parser')
+const fileupload = require("express-fileupload")
+
 const {cors_config}=require('./config/cors_config')
 
 const app=express()
@@ -12,6 +14,8 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 
 app.use(cookieParser())
+
+app.use(fileupload())
 
 app.use(require('./routes/index'))
 
