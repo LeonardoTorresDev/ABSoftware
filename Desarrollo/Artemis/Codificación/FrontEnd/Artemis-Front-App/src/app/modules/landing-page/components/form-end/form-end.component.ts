@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AuthService } from '../../../../shared/services/auth/auth.service';
 
 @Component({
   selector: 'app-form-end',
@@ -9,7 +11,11 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class FormEndComponent implements OnInit {
   forma: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(
+    private formBuilder: FormBuilder,
+    private router: Router,
+    private auth: AuthService
+  ) {
     this.crearFormulario();
   }
 
@@ -17,9 +23,8 @@ export class FormEndComponent implements OnInit {
 
   crearFormulario() {
     this.forma = this.formBuilder.group({
-      nombre: ['', [Validators.required, Validators.minLength(4)]],
-      apellido: ['', Validators.required],
-      nickname: ['', Validators.required],
+      email: ['', [Validators.required, Validators.minLength(4)]],
+      password: ['', Validators.required],
       termsAndConds: [false, Validators.requiredTrue],
       // [Valor por defecto, valores síncronos, validadores asíncronos]
     });
@@ -39,12 +44,16 @@ export class FormEndComponent implements OnInit {
   }
 
   guardar() {
-    console.log(this.forma);
+    // console.log(this.forma.value);
 
     if (this.forma.invalid) {
       return Object.values(this.forma.controls).forEach((control) => {
         control.markAsTouched();
       });
     }
+
+    //Almacenar en un json los datos hasta ahora
+    this.auth.usuario = this.forma.value;
+    this.router.navigate(['/signup']);
   }
 }

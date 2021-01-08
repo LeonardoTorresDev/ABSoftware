@@ -1,25 +1,30 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { SocialAuthService } from "angularx-social-login";
-import { SocialUser } from "angularx-social-login";
-import { FacebookLoginProvider, GoogleLoginProvider } from "angularx-social-login";
+import { SocialAuthService } from 'angularx-social-login';
+import { SocialUser } from 'angularx-social-login';
+import { GoogleLoginProvider } from 'angularx-social-login';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from '../../../../shared/services/auth/auth.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-form-start',
   templateUrl: './form-start.component.html',
   styleUrls: ['./form-start.component.scss'],
-  providers: [SocialUser, SocialAuthService]
+  providers: [SocialUser, SocialAuthService],
 })
 export class FormStartComponent implements OnInit {
-  user: SocialUser
-  loginIn: boolean
+  user: SocialUser;
+  loginIn: boolean;
 
-  registerForm: FormGroup
-  loading = false
+  registerForm: FormGroup;
+  loading = false;
 
-  constructor(private router: Router,
-              private authService: SocialAuthService) {}
+  constructor(
+    private router: Router,
+    private authService: SocialAuthService,
+    private auth: AuthService
+  ) {}
 
   ngOnInit(): void {
     this.registerForm = new FormGroup({
@@ -32,12 +37,21 @@ export class FormStartComponent implements OnInit {
     return this.registerForm.controls;
   }
 
-  signInWithGoogle(): void {
-    this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
-  }
-
-  signInWithFB(): void {
-    this.authService.signIn(FacebookLoginProvider.PROVIDER_ID);
+  signInWithGoogle() {
+    this.authService
+      .signIn(GoogleLoginProvider.PROVIDER_ID)
+      .then((res) => {
+        Swal.fire({
+          titleText: '¡Cuenta con Google sincronizada!\n🥳',
+          icon: 'success',
+          showConfirmButton: false,
+        });
+        this.auth.signWithGoogle(res.idToken).subscribe(() => {
+          Swal.close();
+          this.router.navigateByUrl('/home');
+        });
+      })
+      .catch((err) => console.log(err));
   }
 
   signOut(): void {
@@ -45,16 +59,17 @@ export class FormStartComponent implements OnInit {
   }
 
   onClick() {
-    this.loading = true;
+    if (this.registerForm.invalid) {
+      return Object.values(this.registerForm.controls).forEach((control) => {
+        control.markAsTouched();
+      });
+    }
 
-    //Detiene el formulario si es inválido, aún no se agrega notifiación
-    if (this.registerForm.invalid) return;
+    this.auth.usuario = this.registerForm.value;
+    this.router.navigate(['/signup']);
+  }
 
-    /*Aquí se debe crear una promesa; que en caso no haya errores, enrute a la vista de sign up
-    con los datos de email y contraseña para que se haga submit en dicha vista con los datos faltantes.
-    Si hay algún error, se cambia el loading a false y se manda el mensaje de error 
-
-    else
-      this.router.navigate('ruta de sign up, aún no creada')*/
+  noValido(attr: string) {
+    return this.registerForm.get(attr).invalid && this.registerForm.get(attr).touched;
   }
 }
