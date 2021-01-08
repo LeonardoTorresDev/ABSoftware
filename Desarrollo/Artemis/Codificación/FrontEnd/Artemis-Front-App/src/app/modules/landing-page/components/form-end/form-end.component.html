@@ -24,62 +24,39 @@
             <div class="field">
               <div class="columns">
                 <div class="column">
-                  <label class="field-label">Nombres</label>
+                  <label class="field-label">Correo electrónico</label>
                   <div class="control">
                     <input
                       class="input"
-                      type="text"
-                      placeholder="John"
-                      formControlName="nombre"
-                      [class.is-danger]="noValido('nombre')"
+                      type="email"
+                      placeholder="Tu correo electrónico"
+                      formControlName="email"
+                      [class.is-danger]="noValido('email')"
                     />
                   </div>
-                  <small class="help is-danger" *ngIf="noValido('nombre')">
-                    Ingrese al menos 5 caracteres
-                  </small>
-                </div>
-
-                <div class="column">
-                  <label class="field-label is-normal">Apellidos</label>
-                  <div class="control">
-                    <input
-                      class="input"
-                      type="text"
-                      placeholder="Doe"
-                      formControlName="apellido"
-                      [class.is-danger]="noValido('apellido')"
-                    />
-                  </div>
-                  <small
-                    class="content has-backround-danger is-small has-text-danger"
-                    *ngIf="noValido('apellido')"
-                  >
+                  <small class="button is-small is-danger" *ngIf="noValido('email')">
                     Ingrese al menos 5 caracteres
                   </small>
                 </div>
               </div>
             </div>
 
-            <label class="field-label">Nombre artístico</label>
-            <div class="field has-addons">
+            <label class="field-label">Contraseña</label>
+            <div class="field">
               <div class="control">
-                <a class="button is-static">@</a>
-              </div>
-
-              <div class="control is-expanded">
                 <input
-                  type="email"
+                  type="password"
                   class="input"
-                  placeholder="somethingCool"
-                  formControlName="nickname"
-                  [class.is-danger]="noValido('nickname')"
+                  placeholder="Tu contraseña"
+                  formControlName="password"
+                  [class.is-danger]="noValido('password')"
                 />
 
                 <div
                   class="button is-small is-danger"
-                  *ngIf="noValido('nickname')"
+                  *ngIf="noValido('password')"
                 >
-                  Nickname no válido
+                  Tiene que ingresar una contraseña
                 </div>
               </div>
             </div>
@@ -94,12 +71,18 @@
                   />
                   Acepto los <a href="#">términos y condiciones</a>
                 </label>
+                <div
+                  class="button is-small is-danger"
+                  *ngIf="noValido('termsAndConds')"
+                >
+                  Tiene que estar de acuerdo
+                </div>
               </div>
             </div>
 
             <div class="field">
               <div class="control">
-                <button type="submit" class="button is-link" [routerLink]="['/signup']">Unirse</button>
+                <button type="submit" class="button is-link">Unirse</button>
               </div>
             </div>
           </form>
@@ -107,19 +90,4 @@
       </div>
     </div>
   </section>
-
-  <!-- <hr />
-
-  <div class="container">
-    <pre>
-        <code class="json">
-          Estado del formulario: {{forma.valid}}
-          <br>
-          Status: {{forma.status}}
-          <br>
-          {{ forma.value | json }}
-        </code>
-          
-      </pre>
-  </div> -->
 </div>
