@@ -5,7 +5,7 @@ const {error_response, custom_error_response}=require('../../utils/utils')
 
 
 function get_work(req, res){
-    User.findOne({nick_name: req.query.nick_name})
+    User.findById(req.user._id)
     .exec(function (err, user){
 
         if(err){ return error_response(400, res, err) }
