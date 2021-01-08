@@ -3,20 +3,18 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
-  styleUrls: ['./sign-up.component.scss']
+  styleUrls: ['./sign-up.component.scss'],
 })
 export class SignUpComponent implements OnInit {
-
   //Se agregarán los atributos que se llenarán según el componente padre
   instance: boolean;
 
-  artisticName: String
-  userName: String
+  artisticName: string;
+  userName: string;
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit(): void {
-    this.instance = true
+    this.instance = true;
   }
-
 }

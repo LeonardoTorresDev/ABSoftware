@@ -8,6 +8,8 @@ import { FormDataComponent } from './components/form-data/form-data.component';
 import { OtherNetworksComponent } from './components/other-networks/other-networks.component';
 import { WelcomingComponent } from './components/welcoming/welcoming.component';
 import { NavbarSignComponent } from './components/navbar-sign/navbar-sign.component';
+import { LandingPageModule } from '../landing-page/landing-page.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,6 +20,6 @@ import { NavbarSignComponent } from './components/navbar-sign/navbar-sign.compon
     WelcomingComponent,
     NavbarSignComponent,
   ],
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, ReactiveFormsModule,LandingPageModule],
 })
 export class SignModule {}
