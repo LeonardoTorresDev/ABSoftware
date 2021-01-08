@@ -1,0 +1,58 @@
+<section class="container mx-5">
+  <form class="control" [formGroup]="form" (ngSubmit)="sign()">
+    <div class="field">
+      <div class="control">
+        <label for="firstField" class="is-label">{{ nameFirstLabel }}</label>
+        <input
+          *ngIf="instanceSignIn"
+          type="email"
+          class="input"
+          placeholder="ejemplo@mail.com"
+          formControlName="firstField"
+        />
+        <input
+          *ngIf="instanceSignUp"
+          type="text"
+          class="input"
+          placeholder="John"
+          formControlName="firstField"
+        />
+      </div>
+    </div>
+    <div class="field mt-5">
+      <div class="control">
+        <label for="secondField" class="is-label">{{ nameSecondLabel }}</label>
+        <input
+          *ngIf="instanceSignIn"
+          type="password"
+          class="input"
+          placeholder="**********"
+          formControlName="secondField"
+        />
+        <input
+          *ngIf="instanceSignUp"
+          type="text"
+          class="input"
+          placeholder="@SomethingCool"
+          formControlName="secondField"
+        />
+      </div>
+    </div>
+    <div class="field mt-6">
+      <div class="control">
+        <label class="checkbox">
+          <input type="checkbox" (click)="rememberCheck()" />
+          Recuérdame
+        </label>
+      </div>
+    </div>
+    <div class="field">
+      <div class="control">
+        <button type="submit" class="button is-link is-pulled-right">
+          {{ nameButton }}
+        </button>
+      </div>
+    </div>
+  </form>
+  <br /><br /><br />
+</section>

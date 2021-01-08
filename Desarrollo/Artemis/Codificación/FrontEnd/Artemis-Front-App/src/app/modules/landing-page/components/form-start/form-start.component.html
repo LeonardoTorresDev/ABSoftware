@@ -1,0 +1,105 @@
+<div class="hero has-background-primary is-fullheight pt-6">
+  <div class="hero-body">
+    <div class="container">
+      <div class="columns is-flexbox is-align-items-center">
+        <div class="column is-5-desktop">
+          <h3 class="title is-size-1-mobile has-text-centered-mobile">
+            Revela tu espíritu artístico
+          </h3>
+          <div class="">
+            <section class="section has-background-light-medium">
+              <form
+                class="control"
+                [formGroup]="registerForm"
+                (ngSubmit)="onClick()"
+              >
+                <div class="field">
+                  <input
+                    class="input"
+                    type="email"
+                    placeholder="Tu correo electrónico"
+                    formControlName="email"
+                    [class.is-danger]="noValido('email')"
+                  />
+                  <div
+                    *ngIf="f.email.errors && f.email.touched"
+                    class="button is-small is-danger"
+                  >
+                    <div *ngIf="f.email.errors.required">Correo requerido</div>
+                  </div>
+                </div>
+                <div class="field">
+                  <input
+                    class="input"
+                    type="password"
+                    placeholder="Tu contraseña"
+                    formControlName="password"
+                    [class.is-danger]="noValido('password')"
+                  />
+                  <div
+                    *ngIf="f.password.errors && f.password.touched"
+                    class="button is-small is-danger"
+                  >
+                    <div *ngIf="f.password.errors.required">
+                      Contraseña requerida
+                    </div>
+                  </div>
+                </div>
+                <div class="field is-grouped">
+                  <button
+                    type="submit"
+                    class="button is-accent"
+                    [disabled]="loading"
+                  >
+                    ¡Únete a Artemis!
+                  </button>
+                </div>
+                <div class="is-link">
+                  <a [routerLink]="['/signin']">O inicia sesión</a>
+                </div>
+              </form>
+
+              <hr />
+
+              <div class="is-link">
+                <!-- <p class="is-text-accent">Únete a través de</p> -->
+                <div class="field">
+                  <label class="field-label has-text-dark">Inicia sesión con</label>
+                  <p class="control">
+                    <button
+                      class="button is-danger"
+                      (click)="signInWithGoogle()"
+                    >
+                      <span class="icon">
+                        <i class="fab fa-google fa-lg"></i>
+                      </span>
+                      <span class="ml-2">Google</span>
+                    </button>
+                  </p>
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+
+        <div class="column is-2-desktop is-hidden-touch">
+          <!-- Espacio negativo -->
+        </div>
+
+        <div class="column is-hidden-mobile is-5-desktop">
+          <figure class="image">
+            <img
+              class="has-ratio"
+              width="450"
+              height="352px"
+              src="../../../assets/welcomeToArtemis.svg"
+              alt="¡Bienvenido a Artemis!"
+            />
+          </figure>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://apis.google.com/js/platform.js" async defer></script>

@@ -1,0 +1,93 @@
+<div class="content has-background-light">
+  <section class="section">
+    <div class="container">
+      <div class="columns">
+        <div class="column is-4-desktop">
+          <h2 class="title">¿Qué esperas?</h2>
+          <p class="subtitle">Únete a nuestra gran comunidad</p>
+          <figure class="image is-3by2">
+            <img src="../../../../../assets/team1.svg" alt="Forma parte" />
+          </figure>
+        </div>
+
+        <div class="column is-4 is-hidden-touch">
+          <!-- Espacio negativo -->
+        </div>
+
+        <div class="column is-4-desktop">
+          <form
+            action=""
+            method="post"
+            [formGroup]="forma"
+            (ngSubmit)="guardar()"
+          >
+            <div class="field">
+              <div class="columns">
+                <div class="column">
+                  <label class="field-label">Correo electrónico</label>
+                  <div class="control">
+                    <input
+                      class="input"
+                      type="email"
+                      placeholder="Tu correo electrónico"
+                      formControlName="email"
+                      [class.is-danger]="noValido('email')"
+                    />
+                  </div>
+                  <small class="button is-small is-danger" *ngIf="noValido('email')">
+                    Ingrese al menos 5 caracteres
+                  </small>
+                </div>
+              </div>
+            </div>
+
+            <label class="field-label">Contraseña</label>
+            <div class="field">
+              <div class="control">
+                <input
+                  type="password"
+                  class="input"
+                  placeholder="Tu contraseña"
+                  formControlName="password"
+                  [class.is-danger]="noValido('password')"
+                />
+
+                <div
+                  class="button is-small is-danger"
+                  *ngIf="noValido('password')"
+                >
+                  Tiene que ingresar una contraseña
+                </div>
+              </div>
+            </div>
+
+            <div class="field">
+              <div class="control">
+                <label class="checkbox">
+                  <input
+                    type="checkbox"
+                    formGroupName="termsAndConds"
+                    (click)="termsCheck()"
+                  />
+                  Acepto los <a href="#">términos y condiciones</a>
+                </label>
+                <div
+                  class="button is-small is-danger"
+                  *ngIf="noValido('termsAndConds')"
+                >
+                  Tiene que estar de acuerdo
+                </div>
+              </div>
+            </div>
+
+            <div class="field">
+              <div class="control">
+                <button type="submit" class="button is-link">Unirse</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
