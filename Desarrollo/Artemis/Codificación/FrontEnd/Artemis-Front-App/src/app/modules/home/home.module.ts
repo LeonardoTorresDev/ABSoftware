@@ -7,13 +7,12 @@ import { PublicacionComponent } from './components/publicacion/publicacion.compo
 import { HomeComponent } from './home.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 
-import { NavbarComponent } from '../../shared/components/navbar/navbar.component'
-
 import { LoadPostsService } from '../../shared/services/load-posts/load-posts.service'
+import { SharedModule } from '../../shared/shared.module';
 
 @NgModule({
-  declarations: [PublicacionComponent, HomeComponent, SidebarComponent, NavbarComponent],
-  imports: [BrowserModule, CommonModule, HomeRoutingModule],
+  declarations: [PublicacionComponent, HomeComponent, SidebarComponent],
+  imports: [BrowserModule, CommonModule, HomeRoutingModule, SharedModule],
   providers : [LoadPostsService]
 })
 export class HomeModule {}

@@ -13,6 +13,7 @@ import {
   SocialAuthServiceConfig,
 } from 'angularx-social-login';
 import { GoogleLoginProvider, SocialAuthService } from 'angularx-social-login';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -23,6 +24,7 @@ import { GoogleLoginProvider, SocialAuthService } from 'angularx-social-login';
     SignModule,
     HomeModule,
     HttpClientModule,
+    SharedModule
   ],
   providers: [
     {

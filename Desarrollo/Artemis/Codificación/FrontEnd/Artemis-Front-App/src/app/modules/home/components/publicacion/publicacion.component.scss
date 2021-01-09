@@ -1,15 +1,25 @@
-@import '../../../../../styles.scss';
+@import "../../../../../styles.scss";
 
-.title{
-    font-size: $h4;
-    font-family: $family-secondary;
+.title {
+  font-size: $h4;
+  font-family: $family-secondary;
+}
+
+.post-tag {
+    border: none;
+    color: $text-middle!important;
+    &:hover {
+        color: white!important;
+    }
 }
 
 .post-tag,
-.title{
-    font-family: $family-secondary;
+.title {
+  font-family: $family-secondary;
 }
 
-.post-text{
-    font-family: $family-primary;
+.post-text {
+  font-family: $family-primary;
 }
+
+@import "../../../../../../node_modules/bulma/sass/components/card.sass";

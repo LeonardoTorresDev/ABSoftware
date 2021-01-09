@@ -1,19 +1,32 @@
 <app-navbar></app-navbar>
 
-<main class="columns">
-    <section class="column">
-        <app-sidebar></app-sidebar>
-    </section>
-    <section class="column">
-        <app-publicacion></app-publicacion>
-        <!--Para cargar todos los posts se usará el siguiente template-->
-        <div *ngFor="let post of postsLoaded">
-            <app-publicacion [this]="post"></app-publicacion>
-        </div>
-    </section>
-    <section class="column"></section>
-</main>
+<section class="content">
+    <!-- Pequeño espacio de separación entre el navbar y el contenido -->
+</section>
 
-<p>¡Hola, {{ userName }}!, qué gusto tenerte en Artemis 😊</p>
+<div class="container">
+  <main class="columns is-variable is-0-mobile">
+    <section class="column is-hidden-touch">
+      <app-sidebar></app-sidebar>
+    </section>
+
+    <section class="column is-6">
+      <app-publicacion></app-publicacion>
+      <!--Para cargar todos los posts se usará el siguiente template-->
+      <div *ngFor="let post of postsLoaded">
+        <!-- Para que no esté dando error por mientras -->
+        <!-- <app-publicacion [this]="post"></app-publicacion> -->
+      </div>
+    </section>
+
+    <section class="column">
+      <!-- Espacio negativo -->
+    </section>
+  </main>
+</div>
+
+<p>¡Hola, {{ user }}!, qué gusto tenerte en Artemis 😊</p>
 
 <button class="button is-danger" (click)="logout()">Cerrar sesión</button>
+
+<app-footer></app-footer>

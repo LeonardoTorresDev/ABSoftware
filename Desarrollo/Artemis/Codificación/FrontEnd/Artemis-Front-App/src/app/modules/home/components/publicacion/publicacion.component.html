@@ -1,35 +1,58 @@
-<div class="control">
-    <figure class="">
-        <img src="{{imagen}}" alt="imagen 1">
+<div class="card">
+  <div class="card-image">
+    <figure class="image">
+      <img src="../../../../../assets/streetArt.jpg" alt="Imagen publicación" />
     </figure>
-    <p class="title">{{titulo}}</p>
-    <div class="columns">
-        <div class="column">
-            <div class="icon-text">
-                <span class="icon">
-                    <i class="far fa-user"></i>
+  </div>
+  <div class="card-content">
+    <div class="media">
+      <div class="media-content">
+        <p class="title">Colección callejera</p>
+        <div class="columns is-gapless is-mobile">
+          <div class="column">
+            <div class="content">
+              <span class="icon-text">
+                <span class="icon mr-2">
+                  <i class="fas fa-user"></i>
                 </span>
-                <span class="post-text">{{autor}}</span>
+                <span>Bansky</span>
+              </span>
             </div>
-            <p class="post-text">{{fecha | date:'shortDate'}}</p>
-            <span *ngFor="let tag of tags">
-                <span class="post-tag">{{tag}}    </span>
-            </span>
-        </div>
-        <div class="column">
-            <div class="icon-text is-pulled-right">
-                <span class="icon is-pulled-right">
-                    <i class="far fa-thumbs-up"></i>
-                </span>
-                <span class="post-text">{{likes}}k</span>
-            </div><br>           
-            <div class="icon-text is-pulled-right">
-                <span class="icon is-pulled-right">
-                    <i class="far fa-comment"></i>
-                </span>
-                <span class="post-text">{{comentarios}}k</span>
-            </div>           
-        </div>
-    </div>
-</div>
 
+            <div class="content">
+              <span class="icon-text">
+                <span class="icon mr-2">
+                  <i class="fas fa-calendar"></i>
+                </span>
+                <span>dd/mm/aaaa</span>
+              </span>
+            </div>
+          </div>
+
+          <div class="column has-text-right">
+            <div class="content">
+              <div class="icon-text">
+                <span class="post-text">{{ likes }}k</span>
+                <span class="icon ml-2">
+                  <i class="fas fa-thumbs-up"></i>
+                </span>
+              </div>
+            </div>
+
+            <div class="content">
+              <div class="icon-text">
+                <span class="post-text">{{ comentarios }}k</span>
+                <span class="icon ml-2">
+                  <i class="fas fa-comment"></i>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <span *ngFor="let tag of tags">
+          <span class="post-tag button is-small is-accent is-outlined">{{ tag }} </span>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
