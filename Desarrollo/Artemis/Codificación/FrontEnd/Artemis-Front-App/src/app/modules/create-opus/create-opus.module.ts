@@ -7,15 +7,18 @@ import { SubirObraComponent } from './components/subir-obra/subir-obra.component
 import { SubirArchivoComponent } from './components/subir-archivo/subir-archivo.component';
 import { DetallesFinalesComponent } from './components/detalles-finales/detalles-finales.component';
 
-import { NavbarComponent} from '../../shared/components/navbar/navbar.component'
-
+import { NavbarComponent } from '../../shared/components/navbar/navbar.component';
+import { CreateOpusComponent } from './create-opus.component';
 
 @NgModule({
-  declarations: [AgregarColaboradorComponent, SubirObraComponent, SubirArchivoComponent, DetallesFinalesComponent,
-                NavbarComponent],
-  imports: [
-    CommonModule,
-    CreateOpusRoutingModule
-  ]
+  declarations: [
+    AgregarColaboradorComponent,
+    SubirObraComponent,
+    SubirArchivoComponent,
+    DetallesFinalesComponent,
+    NavbarComponent,
+    CreateOpusComponent,
+  ],
+  imports: [CommonModule, CreateOpusRoutingModule],
 })
-export class CreateOpusModule { }
+export class CreateOpusModule {}

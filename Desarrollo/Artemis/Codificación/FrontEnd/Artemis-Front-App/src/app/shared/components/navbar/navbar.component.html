@@ -11,6 +11,7 @@
         aria-label="menu"
         aria-expanded="false"
         data-target="Opciones"
+        (click)="showNavbarOptions()"
       >
         <span aria-hidden="true"></span>
         <span aria-hidden="true"></span>
@@ -32,6 +33,19 @@
                 <i class="fas fa-search"></i>
               </span>
             </p>
+          </div>
+        </div>
+
+        <div class="is-hidden-desktop">
+          <div class="navbar-item">
+            <button class="button is-accent is-outlined">
+              <div class="icon-text" routerLink="/createOpus">
+                <span class="icon is-large">
+                  <i class="fas fa-arrow-circle-up fa-lg"></i>
+                </span>
+                <span>Subir una obra</span>
+              </div>
+            </button>
           </div>
         </div>
 

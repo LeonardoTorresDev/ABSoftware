@@ -29,6 +29,7 @@ export class HomeComponent {
   logout() {
     this.auth.logOut().subscribe(() => {
       this.router.navigateByUrl('/welcome');
+      window.scroll(0, 0);
     });
   }
 
