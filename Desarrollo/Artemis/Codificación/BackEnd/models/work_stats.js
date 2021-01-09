@@ -6,8 +6,7 @@ let Schema=mongoose.Schema
 let workStatsSchema=new Schema({
     work:{
         type: Schema.Types.ObjectId,
-        ref: 'Work',
-        required: [true, "Work is required"]
+        ref: 'Work'
     },
     likes:{
         type: Number,

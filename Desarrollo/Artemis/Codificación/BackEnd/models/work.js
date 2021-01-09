@@ -24,13 +24,12 @@ let workSchema=new Schema({
     },
     private:{
         type: Boolean,
-        default: true
-    },
-    collaborative:{
-        type: Boolean,
         default: false
     },
-    collabs:[{
+    description:{
+        type: String
+    },
+    private_viewers:[{
         type: Schema.Types.ObjectId,
         ref: 'User'
     }],
@@ -45,8 +44,7 @@ let workSchema=new Schema({
     }],
     current_version:{
         type: Schema.Types.ObjectId,
-        ref: 'WorkVersion',
-        required: [true, "Current version id is required"] 
+        ref: 'WorkVersion'
     }
 })
 

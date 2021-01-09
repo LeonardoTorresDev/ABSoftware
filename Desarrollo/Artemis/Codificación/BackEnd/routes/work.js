@@ -8,12 +8,12 @@ const authUser=require('../middlewares/authUser')
 const router=express.Router();
 
 router.route('/works/:folder_name?')
-    .get((req,res)=>{
+    .get(authUser,(req,res)=>{
         get_works(req, res)
     })
     
 router.route('/work/:folder_name?/:work_name?/:stats?/:versions?')
-    .get((req,res)=>{
+    .get(authUser,(req,res)=>{
         get_work(req, res)
     })
     .post(authUser,(req,res)=>{
