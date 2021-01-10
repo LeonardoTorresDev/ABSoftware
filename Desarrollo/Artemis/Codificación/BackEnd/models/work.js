@@ -18,6 +18,9 @@ let workSchema=new Schema({
     img_url:{
         type: String
     },
+    img_public_id:{
+        type: String
+    },
     type:{
         type: String
     },

@@ -2,11 +2,12 @@ require('./config/config')
 const express=require('express')
 const bodyParser=require('body-parser')
 const cookieParser=require('cookie-parser')
-const fileupload = require("express-fileupload")//fileupload
 
 const {cors_config}=require('./config/cors_config')
+const {multer_config}=require('./config/multer_config')
 
 const app=express()
+require('./config/mongoose_config')
 
 cors_config(app)
 
@@ -15,7 +16,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 
 app.use(cookieParser())
 
-app.use(fileupload())//fileupload
+multer_config(app)
 
 app.use(require('./routes/index'))
 
