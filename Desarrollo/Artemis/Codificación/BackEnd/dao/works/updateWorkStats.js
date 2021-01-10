@@ -1,16 +1,20 @@
 const Work=require('../../models/work')
 const WorkStats=require('../../models/work_stats')
+const Folder=require('../../models/work_folder')
+
 const {
     custom_error_response,
-    error_response,
-    custom_response,
-    unique
+    error_response
 }=require('../../utils/utils')
+
+const {setOptionAndChange}=require('../../utils/setOptionAndChange')
+const {setOption}=require('../../utils/setOption')
 
 let updateWorkStats=(req,res)=>{
 
     let option=req.query.option
-    let nameWork=req.params.work_name
+    let nameWork=req.query.work_name
+    let nameFolder=req.query.work_folder
 
     let validOptions=[
         "like",
@@ -22,100 +26,68 @@ let updateWorkStats=(req,res)=>{
         return custom_error_response(400,res,"Opcion no valida")
     }
 
-    Work.findOne({name:nameWork})
-    .exec((err,work)=>{
-    
-        if(err){return error_response(400,res,err)}
+    Folder.findOne({name:nameFolder})
+    .exec((err,folder)=>{
 
-        if(!work){ return custom_error_response(400,res,"Obra no encontrada")}
+        if(err){ return error_response(400, res, err) }
 
-        let statsId=work.stats
+        if(!folder){ return custom_error_response(400, res, "Folder no encontrado") }
 
-        WorkStats.findById(statsId)
-            .exec((err,stats)=>{
+        Work.findOne({name:nameWork,folder:folder._id})
+        .exec((err,work)=>{
 
-                if(err){return error_response(400,res,err)}
-                
-                switch(option){
-                    case 'like':
+            if(err){return error_response(400,res,err)}
 
-                        let respuestaLike="Like!!"
+            if(!work){ return custom_error_response(400,res,"Obra no encontrada en el folder")}
 
-                        if(!unique(stats.usersThatDisliked,req.user._id)){
-                            stats.usersThatDisliked.splice(stats.usersThatDisliked.indexOf(req.user._id),1)
-                            stats.dislikes=stats.usersThatDisliked.length
-                            respuestaLike="Cambiado el dislike por un like"
-                        }
+            let statsId=work.stats
 
-                        if(!unique(stats.usersThatLiked,req.user._id)){
-                            stats.usersThatLiked.splice(stats.usersThatLiked.indexOf(req.user._id),1)
-                            respuestaLike="Quitando el like"
-                        }
-                        else{
-                            stats.usersThatLiked.push(req.user._id)
-                        }
-         
-                        stats.likes=stats.usersThatLiked.length
-
-                        stats.save((err,_)=>{
-                            if(err){return error_response(400,res,err)}
-                            custom_response(res,respuestaLike)
-                        })
-                        
-                        break              
-                    case 'dislike':
-
-                        let respuestaDislike="Dislike!!"
-
-                        if(!unique(stats.usersThatLiked,req.user._id)){
-                            
-                            stats.usersThatLiked.splice(stats.usersThatLiked.indexOf(req.user._id),1)
-                            stats.likes=stats.usersThatLiked.length
-                            respuestaDislike="Cambiado el like por un dislike"
-
-                        }
-
-                        if(!unique(stats.usersThatDisliked,req.user._id)){
-  
-                            stats.usersThatDisliked.splice(stats.usersThatDisliked.indexOf(req.user._id),1)
-
-                            respuestaDislike="Quitando el dislike"
-                        }
-                        else{
-                            stats.usersThatDisliked.push(req.user._id)
-                        }
-                           
-                        stats.dislikes=stats.usersThatDisliked.length
-
-                        stats.save((err,_)=>{
-                            if(err){return error_response(400,res,err)}
-                            custom_response(res,respuestaDislike)
-                        })
-                        break  
-                    case 'report':
-
-                        let respuestaReport="Report!!"
-
-                        if(!unique(stats.usersReport,req.user._id)){
-                            stats.usersReport.splice(stats.usersReport.indexOf(req.user._id),1)
-                            respuestaReport="Quitando el Report"
-                        }
-                        else{
-                            stats.usersReport.push(req.user._id)
-                        }
-                        
-                        stats.reports=stats.usersReport.length
-                        stats.save((err,_)=>{
-                            if(err){return error_response(400,res,err)}
-                            custom_response(res,respuestaReport)
-                        })
-
-                        break
-                    default:
-                        return custom_error_response(400,res,"No es una opcion valida")         
-                }
-            }) 
-    })   
+            WorkStats.findById(statsId)
+                .exec((err,stats)=>{ 
+                    if(err){return error_response(400,res,err)}    
+                    switch(option){                       
+                        case 'like':
+                            let mensajesLike=["Like!!","Cambiado el dislike por un like","Quitando el like"]
+                            return setOptionAndChange(
+                                res,
+                                'like',
+                                stats.likes,
+                                stats.usersThatLiked,
+                                stats.dislikes,
+                                stats.usersThatDisliked,
+                                stats,
+                                req.user._id,
+                                mensajesLike
+                            )                   
+                        case 'dislike':
+                            let mensajesDislike=["Dislike!!","Cambiado el like por un dislike","Quitando el dislike"]
+                            return setOptionAndChange(
+                                res,
+                                'dislike',
+                                stats.dislikes,
+                                stats.usersThatDisliked,
+                                stats.likes,
+                                stats.usersThatLiked,
+                                stats,
+                                req.user._id,
+                                mensajesDislike
+                            )
+                        case 'report':
+                            let mensajesReport=["Report!!","Quitando el Report"]
+                            return setOption(
+                                res,
+                                stats.reports,
+                                stats.usersReport,
+                                stats,
+                                req.user._id,
+                                mensajesReport
+                            )
+                        default:
+                            return custom_error_response(400,res,"No es una opcion valida")         
+                    }
+                }) 
+        })
+    })
 }
 
 module.exports={
