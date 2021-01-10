@@ -3,7 +3,13 @@ const Folder=require('../../models/work_folder');
 const Work=require('../../models/work');
 const Stats=require('../../models/work_stats')
 const Version=require('../../models/work_version')
-const {error_response, custom_error_response,custom_response,unique_with_name}=require('../../utils/utils')
+const {
+    error_response, 
+    custom_error_response,
+    custom_response,
+    unique_with_name,
+    fillExistingArray
+}=require('../../utils/utils')
 
 function create_work(req, res){
 
@@ -19,7 +25,7 @@ function create_work(req, res){
         Folder.findOne({name: req.params.folder_name, owner: user._id})
         .populate('works')
         .exec((err, folder)=>{
-
+ 
             if(err){ return error_response(400, res, err) }
 
             if(folder==null){ return custom_error_response(400, res, "Folder no encontrado") }
@@ -27,10 +33,9 @@ function create_work(req, res){
             if(!unique_with_name(folder.works, req.body.name)) { return custom_error_response(400, res, "Obra ya existe") }
             
             //Realizar lógica del Cloudinary para obtener URL de la imagen de la obra
-            
+
             let work=new Work({
                 name: req.body.name,
-                tag: req.body.tag,
                 owner: req.user._id,
                 img: req.body.img,
                 description: req.body.description,
@@ -38,18 +43,25 @@ function create_work(req, res){
                 folder: folder._id
             })
 
-            if(private){
-                work.private_viewers=req.body.private_viewers
+            if(work.tag){
+                fillExistingArray(work.tag,req.body.tag)
+            }
+
+            if(work.private && req.body.private_viewers){
+                fillExistingArray(work.private_viewers,req.body.private_viewers)
             }
 
             //Realizar logica del Cloudinary para obtener URL con el archivo y colocarlo en version.file
 
             let version=new Version({
-                name: req.body.name,
+                name: req.body.version_name,
                 created_date: new Date(),
-                file: req.files.file.name,
-                modified_by: req.user._id
+                file: req.files.file.name
             })
+
+            if(!version.name){
+                return custom_error_response(400,res,"Nombre de la version es requerido")
+            }
 
             let stats=new Stats({
                 likes: 0,

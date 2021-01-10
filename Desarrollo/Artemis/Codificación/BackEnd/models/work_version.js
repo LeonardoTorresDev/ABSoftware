@@ -11,10 +11,6 @@ let workVersionSchema=new Schema({
         type: Schema.Types.ObjectId,
         ref: 'Work'
     },
-    modified_by:[{
-        type: Schema.Types.ObjectId,
-        ref: 'User'
-    }],
     created_date:{
         type: Date,
         required: [true, "Created date is required"]

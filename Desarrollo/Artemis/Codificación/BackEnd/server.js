@@ -2,7 +2,7 @@ require('./config/config')
 const express=require('express')
 const bodyParser=require('body-parser')
 const cookieParser=require('cookie-parser')
-const fileupload = require("express-fileupload")
+const fileupload = require("express-fileupload")//fileupload
 
 const {cors_config}=require('./config/cors_config')
 
@@ -15,7 +15,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 
 app.use(cookieParser())
 
-app.use(fileupload())
+app.use(fileupload())//fileupload
 
 app.use(require('./routes/index'))
 

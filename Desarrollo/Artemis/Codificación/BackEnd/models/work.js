@@ -18,6 +18,9 @@ let workSchema=new Schema({
     img_url:{
         type: String
     },
+    type:{
+        type: String
+    },
     stats:{
         type: Schema.Types.ObjectId,
         ref: 'WorkStats'

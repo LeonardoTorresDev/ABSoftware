@@ -28,6 +28,10 @@ let userSchema=new Schema({
     profile_img_url:{
         type: String
     },
+    following:[{
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+    }],
     followers:[{
         type: Schema.Types.ObjectId,
         ref: 'User'

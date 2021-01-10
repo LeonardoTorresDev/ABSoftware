@@ -1,5 +1,4 @@
 const mongoose=require('mongoose')
-const uniqueValidator=require('mongoose-unique-validator')
 
 let Schema=mongoose.Schema
 
@@ -23,7 +22,19 @@ let workStatsSchema=new Schema({
     reports:{
         type: Number,
         default: 0
-    }
+    },
+    usersThatLiked:[{
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+    }],
+    usersThatDisliked:[{
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+    }],
+    usersReport:[{
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+    }]
 })
 
 module.exports=mongoose.model('WorkStats',workStatsSchema)
