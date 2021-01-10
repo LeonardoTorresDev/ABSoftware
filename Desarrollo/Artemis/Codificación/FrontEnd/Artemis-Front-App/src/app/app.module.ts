@@ -17,6 +17,7 @@ import { SharedModule } from './shared/shared.module';
 import localeEs from '@angular/common/locales/es';
 
 import { registerLocaleData } from '@angular/common';
+import { CreateOpusModule } from './modules/create-opus/create-opus.module';
 
 registerLocaleData(localeEs); //Se setea el idioma de pipes al español
 
@@ -30,6 +31,7 @@ registerLocaleData(localeEs); //Se setea el idioma de pipes al español
     HomeModule,
     HttpClientModule,
     SharedModule,
+    CreateOpusModule,
   ],
   providers: [
     {

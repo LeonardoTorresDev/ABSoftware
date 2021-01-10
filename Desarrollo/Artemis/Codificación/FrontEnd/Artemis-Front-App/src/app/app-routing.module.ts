@@ -6,8 +6,13 @@ import { LandingPageRoutingModule } from './modules/landing-page/landing-page-ro
 import { AuthGuard } from './guards/auth.guard';
 import { DisconnectedGuard } from './guards/disconnected.guard';
 import { CreateOpusComponent } from './modules/create-opus/create-opus.component';
+import { CreateOpusRoutingModule } from './modules/create-opus/create-opus-routing.module';
+import { SubirArchivoComponent } from './modules/create-opus/components/subir-archivo/subir-archivo.component';
+import { SubirObraComponent } from './modules/create-opus/components/subir-obra/subir-obra.component';
 
 const routes: Routes = [
+  { path: '', redirectTo: '/welcome', pathMatch: 'full' }, //Por mientras, redirigirá a la landing page: se necesita de una página 404
+
   {
     path: 'welcome',
     component: LandingPageComponent,
@@ -17,9 +22,11 @@ const routes: Routes = [
   {
     path: 'createOpus',
     component: CreateOpusComponent,
-    canActivate: [AuthGuard],
+    loadChildren: () =>
+      import('./modules/create-opus/create-opus-routing.module').then(
+        (route) => route.CreateOpusRoutingModule
+      ),
   },
-  { path: '', redirectTo: '/welcome', pathMatch: 'full' }, //Por mientras, redirigirá a la landing page: se necesita de una página 404
 ];
 
 @NgModule({

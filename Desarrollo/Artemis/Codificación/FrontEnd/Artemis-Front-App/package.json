@@ -26,6 +26,7 @@
     "angularx-social-login": "^3.5.4",
     "bulma": "^0.9.1",
     "bulma-floating-button": "^1.0.3",
+    "bulma-o-steps": "^1.1.0",
     "bulma-social": "^2.0.0",
     "ng-authentication-service": "^2.1.6",
     "node-sass": "^4.14.1",

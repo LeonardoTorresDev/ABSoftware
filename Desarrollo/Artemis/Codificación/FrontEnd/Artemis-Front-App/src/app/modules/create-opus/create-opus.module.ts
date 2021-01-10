@@ -7,8 +7,10 @@ import { SubirObraComponent } from './components/subir-obra/subir-obra.component
 import { SubirArchivoComponent } from './components/subir-archivo/subir-archivo.component';
 import { DetallesFinalesComponent } from './components/detalles-finales/detalles-finales.component';
 
-import { NavbarComponent } from '../../shared/components/navbar/navbar.component';
 import { CreateOpusComponent } from './create-opus.component';
+import { StepsComponent } from './components/steps/steps.component';
+import { SharedModule } from '../../shared/shared.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -16,9 +18,14 @@ import { CreateOpusComponent } from './create-opus.component';
     SubirObraComponent,
     SubirArchivoComponent,
     DetallesFinalesComponent,
-    NavbarComponent,
     CreateOpusComponent,
+    StepsComponent,
   ],
-  imports: [CommonModule, CreateOpusRoutingModule],
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    CreateOpusRoutingModule,
+    SharedModule,
+  ],
 })
 export class CreateOpusModule {}
