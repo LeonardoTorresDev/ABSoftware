@@ -31,7 +31,7 @@ export class DetallesFinalesComponent implements OnInit {
 
   enviarObra() {
     this.setTags();
-    console.log(this.form);
+    console.log(this.form.value);
   }
 
   setTags() {
@@ -40,6 +40,9 @@ export class DetallesFinalesComponent implements OnInit {
   }
 
   selectViewers(value: boolean) {
+    const valor = this.form.get('private');
+    valor.setValue(value);
     this.showFollowers = value;
+    console.log(this.form.value.private);
   }
 }

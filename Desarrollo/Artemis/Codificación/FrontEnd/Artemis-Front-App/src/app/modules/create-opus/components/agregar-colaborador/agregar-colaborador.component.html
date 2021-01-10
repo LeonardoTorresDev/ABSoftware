@@ -1,124 +1,75 @@
-<div class="card mt-4">
-  <header class="card-header">
-    <p class="card-header-title">Elige a tus espectadores privados</p>
-  </header>
-  <div class="card-content">
-    <div class="field">
-      <div class="control">
-        <input class="input" type="text" placeholder="Buscar" />
-      </div>
-    </div>
-    <div class="content">
-      <div class="box">
-        <article class="media">
-          <div class="media-left">
-            <figure class="image is-32x32 mx-0">
-              <img
-                class="is-rounded"
-                src="https://bulma.io/images/placeholders/128x128.png"
-                alt="Image"
-              />
-            </figure>
-          </div>
-          <div class="media-content">
-            <div class="content">
-              <div class="level is-mobile">
-                <div class="level-left">
-                  <p>
-                    <strong>@johnsmith</strong>
-                  </p>
-                </div>
-                <div class="level-right">
-                  <label class="checkbox control ">
-                    <input type="checkbox" />
-                  </label>
-                </div>
-              </div>
-            </div>
-            <nav class="level is-mobile">
-              <div class="level-right">
-                <a class="level-item" aria-label="reply"> </a>
-              </div>
-            </nav>
-          </div>
-        </article>
-      </div>
-      <!-- DATOS DE PRUEBA DE LAYOUT -->
-      <div class="box">
-        <article class="media">
-          <div class="media-left">
-            <figure class="image is-32x32 mx-0">
-              <img
-                class="is-rounded"
-                src="https://bulma.io/images/placeholders/128x128.png"
-                alt="Image"
-              />
-            </figure>
-          </div>
-          <div class="media-content">
-            <div class="content">
-              <div class="level is-mobile">
-                <div class="level-left">
-                  <p>
-                    <strong>@johnsmith</strong>
-                  </p>
-                </div>
-                <div class="level-right">
-                  <label class="checkbox control ">
-                    <input type="checkbox" />
-                  </label>
-                </div>
-              </div>
-            </div>
-            <nav class="level is-mobile">
-              <div class="level-right">
-                <a class="level-item" aria-label="reply"> </a>
-              </div>
-            </nav>
-          </div>
-        </article>
-      </div>
+<nav class="panel mt-5">
+  <p class="panel-heading">
+    Elige a tus espectadores privados
+    <span class="help has-text-grey-light">Este paso es opcional</span>
+  </p>
 
-      <div class="box">
-        <article class="media">
-          <div class="media-left">
-            <figure class="image is-32x32 mx-0">
-              <img
-                class="is-rounded"
-                src="https://bulma.io/images/placeholders/128x128.png"
-                alt="Image"
-              />
-            </figure>
-          </div>
-          <div class="media-content">
-            <div class="content">
-              <div class="level is-mobile">
-                <div class="level-left">
-                  <p>
-                    <strong>@johnsmith</strong>
-                  </p>
-                </div>
-                <div class="level-right">
-                  <label class="checkbox control ">
-                    <input type="checkbox" />
-                  </label>
-                </div>
-              </div>
-            </div>
-            <nav class="level is-mobile">
-              <div class="level-right">
-                <a class="level-item" aria-label="reply"> </a>
-              </div>
-            </nav>
-          </div>
-        </article>
-      </div>
-      <!-- DATOS DE PRUEBA DE LAYOUT -->
-      <!-- Establecer una altura máxima con overflow hidden -->
-    </div>
+  <div class="panel-block">
+    <p class="control has-icons-left">
+      <input class="input" type="text" placeholder="Buscar" />
+      <span class="icon is-left">
+        <i class="fas fa-search" aria-hidden="true"></i>
+      </span>
+    </p>
   </div>
-  <footer class="card-footer">
-    <a href="#" class="card-footer-item">Cancelar</a>
-    <a href="#" class="card-footer-item">Guardar</a>
-  </footer>
-</div>
+  <div class="panel-body">
+    <a class="panel-block is-active" (click)="selectFollower()">
+      <figure class="image is-32x32 mr-3">
+        <img
+          class="is-rounded"
+          src="https://bulma.io/images/placeholders/128x128.png"
+        />
+      </figure>
+
+      <div class="level is-mobile">
+        <div class="level-left">
+          <div class="level-item">@tcotd</div>
+        </div>
+        <div class="level-right">
+          <div class="level-item">
+            <label class="checkbox">
+              <input class="mx-0" type="checkbox" [checked]="followerCheck" />
+            </label>
+          </div>
+        </div>
+      </div>
+    </a>
+    <a class="panel-block">
+      <span class="panel-icon">
+        <i class="fas fa-book" aria-hidden="true"></i>
+      </span>
+      marksheet
+    </a>
+    <a class="panel-block">
+      <span class="panel-icon">
+        <i class="fas fa-book" aria-hidden="true"></i>
+      </span>
+      minireset.css
+    </a>
+    <a class="panel-block">
+      <span class="panel-icon">
+        <i class="fas fa-book" aria-hidden="true"></i>
+      </span>
+      jgthms.github.io
+    </a>
+    <a class="panel-block">
+      <span class="panel-icon">
+        <i class="fas fa-code-branch" aria-hidden="true"></i>
+      </span>
+      daniellowtw/infboard
+    </a>
+    <a class="panel-block">
+      <span class="panel-icon">
+        <i class="fas fa-code-branch" aria-hidden="true"></i>
+      </span>
+      mojs
+    </a>
+    <label class="panel-block">
+      <input type="checkbox" />
+      remember me
+    </label>
+  </div>
+  <div class="panel-block">
+    <div class="button is-link is-outlined is-pulled-right">Guardar</div>
+  </div>
+</nav>
