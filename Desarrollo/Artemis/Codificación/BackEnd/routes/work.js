@@ -18,7 +18,7 @@ router.route('/works/:folder_name?')
         get_works(req, res)
     })
     
-router.route('/work/:folder_name?/:work_name?/:stats?/:versions?')
+router.route('/work/:folder_name?')
     .get(authUser,(req,res)=>{
         get_work(req, res)
     })
