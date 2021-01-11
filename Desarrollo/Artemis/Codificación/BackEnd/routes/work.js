@@ -18,7 +18,7 @@ router.route('/works/:folder_name?')
         get_works(req, res)
     })
     
-router.route('/work/:folder_name?')
+router.route('/work/:work_folder?/:work_name?')
     .get(authUser,(req,res)=>{
         get_work(req, res)
     })
@@ -32,12 +32,12 @@ router.route('/work/:folder_name?')
         //res.send('Obra borrada')
     })
 
-router.route('/workVersion/:work_name?')
+router.route('/workVersion/:work_folder/:work_name')
     .put(authUser,(req,res)=>{
         updateWorkVersion(req,res)
     })
 
-router.route('/workStats/:work_name?')
+router.route('/workStats/:nick_name/:work_folder/:work_name')
     .put(authUser,(req,res)=>{
         updateWorkStats(req,res)
     })

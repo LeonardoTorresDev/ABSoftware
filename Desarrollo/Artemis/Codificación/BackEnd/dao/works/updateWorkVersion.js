@@ -1,6 +1,7 @@
 const WorkVersion=require('../../models/work_version')
 const Folder=require('../../models/work_folder')
 const Work=require('../../models/work')
+
 const { 
     custom_response,
     error_response,
@@ -8,25 +9,26 @@ const {
     unique_with_name 
 } = require('../../utils/utils')
 
+
 let updateWorkVersion=(req,res)=>{
 
-    let work_name=req.query.work_name
-    let work_folder=req.query.work_folder
-
-    Folder.findOne({name:work_folder})
+    let work_name=req.params.work_name
+    let work_folder=req.params.work_folder
+ 
+    Folder.findOne({name:work_folder,owner:req.user._id})
     .exec((err,folder)=>{
 
         if(err){ return error_response(400, res, err) }
 
-        if(!folder){ return custom_error_response(400, res, "Folder no encontrado") }
+        if(!folder){ return custom_error_response(400, res, "Folder no encontrado en el usuario") }
 
-        Work.findOne({name:work_name, folder: folder._id})
+        Work.findOne({name:work_name, folder: folder._id,owner: req.user._id})
         .populate('past_versions')
         .exec((err,work)=>{
 
             if(err){ return error_response(400, res, err) }
 
-            if(!work){ return custom_error_response(400, res, "Obra no encontrada en el folder") }
+            if(!work){ return custom_error_response(400, res, "Obra no encontrada en el folder del usuario") }
 
             let lastVersion=work.current_version
             work.past_versions.push(lastVersion)
@@ -50,9 +52,9 @@ let updateWorkVersion=(req,res)=>{
                     custom_response(res,"Version de la obra actualizada con exito")
                 })
             })
-
         })
     })
+  
 }
 
 module.exports={

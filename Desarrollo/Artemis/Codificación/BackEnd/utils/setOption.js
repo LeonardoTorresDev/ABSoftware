@@ -1,9 +1,9 @@
-const {unique,custom_response,error_response}=require('./utils')
+const {unique_id,custom_response,error_response}=require('./utils')
 
 let setOption=(res,mainStat,mainArray,mainObject,userId,arrayResponse)=>{
 
     let answer=arrayResponse[0]
-    if(!unique(mainArray,userId)){
+    if(!unique_id(mainArray,userId)){
         mainArray.splice(mainArray.indexOf(userId),1)
         answer=arrayResponse[1]
     }
