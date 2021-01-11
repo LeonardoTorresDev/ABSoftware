@@ -1,5 +1,27 @@
-@import '../../../../../src/styles.scss';
+@import "../../../../../src/styles.scss";
 
-.icon-link:hover{
-    color: $purple;
+.navbar {
+  background-color: rgba($color: #ffffff, $alpha: .5);
+  backdrop-filter: blur(5px);
+}
+
+.icon-link:hover {
+  color: $purple;
+}
+
+.button {
+  border-radius: $radius-rounded;
+}
+
+.navbar-item {
+  &.has-dropdown {
+    .navbar-dropdown {
+      display: none;
+    }
+    &.is-active {
+      .navbar-dropdown {
+        display: block;
+      }
+    }
+  }
 }

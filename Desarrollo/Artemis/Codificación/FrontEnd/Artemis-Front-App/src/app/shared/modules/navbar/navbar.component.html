@@ -1,40 +1,73 @@
-<header class="columns m-1">
-    <div class="column columns">
-        <div class="column"></div>
-        <div class="column">
-            <figure>
-                <img src="../../../../assets/isotipo.svg" alt="isotipo" class="image is-32x32">
-            </figure>
+<nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+  <div class="container">
+    <div class="navbar-brand">
+      <a class="navbar-item" routerLink="/home">
+        <img src="../../../../assets/isotipo.svg" width="32" height="64" />
+      </a>
+
+      <a
+        role="button"
+        class="navbar-burger"
+        aria-label="menu"
+        aria-expanded="false"
+        data-target="Opciones"
+        (click)="showNavbarOptions()"
+      >
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+
+    <div id="Opciones" class="navbar-menu">
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <div class="field">
+            <p class="control has-icons-right">
+              <input
+                class="input is-small"
+                type="text"
+                placeholder="Buscar en Artemis"
+              />
+              <span class="icon is-small is-right">
+                <i class="fas fa-search"></i>
+              </span>
+            </p>
+          </div>
         </div>
-    </div>
-    <div class="column"></div>
-    <div class="column ">
-        <form class="control is-pulled-right">
-            <div class="field">
-                <p class="control has-icons-right">
-                    <input class="input is-small" type="text" placeholder="Buscar en Artemis">
-                    <span class="icon is-small is-right">
-                        <i class="fas fa-search"></i>
-                    </span>
-                </p>
-            </div>
-        </form>
-    </div>
-    <div class="column columns">
-        <div class="column mt-1 ml-6">
-            <a class="icon-link" href="">
-                <span class="icon is-small">
-                    <i class="fas fa-mug-hot fa-2x"></i>
+
+        <div class="is-hidden-desktop">
+          <div class="navbar-item">
+            <button class="button is-accent is-outlined">
+              <div class="icon-text" routerLink="/createOpus">
+                <span class="icon is-large">
+                  <i class="fas fa-arrow-circle-up fa-lg"></i>
                 </span>
-            </a>
+                <span>Subir una obra</span>
+              </div>
+            </button>
+          </div>
         </div>
-        <div class="column mt-2">
-            <a class="icon-link" href="">
-                <span class="icon is-small">
-                    <i class="far fa-user fa-2x"></i>
+
+        <div class="navbar-item">
+          <div class="field is-grouped">
+            <p class="control">
+              <button class="button is-accent is-outlined">
+                <span class="icon">
+                  <i class="fas fa-mug-hot"></i>
                 </span>
-            </a>
+              </button>
+            </p>
+            <p class="control">
+              <button class="button is-link">
+                <span class="icon">
+                  <i class="fas fa-user"></i>
+                </span>
+              </button>
+            </p>
+          </div>
         </div>
-        <div class="column"></div>
+      </div>
     </div>
-</header>
+  </div>
+</nav>
