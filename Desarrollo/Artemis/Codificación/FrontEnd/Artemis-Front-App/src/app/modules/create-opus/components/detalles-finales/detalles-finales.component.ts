@@ -36,15 +36,25 @@ export class DetallesFinalesComponent implements OnInit {
       private: [false, Validators.required],
       // privateViewers: [''],
       tipoObra: [this.opus.obra.tipoObra],
+      imgPortada: [''],
     });
   }
 
   enviarObra() {
+    if (this.form.invalid) {
+      return Object.values(this.form.controls).forEach((control) => {
+        control.markAsTouched();
+      });
+    }
     const data = this.form.value;
-    this.opus.obra.nombreObra = data.nombreObra;
-    this.opus.obra.descripcion = data.descripcion;
-    this.opus.obra.tags = data.etiquetas;
-    this.opus.obra.private = data.private;
+    const opus = this.opus.obra;
+
+    opus.nombreObra = data.nombreObra;
+    opus.descripcion = data.descripcion;
+    opus.tags = data.etiquetas;
+    opus.private = data.private;
+    opus.imgPortrait = data.imgPortada;
+
     // this.setTags();
     console.log(this.form.value, this.opus.obra);
     console.log(this.fileToUpload);
@@ -67,7 +77,13 @@ export class DetallesFinalesComponent implements OnInit {
   }
 
   fileChangeEvent(fileInput) {
+    let form = this.form.get('imgPortada');
     this.fileToUpload = <Array<File>>fileInput.target.files;
     this.fileName = this.fileToUpload[0].name;
+    form.setValue(this.fileToUpload[0]);
+  }
+
+  noValido(attr: string) {
+    return this.form.get(attr).invalid && this.form.get(attr).touched;
   }
 }

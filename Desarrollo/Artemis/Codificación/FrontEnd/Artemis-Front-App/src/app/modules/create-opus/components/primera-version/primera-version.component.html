@@ -19,19 +19,24 @@
                 type="text"
                 placeholder="ej: Mi gran primera versión"
                 formControlName="nombreVersion"
+                [class.is-danger]="noValido('nombreVersion')"
               />
             </div>
+            <small class="button is-small is-danger" *ngIf="noValido('nombreVersion')">
+              Tiene que ingresar un nombre
+            </small>
           </div>
 
           <div class="field">
-            <div class="file has-name is-primary">
+            <label class="label is-label">El archivo de tu obra</label>
+            <div class="file has-name is-primary" [class.is-danger]="noValido('archivoObra')">
               <label class="file-label">
                 <input
                   class="file-input"
                   type="file"
-                  multiple
-                  name="resume"
-                  (change)="fileChangeEvent($event)"
+                  name="archivoObra"
+                  (change)="fileChangeEvent($event.target.files)"
+                  
                 />
                 <span class="file-cta">
                   <span class="file-icon">
@@ -42,9 +47,7 @@
                 <span class="file-name"> {{ fileName }} </span>
               </label>
             </div>
-            <span class="help"
-              >Puedes subir tu archivo el cual represente tu obra</span
-            >
+            <span class="help" [class.is-danger]="noValido('archivoObra')">Sube el archivo el cual represente tu obra</span>
           </div>
 
           <div class="control is-pulled-right mt-5">

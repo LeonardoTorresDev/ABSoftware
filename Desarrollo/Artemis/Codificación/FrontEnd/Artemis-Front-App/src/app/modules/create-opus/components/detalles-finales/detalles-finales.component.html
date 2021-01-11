@@ -20,8 +20,12 @@
                 type="text"
                 placeholder="ej: Opus Dominum"
                 formControlName="nombreObra"
+                [class.is-danger]="noValido('nombreObra')"
               />
             </div>
+            <small class="button is-small is-danger" *ngIf="noValido('nombreObra')">
+              Ingrese el nombre de la obra
+            </small>
           </div>
 
           <div class="field">
@@ -48,6 +52,7 @@
           </div>
 
           <div class="field">
+            <label class="label is-label">Foto de portada</label>
             <div class="file has-name is-primary">
               <label class="file-label">
                 <input
@@ -66,6 +71,7 @@
                 <span class="file-name"> {{ fileName }} </span>
               </label>
             </div>
+            <span class="help">Esta imagen servirá como portada para el post. Si no lo deseas, puedes omitir este paso.</span>
           </div>
 
           <hr />

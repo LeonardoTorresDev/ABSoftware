@@ -4,6 +4,7 @@ export class OpusModel {
   tags: string[];
   private: boolean;
   tipoObra: string;
-  img: unknown;
-  file: unknown;
+  imgPortrait: any;
+  file: any;
+  versionName: string;
 }
