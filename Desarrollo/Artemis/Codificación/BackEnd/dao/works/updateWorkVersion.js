@@ -10,17 +10,17 @@ const {
 
 let updateWorkVersion=(req,res)=>{
 
-    let nameWork=req.query.work_name
-    let nameFolder=req.query.work_folder
+    let work_name=req.query.work_name
+    let work_folder=req.query.work_folder
 
-    Folder.findOne({name:nameFolder})
+    Folder.findOne({name:work_folder})
     .exec((err,folder)=>{
 
         if(err){ return error_response(400, res, err) }
 
         if(!folder){ return custom_error_response(400, res, "Folder no encontrado") }
 
-        Work.findOne({name:nameWork, folder: folder._id})
+        Work.findOne({name:work_name, folder: folder._id})
         .populate('past_versions')
         .exec((err,work)=>{
 

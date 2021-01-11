@@ -13,8 +13,8 @@ const {setOption}=require('../../utils/setOption')
 let updateWorkStats=(req,res)=>{
 
     let option=req.query.option
-    let nameWork=req.query.work_name
-    let nameFolder=req.query.work_folder
+    let work_name=req.query.work_name
+    let work_folder=req.query.work_folder
 
     let validOptions=[
         "like",
@@ -26,14 +26,14 @@ let updateWorkStats=(req,res)=>{
         return custom_error_response(400,res,"Opcion no valida")
     }
 
-    Folder.findOne({name:nameFolder})
+    Folder.findOne({name:work_folder})
     .exec((err,folder)=>{
 
         if(err){ return error_response(400, res, err) }
 
         if(!folder){ return custom_error_response(400, res, "Folder no encontrado") }
 
-        Work.findOne({name:nameWork,folder:folder._id})
+        Work.findOne({name:work_name,folder:folder._id})
         .exec((err,work)=>{
 
             if(err){return error_response(400,res,err)}
