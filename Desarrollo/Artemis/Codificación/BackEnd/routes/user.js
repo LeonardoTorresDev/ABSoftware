@@ -32,7 +32,7 @@ router.route('/users')
     .post((req,res)=>{
         saveUser(req,res)
     })
-    .put(authUser,(req,res)=>{
+    .put(authUser,async (req,res)=>{
         updateUser(req,res)
     })
     .delete(authUser,(req,res)=>{

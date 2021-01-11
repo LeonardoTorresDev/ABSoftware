@@ -7,3 +7,5 @@ else{
     process.env.HTTPONLY=''
     process.env.SECURE=true
 }
+
+console.log('Variables de entorno configuradas')
