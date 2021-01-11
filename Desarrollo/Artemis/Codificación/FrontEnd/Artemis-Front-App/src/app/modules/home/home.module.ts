@@ -1,4 +1,4 @@
-import { BrowserModule } from '@angular/platform-browser'
+import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -7,13 +7,19 @@ import { PublicacionComponent } from './components/publicacion/publicacion.compo
 import { HomeComponent } from './home.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 
-import { NavbarComponent } from '../../shared/components/navbar/navbar.component'
-
-import { LoadPostsService } from '../../shared/services/load-posts/load-posts.service'
+import { LoadPostsService } from '../../shared/services/load-posts/load-posts.service';
+import { SharedModule } from '../../shared/shared.module';
+import { PipesModule } from '../../pipes/pipes.module';
 
 @NgModule({
-  declarations: [PublicacionComponent, HomeComponent, SidebarComponent, NavbarComponent],
-  imports: [BrowserModule, CommonModule, HomeRoutingModule],
-  providers : [LoadPostsService]
+  declarations: [PublicacionComponent, HomeComponent, SidebarComponent],
+  imports: [
+    BrowserModule,
+    CommonModule,
+    HomeRoutingModule,
+    SharedModule,
+    PipesModule,
+  ],
+  providers: [LoadPostsService],
 })
 export class HomeModule {}

@@ -97,6 +97,7 @@ body {
 }
 
 // Se importan los módulos de Bulma
+@import "../node_modules/bulma-o-steps/bulma-steps.sass";
 @import "../node_modules/bulma/sass/utilities/_all.sass";
 @import "../node_modules/bulma/sass/base/_all.sass";
 @import "../node_modules/bulma/sass/elements/button.sass";
