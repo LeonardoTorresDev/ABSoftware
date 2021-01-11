@@ -1,0 +1,8 @@
+@import '../../../../../styles.scss';
+
+$option-color: rgba(0, 0, 0, 0.6);
+
+*{
+    color: $option-color;
+    font-family: $family-primary;
+}

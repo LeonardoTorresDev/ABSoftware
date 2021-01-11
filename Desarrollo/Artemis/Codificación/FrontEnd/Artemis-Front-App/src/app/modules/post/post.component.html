@@ -1,0 +1,16 @@
+<app-navbar></app-navbar>
+
+<div class="control">
+    <main class="columns">
+        <section class="column">
+            <app-interacciones [ownPost]="ownPost"></app-interacciones>
+        </section>
+        <section class="column is-two-fifths">
+            <app-cabecera-obra></app-cabecera-obra>
+            <app-contenido></app-contenido>
+        </section>
+        <section class="column">
+            <app-opciones-post [ownPost]="ownPost"></app-opciones-post>
+        </section>
+    </main>
+</div>

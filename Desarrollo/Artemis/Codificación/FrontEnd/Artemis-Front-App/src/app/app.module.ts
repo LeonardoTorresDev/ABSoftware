@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { LandingPageModule } from './modules/landing-page/landing-page.module';
 import { SignModule } from './modules/sign/sign.module';
 import { HomeModule } from './modules/home/home.module';
+import { PostModule } from './modules/post/post.module'
 import { HttpClientModule } from '@angular/common/http';
 
 import {
@@ -22,6 +23,7 @@ import { GoogleLoginProvider, SocialAuthService } from 'angularx-social-login';
     LandingPageModule,
     SignModule,
     HomeModule,
+    PostModule,
     HttpClientModule,
   ],
   providers: [

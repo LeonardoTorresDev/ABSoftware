@@ -7,12 +7,10 @@ import { SubirObraComponent } from './components/subir-obra/subir-obra.component
 import { SubirArchivoComponent } from './components/subir-archivo/subir-archivo.component';
 import { DetallesFinalesComponent } from './components/detalles-finales/detalles-finales.component';
 
-import { NavbarComponent} from '../../shared/components/navbar/navbar.component'
 
 
 @NgModule({
-  declarations: [AgregarColaboradorComponent, SubirObraComponent, SubirArchivoComponent, DetallesFinalesComponent,
-                NavbarComponent],
+  declarations: [AgregarColaboradorComponent, SubirObraComponent, SubirArchivoComponent, DetallesFinalesComponent],
   imports: [
     CommonModule,
     CreateOpusRoutingModule
