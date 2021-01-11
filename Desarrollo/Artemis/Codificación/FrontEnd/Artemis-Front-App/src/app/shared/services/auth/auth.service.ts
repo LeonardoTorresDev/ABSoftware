@@ -70,9 +70,7 @@ export class AuthService {
     return this.http.get(`${this.url}/users/logout`, this.httpOptions);
   }
 
-  getUser() {
-    return this.http.get(`${this.url}/user`, this.httpOptions);
-  }
+  
 
   private guardarToken(idToken: string): void {
     this.token = idToken;

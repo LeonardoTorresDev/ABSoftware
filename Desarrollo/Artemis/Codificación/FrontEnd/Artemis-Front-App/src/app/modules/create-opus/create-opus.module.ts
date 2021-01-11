@@ -11,6 +11,7 @@ import { CreateOpusComponent } from './create-opus.component';
 import { StepsComponent } from './components/steps/steps.component';
 import { SharedModule } from '../../shared/shared.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { PrimeraVersionComponent } from './components/primera-version/primera-version.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     DetallesFinalesComponent,
     CreateOpusComponent,
     StepsComponent,
+    PrimeraVersionComponent,
   ],
   imports: [
     CommonModule,

@@ -13,6 +13,12 @@
     </p>
   </div>
   <div class="panel-body">
+    <a
+      class="panel-block has-text-centered has-text-gray-light"
+      *ngIf="!hasFollowers"
+    >
+      ¡Vaya!, al parecer, aún no tienes seguidores.
+    </a>
     <a class="panel-block is-active" (click)="selectFollower()">
       <figure class="image is-32x32 mr-3">
         <img
@@ -34,41 +40,9 @@
         </div>
       </div>
     </a>
-    <a class="panel-block">
-      <span class="panel-icon">
-        <i class="fas fa-book" aria-hidden="true"></i>
-      </span>
-      marksheet
-    </a>
-    <a class="panel-block">
-      <span class="panel-icon">
-        <i class="fas fa-book" aria-hidden="true"></i>
-      </span>
-      minireset.css
-    </a>
-    <a class="panel-block">
-      <span class="panel-icon">
-        <i class="fas fa-book" aria-hidden="true"></i>
-      </span>
-      jgthms.github.io
-    </a>
-    <a class="panel-block">
-      <span class="panel-icon">
-        <i class="fas fa-code-branch" aria-hidden="true"></i>
-      </span>
-      daniellowtw/infboard
-    </a>
-    <a class="panel-block">
-      <span class="panel-icon">
-        <i class="fas fa-code-branch" aria-hidden="true"></i>
-      </span>
-      mojs
-    </a>
-    <label class="panel-block">
-      <input type="checkbox" />
-      remember me
-    </label>
+    <!-- Cuando se tenga el endpoint, cargarlo con un ngFor -->
   </div>
+
   <div class="panel-block">
     <div class="button is-link is-outlined is-pulled-right">Guardar</div>
   </div>

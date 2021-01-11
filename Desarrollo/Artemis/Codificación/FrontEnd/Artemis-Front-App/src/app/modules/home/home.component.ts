@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { LoadPostsService } from '../../shared/services/load-posts/load-posts.service';
 import { Router } from '@angular/router';
 import { AuthService } from '../../shared/services/auth/auth.service';
+import { UserService } from '../../shared/services/data/user.service';
 
 @Component({
   selector: 'app-home',
@@ -10,13 +11,14 @@ import { AuthService } from '../../shared/services/auth/auth.service';
   providers: [LoadPostsService],
 })
 export class HomeComponent {
-  user: string;
+  usuario: string;
   postsLoaded: any[];
 
   constructor(
     private loadPosts: LoadPostsService,
     private auth: AuthService,
-    private router: Router
+    private router: Router,
+    private user: UserService
   ) {}
 
   ngOnInit(): void {
@@ -35,8 +37,10 @@ export class HomeComponent {
 
   //Eliminar esta función cuando se termine el layout y la lógica del módulo
   setName(): void {
-    this.auth.getUser().subscribe((res: any) => {
-      this.user = res.nick_name;
+    this.user.getUser().subscribe((res: any) => {
+      console.log(res);
+
+      this.usuario = res.nick_name;
     });
   }
 }
