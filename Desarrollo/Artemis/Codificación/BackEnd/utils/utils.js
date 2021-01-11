@@ -64,7 +64,7 @@ function duplicateValuesInTwoArray(arrayDB,arrayPOST){
     }  
 }
 
-function unique(array, valuetofind)
+function unique_id(array, valuetofind)
 {
     let unique = true;
     for(i=0;i<array.length && unique;i++) {
@@ -95,7 +95,7 @@ module.exports={
     custom_response, 
     custom_response_user,
     unique_with_name,
-    unique,
+    unique_id,
     destroyCookieWhenLogged,
     fillExistingArray,
     duplicateValuesInTwoArray,

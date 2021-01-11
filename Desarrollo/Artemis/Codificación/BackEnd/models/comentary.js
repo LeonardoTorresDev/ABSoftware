@@ -15,6 +15,14 @@ let comentarySchema=new Schema({
     creation_Date:{
         type: Date,
         required: [true,'Date is required']
+    },
+    edit_Date:{
+        type: Date
+    },
+    work:{
+        type: Schema.Types.ObjectId,
+        ref: 'Work',
+        required: [true,'Work is required']
     }
 })
 

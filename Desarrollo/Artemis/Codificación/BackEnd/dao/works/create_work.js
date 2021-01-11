@@ -13,6 +13,8 @@ const {
 
 function create_work(req, res){
 
+    let work_folder=req.params.work_folder
+
     User.findById(req.user._id)
     .exec((err, user)=>{
 
@@ -22,7 +24,7 @@ function create_work(req, res){
 
         //Encontró el usuario
 
-        Folder.findOne({name: req.params.folder_name, owner: user._id})
+        Folder.findOne({name: work_folder, owner: req.user._id})
         .populate('works')
         .exec((err, folder)=>{
  
