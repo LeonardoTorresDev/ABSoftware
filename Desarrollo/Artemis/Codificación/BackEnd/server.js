@@ -5,6 +5,7 @@ const cookieParser=require('cookie-parser')
 
 const {cors_config}=require('./config/cors_config')
 const {multer_config}=require('./config/multer_config')
+const {cloudinary_config}=require('./config/cloudinary_config')
 
 const app=express()
 require('./config/mongoose_config')
@@ -17,6 +18,8 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(cookieParser())
 
 multer_config(app)
+
+require('./config/cloudinary_config')
 
 app.use(require('./routes/index'))
 
