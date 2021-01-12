@@ -57,12 +57,10 @@ export class DetallesFinalesComponent implements OnInit {
     opus.private = data.private;
     opus.imgPortrait = formData;
 
-    
     if (this.form.valid) {
       console.log(this.opus.obra);
       this.router.navigateByUrl('/createOpus/primera-version');
     }
-
   }
 
   selectViewers(value: boolean) {
@@ -76,6 +74,7 @@ export class DetallesFinalesComponent implements OnInit {
     if (event.target.files.length > 0) {
       const file = event.target.files[0];
       this.form.get('imgPortada').setValue(file);
+      this.fileName = file.name;
     }
   }
 
