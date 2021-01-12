@@ -15,9 +15,13 @@ let workVersionSchema=new Schema({
         type: Date,
         required: [true, "Created date is required"]
     },
-    file:{
+    file_url:{
         type: String,
-        required: [true, "File is required"]
+        required: [true, "File url is required"]
+    },
+    file_public_id:{
+        type: String,
+        required: [true, 'File public id is required']
     }
 })
 

@@ -13,7 +13,12 @@ const {searchUsers} = require('../dao/user/searchUsers')
 const {updateUser}=require('../dao/user/updateUser')
 const {deleteUser}=require('../dao/user/deleteUser')
 
+<<<<<<< HEAD
 const {followUser}=require('../dao/user/followUser')
+=======
+const {multer_files}=require('../config/multer_config')
+const upload = multer_files()
+>>>>>>> mauricio
 
 const router=express.Router()
 const authUser=require('../middlewares/authUser')
@@ -34,7 +39,7 @@ router.route('/users')
     .post((req,res)=>{
         saveUser(req,res)
     })
-    .put(authUser,(req,res)=>{
+    .put(authUser,upload.single('image'), async (req,res)=>{
         updateUser(req,res)
     })
     .delete(authUser,(req,res)=>{

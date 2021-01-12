@@ -1,24 +1,27 @@
-require('./config/config')
 const express=require('express')
 const bodyParser=require('body-parser')
 const cookieParser=require('cookie-parser')
-const fileupload = require("express-fileupload")//fileupload
 
 const {cors_config}=require('./config/cors_config')
 
-const app=express()
+//Configuracion de variables de entorno
+require('./config/env_config')
 
+const app=express()
+//configuracion de mongoose
+require('./config/mongoose_config')
+
+//cofiguracion del CORS
 cors_config(app)
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
-
 app.use(cookieParser())
 
-app.use(fileupload())//fileupload
+//Configuracion de cloudinary
+require('./config/cloudinary_config')
 
 app.use(require('./routes/index'))
-
 app.use(express.static(__dirname+'/public'));
 
 app.listen(process.env.PORT,()=>{

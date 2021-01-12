@@ -28,6 +28,9 @@ let userSchema=new Schema({
     profile_img_url:{
         type: String
     },
+    img_public_id:{
+        type: String
+    },
     following:[{
         type: Schema.Types.ObjectId,
         ref: 'User'
