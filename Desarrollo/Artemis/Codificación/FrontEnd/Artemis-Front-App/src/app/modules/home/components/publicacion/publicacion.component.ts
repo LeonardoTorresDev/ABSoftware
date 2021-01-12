@@ -24,7 +24,7 @@ export class PublicacionComponent implements OnInit {
     this.fecha = Date.now();
     this.autor = 'Bansky';
     this.tags = ['#tag', '#tag', '#tag'];
-    this.likes = 0;
+    this.likes = 10000;
     this.comentarios =1500;
   }
 }

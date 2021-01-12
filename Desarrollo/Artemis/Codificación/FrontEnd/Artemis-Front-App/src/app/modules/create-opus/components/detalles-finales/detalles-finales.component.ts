@@ -13,7 +13,6 @@ export class DetallesFinalesComponent implements OnInit {
   form: FormGroup;
   tags: string[];
   showFollowers: boolean = false;
-  fileToUpload: Array<File>;
   fileName: string = 'No se subió archivo alguno.';
   archivo: ArchivoModel;
   lastPK: number = 0;
@@ -28,7 +27,7 @@ export class DetallesFinalesComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  crearFormulario() {
+  crearFormulario(): void {
     this.form = this.formBuilder.group({
       nombreObra: ['', Validators.required],
       descripcion: [''],
@@ -40,7 +39,7 @@ export class DetallesFinalesComponent implements OnInit {
     });
   }
 
-  enviarObra() {
+  enviarObra(): void {
     if (this.form.invalid) {
       return Object.values(this.form.controls).forEach((control) => {
         control.markAsTouched();
@@ -48,25 +47,22 @@ export class DetallesFinalesComponent implements OnInit {
     }
     const data = this.form.value;
     const opus = this.opus.obra;
+    const formData = new FormData();
+
+    formData.append('imgPortrait', this.form.get('imgPortada').value); // Cambiar el nombre del primer arg cuando el endpoint esté listo
 
     opus.nombreObra = data.nombreObra;
     opus.descripcion = data.descripcion;
     opus.tags = data.etiquetas;
     opus.private = data.private;
-    opus.imgPortrait = data.imgPortada;
+    opus.imgPortrait = formData;
 
-    // this.setTags();
-    console.log(this.form.value, this.opus.obra);
-    console.log(this.fileToUpload);
-
+    
     if (this.form.valid) {
+      console.log(this.opus.obra);
       this.router.navigateByUrl('/createOpus/primera-version');
     }
-  }
 
-  setTags() {
-    const re = /,\s\s\s|,\s\s|,\s|,/;
-    this.form.value.etiquetas.toLowerCase().split(re);
   }
 
   selectViewers(value: boolean) {
@@ -76,11 +72,11 @@ export class DetallesFinalesComponent implements OnInit {
     console.log(this.form.value.private);
   }
 
-  fileChangeEvent(fileInput) {
-    let form = this.form.get('imgPortada');
-    this.fileToUpload = <Array<File>>fileInput.target.files;
-    this.fileName = this.fileToUpload[0].name;
-    form.setValue(this.fileToUpload[0]);
+  fileChangeEvent(event: { target: { files: string | any[] } }) {
+    if (event.target.files.length > 0) {
+      const file = event.target.files[0];
+      this.form.get('imgPortada').setValue(file);
+    }
   }
 
   noValido(attr: string) {

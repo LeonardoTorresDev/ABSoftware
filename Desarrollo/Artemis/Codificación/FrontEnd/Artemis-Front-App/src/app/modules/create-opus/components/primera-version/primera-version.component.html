@@ -10,7 +10,7 @@
   <section class="section">
     <div class="columns">
       <div class="column is-half is-offset-one-quarter">
-        <form [formGroup]="form" (ngSubmit)="enviarObra()">
+        <form [formGroup]="form" (ngSubmit)="subirObra()">
           <div class="field">
             <label class="label is-label">Nombre de tu primera versión</label>
             <div class="control">
@@ -35,7 +35,7 @@
                   class="file-input"
                   type="file"
                   name="archivoObra"
-                  (change)="fileChangeEvent($event.target.files)"
+                  (change)="fileChangeEvent($event)"
                   
                 />
                 <span class="file-cta">
