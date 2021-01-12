@@ -7,18 +7,16 @@ import { ContenidoComponent } from './components/contenido/contenido.component';
 import { OpcionesPostComponent } from './components/opciones-post/opciones-post.component';
 import { MapaVersionesComponent } from './components/mapa-versiones/mapa-versiones.component';
 import { ComentariosComponent } from './components/comentarios/comentarios.component';
-
-import { NavbarModule } from '../../shared/modules/navbar/navbar.module';
 import { InteraccionesComponent } from './components/interacciones/interacciones.component'
 
-
+import { SharedModule } from '../../shared/shared.module';
 
 @NgModule({
   declarations: [PostComponent, CabeceraObraComponent, ContenidoComponent, OpcionesPostComponent, MapaVersionesComponent, ComentariosComponent, InteraccionesComponent],
   imports: [
     CommonModule,
     BrowserModule,
-    NavbarModule
+    SharedModule
   ]
 })
 export class PostModule { }

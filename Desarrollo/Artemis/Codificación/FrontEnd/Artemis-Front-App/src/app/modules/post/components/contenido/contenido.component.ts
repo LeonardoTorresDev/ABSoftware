@@ -16,7 +16,7 @@ export class ContenidoComponent implements OnInit {
   ngOnInit(): void {
     //Dato de prueba, se debe cargar el url de la base de datos
     this.descripcion = 'Cillum sint laborum nostrud dolor ut culpa culpa non mollit sint labore in. Consequat nulla labore voluptate dolor cillum ipsum. Consequat in amet consequat ipsum velit deserunt amet aliqua elit nisi quis eiusmod consectetur amet. Voluptate labore reprehenderit ad consequat proident id et.'
-    this.urlImagen = '../../.././../../assets/publicacion.svg'
+    this.urlImagen = '../../.././../../assets/streetArt.jpg'
   }
 
 }

@@ -7,8 +7,6 @@ import { PublicacionComponent } from './components/publicacion/publicacion.compo
 import { HomeComponent } from './home.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 
-import { NavbarModule } from '../../shared/modules/navbar/navbar.module'
-
 import { LoadPostsService } from '../../shared/services/load-posts/load-posts.service';
 import { SharedModule } from '../../shared/shared.module';
 import { PipesModule } from '../../pipes/pipes.module';
@@ -20,8 +18,7 @@ import { PipesModule } from '../../pipes/pipes.module';
     CommonModule,
     HomeRoutingModule,
     SharedModule,
-    PipesModule,
-    NavbarModule
+    PipesModule
   ],
   providers: [LoadPostsService],
 })
