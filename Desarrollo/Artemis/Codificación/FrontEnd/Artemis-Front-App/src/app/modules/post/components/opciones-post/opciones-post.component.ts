@@ -3,15 +3,17 @@ import { Component, OnInit, Input } from '@angular/core';
 @Component({
   selector: 'app-opciones-post',
   templateUrl: './opciones-post.component.html',
-  styleUrls: ['./opciones-post.component.scss']
+  styleUrls: ['./opciones-post.component.scss'],
 })
 export class OpcionesPostComponent implements OnInit {
+  @Input() ownPost: boolean;
 
-  @Input() ownPost: boolean
+  constructor() {}
 
-  constructor() { }
+  ngOnInit(): void {}
 
-  ngOnInit(): void {
+  isTouch(): boolean {
+    if (window.innerWidth < 768) return true;
+    return false;
   }
-
 }
