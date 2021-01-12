@@ -3,23 +3,24 @@ import { Component, OnInit, Input } from '@angular/core';
 @Component({
   selector: 'app-interacciones',
   templateUrl: './interacciones.component.html',
-  styleUrls: ['./interacciones.component.scss']
+  styleUrls: ['./interacciones.component.scss'],
 })
 export class InteraccionesComponent implements OnInit {
+  likes: number;
+  dislikes: number;
+  comentarios: number;
 
-  likes: number
-  dislikes: number
-  comentarios: number
+  @Input() ownPost: boolean;
 
-  @Input() ownPost: boolean
-
-  constructor() { }
+  constructor() {}
 
   ngOnInit(): void {
     //Datos de prueba, cambiar al integrar la base de datos
-    this.likes = 0
-    this.dislikes = 0
-    this.comentarios = 0
+    this.likes = 0;
+    this.dislikes = 0;
+    this.comentarios = 0;
   }
 
+  like() {}
+  dislike() {}
 }

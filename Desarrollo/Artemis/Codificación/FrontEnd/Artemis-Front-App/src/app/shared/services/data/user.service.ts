@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { UsuarioModel } from '../../models/usuario.model';
 import { environment } from 'src/environments/environment';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -19,5 +20,9 @@ export class UserService {
 
   getUser() {
     return this.http.get(`${this.url}/user`, this.httpOptions);
+  }
+
+  updateUser(user: FormData) {
+    return this.http.put(`${this.url}/users`, user, this.httpOptions);
   }
 }

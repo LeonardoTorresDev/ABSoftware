@@ -18,15 +18,44 @@ export class PrimeraVersionComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  fileChangeEvent(fileInput: FileList) {
-    this.fileToUpload = fileInput.item(0);
-  }
+  /*uploadFileToActivity(){
+    this.opus
+  }*/
 
   crearFormulario() {
     this.form = this.formBuilder.group({
       nombreVersion: ['', Validators.required],
-      archivoObra: [null, Validators.required],
+      archivoObra: ['', Validators.required],
     });
   }
-  enviarObra() {}
+
+  fileChangeEvent(event: { target: { files: string | any[] } }) {
+    if (event.target.files.length > 0) {
+      const file = event.target.files[0];
+      this.form.get('archivoObra').setValue(file);
+      this.fileName = file.name;
+    }
+  }
+
+  noValido(attr: string) {
+    return this.form.get(attr).invalid && this.form.get(attr).touched;
+  }
+
+  subirObra() {
+    const obra = this.opus.obra;
+    const formData = new FormData();
+
+    if (this.form.invalid) {
+      return Object.values(this.form.controls).forEach((control) => {
+        control.markAsTouched();
+      });
+    }
+
+    formData.append('file', this.form.get('archivoObra').value); // Cambiar el nombre del primer arg cuando el endpoint esté listo
+
+    obra.file = formData;
+    obra.versionName = this.form.get('nombreVersion').value;
+
+    this.opus.postOpus(obra);
+  }
 }
