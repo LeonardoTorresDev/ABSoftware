@@ -6,6 +6,7 @@ import { LandingPageRoutingModule } from './modules/landing-page/landing-page-ro
 import { AuthGuard } from './guards/auth.guard';
 import { DisconnectedGuard } from './guards/disconnected.guard';
 import { CreateOpusComponent } from './modules/create-opus/create-opus.component';
+import { ProfileComponent } from './modules/profile/profile.component';
 import { CreateOpusRoutingModule } from './modules/create-opus/create-opus-routing.module';
 import { SubirArchivoComponent } from './modules/create-opus/components/subir-archivo/subir-archivo.component';
 import { SubirObraComponent } from './modules/create-opus/components/subir-obra/subir-obra.component';
@@ -27,6 +28,7 @@ const routes: Routes = [
         (route) => route.CreateOpusRoutingModule
       ),
   },
+  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
 ];
 
 @NgModule({

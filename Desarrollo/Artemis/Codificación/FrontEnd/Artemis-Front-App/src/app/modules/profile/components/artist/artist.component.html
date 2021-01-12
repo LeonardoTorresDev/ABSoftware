@@ -1,0 +1,16 @@
+<div class="control is-pulled-center">
+    <div class="card-image is-flex is-horizontal-center">
+        <figure class="image is-128x128">
+            <!--Cargar foto de perfil-->
+            <!--img src="{{profilePhoto}}"-->
+            <img class="is-rounded" src="https://bulma.io/images/placeholders/128x128.png">
+        </figure>
+    </div>
+    <div class="card-content has-text-centered">
+        <!--Cargar nombre del artista-->
+        <!--p>{{artisticName}}</p-->
+        <p class="artistText">Baster Heights
+            <span *ngIf="ownProfile">(tú)</span>
+        </p>
+    </div>
+</div>

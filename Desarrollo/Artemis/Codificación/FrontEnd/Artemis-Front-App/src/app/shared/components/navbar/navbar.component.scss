@@ -25,3 +25,15 @@
     }
   }
 }
+
+.has-gradient-background{
+  background: $gradient-primary;
+  font-family: $family-secondary;
+  color: $white
+}
+
+.menu-item{
+  color: $black;
+  font-family: $secondary;
+}
+
