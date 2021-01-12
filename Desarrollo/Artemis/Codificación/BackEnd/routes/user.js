@@ -13,6 +13,8 @@ const {searchUsers} = require('../dao/user/searchUsers')
 const {updateUser}=require('../dao/user/updateUser')
 const {deleteUser}=require('../dao/user/deleteUser')
 
+const {followUser}=require('../dao/user/followUser')
+
 const router=express.Router()
 const authUser=require('../middlewares/authUser')
 
@@ -51,6 +53,10 @@ router.post('/users/login/:google?',(req,res)=>{
 
 router.get('/users/logout',authUser,(req,res)=>{
     logout(req,res)
+})
+
+router.put('/users/follow/:nick_name',authUser,(req,res)=>{
+    followUser(req,res)
 })
 
 module.exports=router
