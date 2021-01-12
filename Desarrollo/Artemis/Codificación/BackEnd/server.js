@@ -3,7 +3,6 @@ const bodyParser=require('body-parser')
 const cookieParser=require('cookie-parser')
 
 const {cors_config}=require('./config/cors_config')
-const {multer_config}=require('./config/multer_config')
 
 //Configuracion de variables de entorno
 require('./config/env_config')
@@ -18,9 +17,6 @@ cors_config(app)
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(cookieParser())
-
-//Configuracion del multer
-multer_config(app)
 
 //Configuracion de cloudinary
 require('./config/cloudinary_config')

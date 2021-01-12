@@ -1,8 +1,7 @@
 const Work=require('../../models/work')
 const Folder=require('../../models/work_folder')
-const User=require('../../models/user')
-
-const underscore = require("underscore")
+const cloudinary = require('cloudinary')
+const fs = require('fs-extra');
 
 const {
     error_response, 
@@ -10,24 +9,23 @@ const {
     custom_response,
     unique_with_name,
     fillExistingArray,
-    duplicateValuesInTwoArray,
-    toBoolean
+    duplicateValuesInTwoArray
 }=require('../../utils/utils')
 
-let updateWork=(req,res)=>{
+let updateWork= async(req,res)=>{
 
-    let work_name=req.params.work_name
-    let work_folder=req.params.work_folder
+    let work_name=req.query.work_name
+    let work_folder=req.query.work_folder
  
     Folder.findOne({name: work_folder,owner: req.user._id})
     .exec((err,folder)=>{
 
         if(err){ return error_response(400, res, err) }
-        if(!folder){ return custom_error_response(400, res, "Folder no encontrado en el usuario") }
+        if(folder == null){ return custom_error_response(400, res, "Folder no encontrado en el usuario") }
 
         Work.findOne({name: work_name,owner: req.user._id,folder:folder._id})
         .populate('folder')
-        .exec((err,work)=>{
+        .exec(async (err,work)=>{
    
             if(err){ return error_response(400,res,err) }
 
@@ -36,32 +34,53 @@ let updateWork=(req,res)=>{
             if(req.body.name){
                 if(!unique_with_name(work.folder.works,req.body.name)){ return custom_error_response(400,res,"Ese nombre ya existe")}
             }
+
+            if(req.body.name){ work.name = req.body.name }
+            if(req.body.description){ work.description = req.body.description }
     
-            let update=underscore.pick(req.body,[
-                "name",
-                "description",
-                "private"
-            ])
+            if(req.file != undefined)
+            {
+                const result = await cloudinary.v2.uploader.upload(req.file.path)
+                console.log('\nImagen Subida a cloudinary')
     
-            //Aplicar logica de cloudinary
-            update.img_url=req.body.img_url
-    
-            let priv=true
-    
-            if(!update.private){
-                priv=work.private
+                //Logica para borrar imagen de cloudinary si el user.img_public_id existe
+                if(work.img_public_id != null) { await cloudinary.v2.uploader.destroy(work.img_public_id); console.log('Borrada imagen de cloudinary')}
+                
+                //cambiar parametros
+                work.img_url = result.url
+                work.img_public_id = result.public_id
             }
-            else{
-                priv=toBoolean(update.private)
-            }
-    
-            if(priv && req.body.private_viewers){
-                if(!duplicateValuesInTwoArray(work.private_viewers,req.body.private_viewers)){
-                        return custom_error_response(400,res,"Existen usuarios duplicados en la petición")
+
+            if(req.body.private != undefined)
+            {
+                //Privado o Público
+                if(!req.body.private) // Quiere ser publico
+                {
+                    if(work.private) // Es privado
+                    { 
+                        work.private_viewers = new Array(0);
+                        work.private = req.body.private 
+                    }
                 }
-                fillExistingArray(work.private_viewers,req.body.private_viewers)
+                else // Quiere ser privado
+                {
+                    if(work.private) // Es privado
+                    {
+                        if(!duplicateValuesInTwoArray(work.private_viewers,req.body.private_viewers))
+                        {
+                            return custom_error_response(400,res,"Existen espectadores privados duplicados en la petición")
+                        }
+                        fillExistingArray(work.private_viewers,req.body.private_viewers)
+                    }
+                    else // Es publico
+                    {
+                        fillExistingArray(work.private_viewers,req.body.private_viewers)
+                        work.private = req.body.private
+                    }
+                }
             }
-    
+
+            //Tags
             if(req.body.tag){
                 if(!duplicateValuesInTwoArray(work.tag,req.body.tag)){ 
                     return custom_error_response(400,res,"Existen tags duplicados en la petición")
@@ -69,13 +88,12 @@ let updateWork=(req,res)=>{
                 fillExistingArray(work.tag,req.body.tag)
             }
             
-            update.private_viewers=work.private_viewers
-            update.tag=work.tag
+            work.save(async (err)=>{
+                if (err) { return error_response(400, res, err)}
     
-            Work.findByIdAndUpdate(work._id,update,(err,_)=>{
-
-                if(err){ return error_response(400,res,err) }
-                custom_response(res,"Trabajo actualizado con éxito")
+                if(req.file != undefined) { await fs.unlink(req.file.path); console.log('Imagen borrada de backend')}    
+    
+                custom_response(res, "Obra actualizada con éxito")
             })
         })
     })

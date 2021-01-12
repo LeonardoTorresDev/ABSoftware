@@ -10,13 +10,15 @@ const {
     unique_with_name,
     fillExistingArray
 }=require('../../utils/utils')
+const fs = require('fs-extra');
+const cloudinary = require('cloudinary')
 
-function create_work(req, res){
+async function create_work(req, res){
 
     let work_folder=req.params.work_folder
 
     User.findById(req.user._id)
-    .exec((err, user)=>{
+    .exec(async (err, user)=>{
 
         if(err){ return error_response(400, res, err) }
 
@@ -26,24 +28,31 @@ function create_work(req, res){
 
         Folder.findOne({name: work_folder, owner: req.user._id})
         .populate('works')
-        .exec((err, folder)=>{
+        .exec(async (err, folder)=>{
  
             if(err){ return error_response(400, res, err) }
 
             if(folder==null){ return custom_error_response(400, res, "Folder no encontrado") }
 
             if(!unique_with_name(folder.works, req.body.name)) { return custom_error_response(400, res, "Obra ya existe") }
-            
-            //Realizar lógica del Cloudinary para obtener URL de la imagen de la obra
 
             let work=new Work({
                 name: req.body.name,
                 owner: req.user._id,
-                img: req.body.img,
                 description: req.body.description,
                 private: req.body.private,
                 folder: folder._id
             })
+
+            if(req.files.image[0] != undefined)
+            {
+                const result = await cloudinary.v2.uploader.upload(req.files.image[0].path)
+                console.log('Imagen subida a cloudinary')
+                
+                //cambiar parametros
+                work.img_url = result.url
+                work.img_public_id = result.public_id
+            }
 
             if(work.tag){
                 fillExistingArray(work.tag,req.body.tag)
@@ -53,13 +62,21 @@ function create_work(req, res){
                 fillExistingArray(work.private_viewers,req.body.private_viewers)
             }
 
-            //Realizar logica del Cloudinary para obtener URL con el archivo y colocarlo en version.file
-
             let version=new Version({
                 name: req.body.version_name,
                 created_date: new Date(),
                 file: req.files.file.name
             })
+
+            if(req.files.file[0] != undefined)
+            {
+                const result = await cloudinary.v2.uploader.upload(req.files.file[0].path)
+                console.log('Archivo subido a cloudinary')
+                
+                //cambiar parametros
+                version.file_url = result.url
+                version.file_public_id = result.public_id
+            }
 
             if(!version.name){
                 return custom_error_response(400,res,"Nombre de la version es requerido")
@@ -71,7 +88,7 @@ function create_work(req, res){
                 reports: 0
             })
 
-            work.save((err,workDB)=>{
+            work.save(async(err,workDB)=>{
 
                 if(err){return error_response(400,res,err)}
 
@@ -105,6 +122,11 @@ function create_work(req, res){
                         if(err){return error_response(400,res,err)}
                     })
                 })
+
+                if(req.files.image[0] != undefined) { await fs.unlink(req.files.image[0].path); console.log('Imagen borrada de backend')}
+                
+                if(req.files.file[0] != undefined) { await fs.unlink(req.files.file[0].path); console.log('Archivo borrado de backend') }
+                
     
                 custom_response(res,"Trabajo creado con éxito")
 

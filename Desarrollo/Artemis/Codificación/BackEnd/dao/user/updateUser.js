@@ -12,7 +12,7 @@ let updateUser = async (req, res) => {
     User.findById(id, async (err, user)=>{
         if (err) { return error_response(400, res, err)}
 
-        if(user==null) { return custom_error_response(400, "Usuario no encontrado")}   
+        if(user==null) { return custom_error_response(400, res,"Usuario no encontrado")}   
 
         let body = req.body
     
@@ -26,7 +26,7 @@ let updateUser = async (req, res) => {
             console.log('Subido a cloudinary')
 
             //Logica para borrar imagen de cloudinary si el user.img_public_id existe
-            if(user.img_public_id != null) { await cloudinary.v2.uploader.destroy(user.img_public_id)}
+            if(user.img_public_id != null) { await cloudinary.v2.uploader.destroy(user.img_public_id); console.log('Borrada imagen')}
             
             //cambiar parametros
             user.profile_img_url = result.url
@@ -40,7 +40,7 @@ let updateUser = async (req, res) => {
         user.save(async (err)=>{
             if (err) { return error_response(400, res, err)}
 
-            if(req.file != undefined) { await fs.unlink(req.file.path) }    
+            if(req.file != undefined) { await fs.unlink(req.file.path); console.log('Imagen borrada de backend')}    
 
             custom_response(res, "Usuario actualizado con éxito")
         })
