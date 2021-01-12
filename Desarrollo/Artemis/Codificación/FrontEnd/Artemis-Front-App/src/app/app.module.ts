@@ -7,6 +7,7 @@ import { LandingPageModule } from './modules/landing-page/landing-page.module';
 import { SignModule } from './modules/sign/sign.module';
 import { HomeModule } from './modules/home/home.module';
 import { PostModule } from './modules/post/post.module'
+import { ProfileModule } from './modules/profile/profile.module';
 import { HttpClientModule } from '@angular/common/http';
 
 import {
@@ -33,7 +34,8 @@ registerLocaleData(localeEs); //Se setea el idioma de pipes al español
     PostModule,
     HttpClientModule,
     SharedModule,
-    CreateOpusModule,
+    ProfileModule,
+    CreateOpusModule
   ],
   providers: [
     {

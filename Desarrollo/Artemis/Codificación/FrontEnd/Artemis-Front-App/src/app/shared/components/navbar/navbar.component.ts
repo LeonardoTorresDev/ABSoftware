@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./navbar.component.scss'],
 })
 export class NavbarComponent implements OnInit {
+  show: boolean = false
+
   constructor() {}
 
   ngOnInit(): void {}
@@ -16,4 +18,9 @@ export class NavbarComponent implements OnInit {
 
     // nav.className += ' is-active';
   }
+
+  toggleSidebar(){
+    this.show = !this.show
+  }
+
 }
