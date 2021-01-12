@@ -4,19 +4,21 @@
     <!-- Pequeño espacio de separación entre el navbar y el contenido -->
 </section>
 
-<div class="control mb-6">
-    <main class="columns is-variable is-0-mobile is-3-tablet">
-        <section class="column">
+<div class="content mb-6">
+    <main class="columns is-variable is-0-mobile is-3-dekstop">
+        <section class="column is-hidden-touch">
             <app-interacciones [ownPost]="ownPost"></app-interacciones>
         </section>
-        <section class="column is-two-fifths">
+
+        <section class="column is-6-desktop">
             <app-cabecera-obra></app-cabecera-obra>
             <app-contenido></app-contenido>
             <div class="mt-6">
                 <app-comentarios></app-comentarios>
             </div>
         </section>
-        <section class="column">
+
+        <section class="column is-hidden-touch">
             <app-opciones-post [ownPost]="ownPost"></app-opciones-post>
         </section>
     </main>
