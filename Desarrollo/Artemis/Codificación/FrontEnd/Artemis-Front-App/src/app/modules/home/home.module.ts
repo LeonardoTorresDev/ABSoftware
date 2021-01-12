@@ -18,7 +18,7 @@ import { PipesModule } from '../../pipes/pipes.module';
     CommonModule,
     HomeRoutingModule,
     SharedModule,
-    PipesModule,
+    PipesModule
   ],
   providers: [LoadPostsService],
 })
