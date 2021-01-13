@@ -1,20 +1,37 @@
 <app-navbar></app-navbar>
 
 <section class="mt-navbar">
-    <!--espacio negativo-->
+  <!--espacio negativo-->
 </section>
 
-<div class="control mb-6">
-    <main class="columns is-variable is-0-mobile is-3-tablet">
-        <section class="column">
+<div class="screen">
+  <div class="container">
+    <div class="section mb-6">
+      <main class="columns is-variable is-0-mobile is-3-desktop">
+        <section class="column is-hidden-touch"></section>
 
-        </section>
         <section class="column">
-            <app-artist></app-artist>
-            <app-info-user></app-info-user>
+          <app-artist></app-artist>
+          <app-info-user></app-info-user>
         </section>
-        <section class="column">
 
-        </section>
-    </main>
+        <section class="column is-hidden-touch"></section>
+      </main>
+    </div>
+  </div>
+
+  <section class="container">
+    <div class="section">
+      <div class="columns">
+        <div class="column">
+          <app-sidebar></app-sidebar>
+        </div>
+        <div class="column is-9">
+          <app-lista-obras></app-lista-obras>
+        </div>
+      </div>
+    </div>
+  </section>
 </div>
+
+<app-footer></app-footer>
