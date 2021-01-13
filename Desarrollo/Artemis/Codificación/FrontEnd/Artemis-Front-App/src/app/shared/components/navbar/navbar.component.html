@@ -5,8 +5,14 @@
         <img src="../../../../assets/isotipo.svg" width="32" height="64" />
       </a>
 
-      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="Opciones"
-        (click)="showNavbarOptions()">
+      <a
+        role="button"
+        class="navbar-burger"
+        aria-label="menu"
+        aria-expanded="false"
+        data-target="Opciones"
+        (click)="showNavbarOptions()"
+      >
         <span aria-hidden="true"></span>
         <span aria-hidden="true"></span>
         <span aria-hidden="true"></span>
@@ -18,7 +24,11 @@
         <div class="navbar-item">
           <div class="field">
             <p class="control has-icons-right">
-              <input class="input is-small" type="text" placeholder="Buscar en Artemis" />
+              <input
+                class="input is-small"
+                type="text"
+                placeholder="Buscar en Artemis"
+              />
               <span class="icon is-small is-right">
                 <i class="fas fa-search"></i>
               </span>
@@ -50,7 +60,11 @@
             </p>
             <div class="dropdown is-hoverable is-right">
               <div class="dropdown-trigger">
-                <button class="button is-link" aria-haspopup="true" aria-controls="dropdown-menu">
+                <button
+                  class="button is-link"
+                  aria-haspopup="true"
+                  aria-controls="dropdown-menu"
+                >
                   <span class="icon">
                     <i class="fas fa-user"></i>
                   </span>
@@ -59,9 +73,12 @@
               <div class="dropdown-menu" id="dropdown-menu" role="menu">
                 <div class="dropdown-content">
                   <div class="dropdown-item subtitle-2 has-gradient-background">
-                    Estás en Artemis como @username
+                    Estás en Artemis como @{{ nickname }}
                   </div>
-                  <a [routerLink]="['/profile']" class="dropdown-item subtitle-2 menu-item">
+                  <a
+                    [routerLink]="['/profile', nickname]"
+                    class="dropdown-item subtitle-2 menu-item"
+                  >
                     <div class="icon-text">
                       <span class="icon is-small ml-2">
                         <i class="fas fa-user"></i>
@@ -69,7 +86,10 @@
                       <span class="ml-2">Tu Perfil</span>
                     </div>
                   </a>
-                  <a class="dropdown-item subtitle-2 menu-item">
+                  <a
+                    class="dropdown-item subtitle-2 menu-item"
+                    [routerLink]="['/profile', nickname, 'tus-obras']"
+                  >
                     <div class="icon-text">
                       <span class="icon is-small ml-2">
                         <i class="fas fa-circle-notch"></i>
@@ -95,7 +115,10 @@
                     </div>
                   </a>
                   <p class="dropdown-divider"></p>
-                  <a class="dropdown-item subtitle-2 menu-item">
+                  <a
+                    class="dropdown-item subtitle-2 menu-item"
+                    (click)="logout()"
+                  >
                     <div class="icon-text">
                       <span class="icon is-small ml-2">
                         <i class="fas fa-times"></i>
@@ -112,4 +135,3 @@
     </div>
   </div>
 </nav>
-
