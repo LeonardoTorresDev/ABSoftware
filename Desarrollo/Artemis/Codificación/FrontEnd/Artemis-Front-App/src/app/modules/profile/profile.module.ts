@@ -11,15 +11,19 @@ import { InfoUserComponent } from './components/info-user/info-user.component';
 import { ArtistComponent } from './components/artist/artist.component';
 import { StatOpusComponent } from './components/stat-opus/stat-opus.component';
 
-import { SharedModule } from '../../shared/shared.module'
-
+import { SharedModule } from '../../shared/shared.module';
 
 @NgModule({
-  declarations: [ProfileComponent, TusObrasComponent, ObrasComponent, SidebarComponent, ListaObrasComponent, InfoUserComponent, ArtistComponent, StatOpusComponent],
-  imports: [
-    CommonModule,
-    ProfileRoutingModule,
-    SharedModule
-  ]
+  declarations: [
+    ProfileComponent,
+    TusObrasComponent,
+    ObrasComponent,
+    SidebarComponent,
+    ListaObrasComponent,
+    InfoUserComponent,
+    ArtistComponent,
+    StatOpusComponent,
+  ],
+  imports: [CommonModule, ProfileRoutingModule, SharedModule],
 })
-export class ProfileModule { }
+export class ProfileModule {}

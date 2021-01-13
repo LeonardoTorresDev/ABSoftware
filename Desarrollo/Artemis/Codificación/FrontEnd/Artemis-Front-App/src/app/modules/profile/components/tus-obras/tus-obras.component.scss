@@ -1,2 +1,24 @@
 @import "../../../../../styles.scss";
+
+.obra {
+  position: relative;
+
+  .fondo-titulo {
+    font-family: $family-secondary;
+    font-size: $subtitle1;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    min-height: 3.5rem;
+    background-color: $text-light;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    .level {
+      width: 95%;
+    }
+  }
+}
+
 @import "../../../../../../node_modules/bulma/sass/grid/tiles.sass";

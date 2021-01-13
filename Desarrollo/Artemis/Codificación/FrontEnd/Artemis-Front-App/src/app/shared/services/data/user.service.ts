@@ -16,10 +16,16 @@ export class UserService {
     withCredentials: true,
   };
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+  }
 
   getUser() {
-    return this.http.get(`${this.url}/user`, this.httpOptions);
+    return this.http.get(`${this.url}/user`, this.httpOptions).pipe(
+      map((res: any) => {
+        this.usuario = res;
+        return res;
+      })
+    );
   }
 
   updateUser(user: FormData) {
