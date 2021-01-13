@@ -15,7 +15,7 @@ const cloudinary = require('cloudinary')
 
 async function create_work(req, res){
 
-    let work_folder=req.params.work_folder
+    let work_folder=req.query.work_folder
 
     User.findById(req.user._id)
     .exec(async (err, user)=>{
