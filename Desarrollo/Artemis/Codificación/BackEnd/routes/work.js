@@ -10,6 +10,7 @@ const upload = multer_files()
 const {updateWorkVersion}=require('../dao/works/updateWorkVersion')
 
 const {updateWorkStats}=require('../dao/works/updateWorkStats')
+const {getWorkStats}=require('../dao/works/getWorkStats')
 
 const authUser=require('../middlewares/authUser')
 
@@ -43,6 +44,9 @@ router.route('/workVersion/:work_folder?/:work_name?')
     })
 
 router.route('/workStats/:work_folder?/:work_name?')
+    .get(authUser,(req,res)=>{
+        getWorkStats(req,res)
+    })
     .put(authUser,(req,res)=>{
         updateWorkStats(req,res)
     })
