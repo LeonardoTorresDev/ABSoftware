@@ -15,9 +15,9 @@ let updateWorkStats=(req,res)=>{
 
     let option=req.query.option
 
-    let work_name=req.params.work_name
-    let work_folder=req.params.work_folder
-    let nick_name=req.params.nick_name
+    let work_name=req.query.work_name
+    let work_folder=req.query.work_folder
+    let nick_name=req.query.nick_name
 
     let validOptions=[
         "like",
@@ -31,13 +31,14 @@ let updateWorkStats=(req,res)=>{
 
     User.findOne({nick_name: nick_name})
     .exec((err,user)=>{
+
         if(err){ return error_response(400, res, err) }
         if(!user){ return custom_error_response(400, res, "Usuario no encontrado") }
+
         Folder.findOne({name:work_folder,owner: user._id})
         .exec((err,folder)=>{
 
             if(err){ return error_response(400, res, err) }
-
             if(!folder){ return custom_error_response(400, res, "Folder no encontrado en el usuario") }
 
             Work.findOne({name:work_name,folder:folder._id,owner: user._id})
