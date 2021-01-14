@@ -20,18 +20,9 @@ const upload = multer_files()
 const router=express.Router()
 const authUser=require('../middlewares/authUser')
 
-
-router.get('/user',authUser,(req,res)=>{
-    getUser(req,res)
-})
-
-router.get('/users/search/:term?',authUser,(req,res)=>{
-    searchUsers(req,res)
-})
-
-router.route('/users')
+router.route('/user')
     .get(authUser,(req,res)=>{
-        getUsers(req,res)
+        getUser(req,res)
     })
     .post((req,res)=>{
         saveUser(req,res)
@@ -43,6 +34,14 @@ router.route('/users')
         deleteUser(req,res)
     })
 
+router.get('/users/search/:term?',authUser,(req,res)=>{
+    searchUsers(req,res)
+})
+
+router.route('/users')
+    .get(authUser,(req,res)=>{
+        getUsers(req,res)
+    })
 
 router.post('/users/login/:google?',(req,res)=>{  
     if(req.params.google==="google"){
