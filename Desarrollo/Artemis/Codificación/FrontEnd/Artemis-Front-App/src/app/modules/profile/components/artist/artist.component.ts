@@ -9,7 +9,7 @@ import { UserService } from '../../../../shared/services/data/user.service';
 export class ArtistComponent implements OnInit {
   profilePhoto: string;
   artisticName: string;
-  @Input() ownProfile: boolean = true;
+  @Input() ownProfile: boolean;
 
   constructor(private user: UserService) {}
 

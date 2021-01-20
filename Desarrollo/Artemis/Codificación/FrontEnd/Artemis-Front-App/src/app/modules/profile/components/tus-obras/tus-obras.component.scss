@@ -1,5 +1,6 @@
 @import "../../../../../styles.scss";
-
+@import "../lista-obras/lista-obras.component.scss";
+@import "../../../create-opus/components/primera-version/primera-version.component.scss";
 .obra {
   position: relative;
 
@@ -21,4 +22,14 @@
   }
 }
 
+label.tab-label {
+  padding: 1rem 0;
+}
+
+.level-left {
+  max-width: 70%;
+  overflow-x: hidden;
+}
+
 @import "../../../../../../node_modules/bulma/sass/grid/tiles.sass";
+@import "~@creativebulma/bulma-collapsible";

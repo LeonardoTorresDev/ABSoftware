@@ -12,6 +12,8 @@ import { ArtistComponent } from './components/artist/artist.component';
 import { StatOpusComponent } from './components/stat-opus/stat-opus.component';
 
 import { SharedModule } from '../../shared/shared.module';
+import { ModificarPerfilComponent } from './components/modificar-perfil/modificar-perfil.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,8 @@ import { SharedModule } from '../../shared/shared.module';
     InfoUserComponent,
     ArtistComponent,
     StatOpusComponent,
+    ModificarPerfilComponent,
   ],
-  imports: [CommonModule, ProfileRoutingModule, SharedModule],
+  imports: [CommonModule, ProfileRoutingModule, SharedModule, ReactiveFormsModule],
 })
 export class ProfileModule {}

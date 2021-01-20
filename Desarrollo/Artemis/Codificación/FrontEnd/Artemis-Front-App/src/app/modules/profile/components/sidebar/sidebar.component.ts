@@ -1,15 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
-  styleUrls: ['./sidebar.component.scss']
+  styleUrls: ['./sidebar.component.scss'],
 })
 export class SidebarComponent implements OnInit {
-
-  constructor() { }
+  @Input() nombreDeUsuario: any;
+  constructor() {}
 
   ngOnInit(): void {
+    console.log(this.nombreDeUsuario);
   }
-
 }

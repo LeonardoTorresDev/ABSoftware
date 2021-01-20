@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { UserService } from '../../../../shared/services/data/user.service';
 
 @Component({
@@ -7,7 +7,7 @@ import { UserService } from '../../../../shared/services/data/user.service';
   styleUrls: ['./info-user.component.scss'],
 })
 export class InfoUserComponent implements OnInit {
-  @Input() description: string;
+  @Output() nickname = new EventEmitter<string>();
   userName: string;
 
   constructor(private user: UserService) {}
@@ -15,6 +15,7 @@ export class InfoUserComponent implements OnInit {
   ngOnInit(): void {
     this.user.getUser().subscribe((res: any) => {
       this.userName = res.nick_name;
+      this.nickname.emit(this.userName);
     });
   }
 }

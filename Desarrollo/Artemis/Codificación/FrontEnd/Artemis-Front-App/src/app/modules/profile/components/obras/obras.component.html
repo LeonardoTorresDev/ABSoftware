@@ -5,8 +5,8 @@
         <section class="column is-hidden-touch"></section>
 
         <section class="column">
-          <app-artist></app-artist>
-          <app-info-user></app-info-user>
+          <app-artist [ownProfile]="isOwnProfile()" ></app-artist>
+          <app-info-user (nickname)="enviarAlSidebar($event)"></app-info-user>
         </section>
 
         <section class="column is-hidden-touch"></section>
@@ -18,7 +18,7 @@
     <div class="section">
       <div class="columns">
         <div class="column">
-          <app-sidebar></app-sidebar>
+          <app-sidebar [nombreDeUsuario]="nickSidebar"></app-sidebar>
         </div>
         <div class="column is-9">
           <app-lista-obras></app-lista-obras>

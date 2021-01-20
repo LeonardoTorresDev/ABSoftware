@@ -9,4 +9,8 @@
   font-weight: 500;
 }
 
+img {
+  object-fit: unset;
+}
+
 @import "../../../../../../node_modules/bulma/sass/layout/hero.sass";

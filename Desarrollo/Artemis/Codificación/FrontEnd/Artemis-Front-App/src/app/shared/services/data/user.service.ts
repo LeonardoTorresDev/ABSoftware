@@ -16,8 +16,7 @@ export class UserService {
     withCredentials: true,
   };
 
-  constructor(private http: HttpClient) {
-  }
+  constructor(private http: HttpClient) {}
 
   getUser() {
     return this.http.get(`${this.url}/user`, this.httpOptions).pipe(
@@ -28,7 +27,7 @@ export class UserService {
     );
   }
 
-  updateUser(user: FormData) {
-    return this.http.put(`${this.url}/users`, user, this.httpOptions);
+  updateUser(user: FormData | object) {
+    return this.http.put(`${this.url}/user`, user, this.httpOptions);
   }
 }
