@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { OpusService } from '../../../../shared/services/data/opus.service';
 import { Router } from '@angular/router';
 import { ArchivoModel } from '../../../../shared/models/archivo.model';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-detalles-finales',
@@ -63,11 +64,26 @@ export class DetallesFinalesComponent implements OnInit {
     }
   }
 
-  selectViewers(value: boolean) {
+  async selectViewers(value: boolean) {
     const valor = this.form.get('private');
     valor.setValue(value);
-    this.showFollowers = value;
-    console.log(this.form.value.private);
+    //Meter sweetAlert
+    if (value) {
+      await Swal.fire({
+        text: '¿Desea agregar seguidores privados?',
+        icon: 'question',
+        showCancelButton: true,
+        cancelButtonText: 'No',
+        confirmButtonColor: '#6638b6',
+        confirmButtonText: 'Sí',
+      }).then((res) => {
+        if (res.isConfirmed) {
+          this.showFollowers = value;
+        }
+      });
+    } else {
+      this.showFollowers = value;
+    }
   }
 
   fileChangeEvent(event: { target: { files: string | any[] } }) {

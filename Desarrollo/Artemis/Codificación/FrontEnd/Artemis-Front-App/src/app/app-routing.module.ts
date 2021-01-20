@@ -10,6 +10,7 @@ import { ProfileComponent } from './modules/profile/profile.component';
 import { CreateOpusRoutingModule } from './modules/create-opus/create-opus-routing.module';
 import { SubirArchivoComponent } from './modules/create-opus/components/subir-archivo/subir-archivo.component';
 import { SubirObraComponent } from './modules/create-opus/components/subir-obra/subir-obra.component';
+import { PostComponent } from './modules/post/post.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/welcome', pathMatch: 'full' }, //Por mientras, redirigirá a la landing page: se necesita de una página 404
@@ -28,7 +29,16 @@ const routes: Routes = [
         (route) => route.CreateOpusRoutingModule
       ),
   },
-  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
+  {
+    path: 'profile',
+    component: ProfileComponent,
+    canActivate: [AuthGuard],
+    loadChildren: () =>
+      import('./modules/profile/profile-routing.module').then(
+        (route) => route.ProfileRoutingModule
+      ),
+  },
+  { path: 'post/:id', component: PostComponent },
 ];
 
 @NgModule({
