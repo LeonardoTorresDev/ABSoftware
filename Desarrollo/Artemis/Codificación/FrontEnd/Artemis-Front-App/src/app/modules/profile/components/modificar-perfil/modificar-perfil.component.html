@@ -1,0 +1,102 @@
+<div class="screen">
+  <h1 class="title has-text-centered">Modificar perfil</h1>
+
+  <div class="card-image is-flex is-justify-content-center">
+    <figure class="image is-128x128">
+      <img class="is-rounded" src="{{ profilePhoto }}" />
+      <div class="file is-accent">
+        <label class="file-label foto">
+          <div [formGroup]="form">
+            <input
+              class="file-input"
+              type="file"
+              name="resume"
+              accept=".jpg,.png"
+              (change)="fileChangeEvent($event)"
+            />
+          </div>
+
+          <span class="file-cta">
+            <span class="file-icon">
+              <i class="fas fa-camera"></i>
+            </span>
+          </span>
+        </label>
+      </div>
+    </figure>
+  </div>
+  <p class="help has-text-centered mb-6">
+    Imagen para actualizar: {{ fileName }}
+  </p>
+
+  <div class="container">
+    <div class="columns is-variable is-0-mobile is-3-desktop">
+      <div class="column">
+        <!-- Espacio negativo -->
+      </div>
+      <div class="column">
+        <form action="" [formGroup]="form" (submit)="actualizarPerfil()">
+          <div class="field">
+            <label for="" class="label">Tu nombre artístico</label>
+            <div class="control">
+              <input
+                formControlName="artistic_name"
+                class="input"
+                type="text"
+                [placeholder]="usuario.artistic_name"
+              />
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="" class="label">Nickname</label>
+            <input
+              formControlName="nick_name"
+              class="input"
+              type="text"
+              [placeholder]="usuario.nick_name"
+            />
+          </div>
+
+          <div class="field">
+            <label for="" class="label">Contraseña</label>
+            <input
+              class="input"
+              type="password"
+              placeholder="Tu nueva contraseña"
+              formControlName="password"
+            />
+          </div>
+
+          <div class="field">
+            <label for="" class="label">Correo electrónico</label>
+            <input
+              type="text"
+              class="input"
+              [placeholder]="usuario.email"
+              formControlName="email"
+            />
+          </div>
+
+          <div class="field">
+            <div class="level">
+              <div class="level-left">
+                <div class="level-item"></div>
+              </div>
+              <div class="level-right">
+                <div class="level-item">
+                  <button class="button is-accent" type="submit">
+                    Actualizar datos
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="column">
+        <!-- Espacio negativo -->
+      </div>
+    </div>
+  </div>
+</div>

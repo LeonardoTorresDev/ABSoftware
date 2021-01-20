@@ -1,0 +1,14 @@
+@import "../../../../../styles.scss";
+
+.artistText {
+  font-family: $family-secondary;
+  font-size: $h4;
+}
+
+.is-horizontal-center {
+  justify-content: center;
+}
+
+$dimensions: 16 24 32 48 64 96 128 160 200 256;
+
+@import "../../../../../../node_modules/bulma/sass/elements/image.sass";

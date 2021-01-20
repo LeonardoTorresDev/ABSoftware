@@ -1,0 +1,15 @@
+<div class="control is-pulled-center">
+  <div class="card-image is-flex is-horizontal-center">
+    <figure class="image is-256x256">
+      <img class="is-rounded" src="{{ profilePhoto }}" />
+    </figure>
+  </div>
+  <div class="card-content has-text-centered">
+    <!--Cargar nombre del artista-->
+    <p class="artistText">
+      {{ artisticName }}
+
+      <span *ngIf="ownProfile">(tú)</span>
+    </p>
+  </div>
+</div>

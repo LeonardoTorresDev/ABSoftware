@@ -10,7 +10,8 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "postinstall": "ngcc"
   },
   "private": true,
   "dependencies": {
@@ -22,16 +23,18 @@
     "@angular/platform-browser": "^10.2.4",
     "@angular/platform-browser-dynamic": "^10.2.4",
     "@angular/router": "^10.2.4",
+    "@creativebulma/bulma-collapsible": "^1.0.4",
     "@fortawesome/fontawesome-svg-core": "^1.2.32",
     "angularx-social-login": "^3.5.4",
     "bulma": "^0.9.1",
     "bulma-floating-button": "^1.0.3",
+    "bulma-o-steps": "^1.1.0",
     "bulma-social": "^2.0.0",
     "ng-authentication-service": "^2.1.6",
     "node-sass": "^4.14.1",
     "rxjs": "~6.6.0",
     "sweetalert2": "^10.13.0",
-    "tslib": "^2.0.0",
+    "tslib": "^2.1.0",
     "zone.js": "~0.10.2"
   },
   "devDependencies": {
@@ -41,6 +44,7 @@
     "@types/jasmine": "~3.5.0",
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "^12.19.12",
+    "@vizuaalog/bulmajs": "^0.12.0",
     "codelyzer": "^6.0.0",
     "jasmine-core": "~3.6.0",
     "jasmine-spec-reporter": "~5.0.0",

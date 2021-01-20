@@ -1,26 +1,51 @@
-const express=require('express');
-//const {get_work}=require('../dao/works/get_work');
-const {get_works}=require('../dao/works/get_works');
-//const {create_work}=require('../dao/works/create_work');
+const express=require('express')
+
+const {get_work}=require('../dao/works/get_work')
+const {get_works}=require('../dao/works/get_works')
+const {create_work}=require('../dao/works/create_work')
+const {updateWork}=require('../dao/works/updateWork')
+const {multer_files}=require('../config/multer_config')
+const {deleteWork} = require('../dao/works/deleteWork')
+const upload = multer_files()
+
+const {updateWorkVersion}=require('../dao/works/updateWorkVersion')
+
+const {updateWorkStats}=require('../dao/works/updateWorkStats')
+
+const authUser=require('../middlewares/authUser')
+
 const router=express.Router();
 
-router.route('/works/:nick_name?/:folder_name?')
-    .get((req,res)=>{
+router.route('/works/:folder_name?')
+    .get(authUser,(req,res)=>{
         get_works(req, res)
     })
     
-router.route('/work/:nick_name/:folder_name?/:stats?/:versions?')
-    .get((req,res)=>{
-        //get_work(req, res)
+router.route('/work/:folder_name?/:work_name?')
+    .get(authUser,(req,res)=>{
+        get_work(req, res)
     })
-    .post((req,res)=>{
-        //create_work(req, res)
+    .post(authUser,upload.fields([
+        { 'name': 'file', maxCount: 1 },
+        { 'name': 'image', maxCount: 1 }
+    ]), async(req,res)=>{
+        create_work(req, res)
     })
-    .put((req,res)=>{
-        //res.send('Obra actualizada con id ' + req.query.work_id)
+    .put(authUser, upload.single('image'), async(req,res)=>{
+        updateWork(req,res)
     })
     .delete((req,res)=>{
-        //res.send('Obra borrada')
+        deleteWork(req, res)
+    })
+
+router.route('/workVersion/:work_folder?/:work_name?')
+    .put(authUser, upload.single('file'), async (req,res)=>{
+        updateWorkVersion(req,res)
+    })
+
+router.route('/workStats/:work_folder?/:work_name?/:option?')
+    .put(authUser,(req,res)=>{
+        updateWorkStats(req,res)
     })
 
 module.exports=router;

@@ -1,26 +1,8 @@
-const User=require('../../models/user')
-
-const {error_response, 
-    custom_error_response, 
-    custom_response,
-    destroyCookieWhenLogged
-}=require('../../utils/utils')
+const {delete_user}=require('../../helpers/user/delete_user')
 
 let deleteUser=(req,res)=>{
 
-    let id=req.user._id
-
-    User.deleteOne({_id: id},(err,deletedUser)=>{
-
-        if(err){return error_response(500,res,err)}
-
-        if(!deletedUser){return custom_error_response(500,res,"Usuario no encontrado")}
-
-        destroyCookieWhenLogged(req,res)
-
-        custom_response(res,"Usuario borrado exitosamente")
-
-    })
+    delete_user(req.user._id, req, res)
 }
 
 module.exports={

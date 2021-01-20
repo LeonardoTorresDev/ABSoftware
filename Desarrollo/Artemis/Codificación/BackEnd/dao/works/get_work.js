@@ -5,9 +5,8 @@ const {error_response, custom_error_response}=require('../../utils/utils')
 
 
 function get_work(req, res){
-    User.findOne({nick_name: req.query.nick_name})
+    User.findById(req.user._id)
     .exec(function (err, user){
-
         if(err){ return error_response(400, res, err) }
 
         if(user==null){ return custom_error_response(400, res, "Usuario no encontrado") }
@@ -18,7 +17,14 @@ function get_work(req, res){
 
             if(folder==null){ return custom_error_response(400, res, "Folder no encontrado") }
 
-            
+            Work.findOne({name: req.query.work_name, folder: folder._id})
+            .exec(function (err, work){
+                if(err){ return error_response(400, res, err) }
+
+                if(work==null){ return custom_error_response(400, res, "Obra no encontrada") }
+
+                res.send(work)
+            })
         })
     })
 }

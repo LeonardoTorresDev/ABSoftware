@@ -1,0 +1,32 @@
+@import "../../../../../styles.scss";
+
+$size: 0.75rem;
+$tag-backgroud: #9d46ff;
+$tag-border: 2rem;
+$tag-size: 1rem;
+$tag-width: 3.625rem;
+$tag-height: 1rem;
+
+* {
+  font-size: $size;
+}
+
+.title {
+  font-size: $h5;
+  font-family: $family-secondary;
+}
+
+@media (min-width: 768px) {
+  .title {
+    font-size: $h3;
+    font-family: $family-secondary;
+  }
+}
+
+.post-tag {
+  color: $white;
+  font-family: $family-primary;
+  background: $tag-backgroud;
+  border-radius: $tag-border;
+  font-size: $tag-size;
+}

@@ -1,12 +1,12 @@
 const mongoose=require('mongoose')
-const uniqueValidator=require('mongoose-unique-validator')
 
 let Schema=mongoose.Schema
 
 let workFolderSchema=new Schema({
     owner:{
         type: Schema.Types.ObjectId,
-        ref: 'User'
+        ref: 'User',
+        required: [true, 'User is required']
     },
     name:{
         type: String,
@@ -18,6 +18,4 @@ let workFolderSchema=new Schema({
     }]
 })
 
-workFolderSchema.plugin(uniqueValidator,{message:'{PATH} has to be unique'});
-
-module.exports=mongoose.model('WorkFolder', workFolderSchema);
+module.exports=mongoose.model('WorkFolder', workFolderSchema)

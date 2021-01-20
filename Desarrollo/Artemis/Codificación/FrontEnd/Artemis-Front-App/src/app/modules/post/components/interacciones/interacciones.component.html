@@ -1,0 +1,34 @@
+<div class="section is-hidden-touch">
+  <div class="mr-6">
+    <a class="" (click)="like()">
+      <div class="icon-text mb-3">
+        <div class="icon is-medium">
+          <i class="far fa-thumbs-up fa-2x"></i>
+        </div>
+        <div class="">{{ likes }}</div>
+      </div>
+    </a>
+    <br /><br />
+    <a class="mt-5" (click)="dislike()">
+      <div class="icon-text mb-3">
+        <div class="icon is-medium">
+          <i class="far fa-thumbs-down fa-2x"></i>
+        </div>
+        <div class="">{{ dislikes }}</div>
+      </div>
+    </a>
+    <br /><br />
+    <a class="mt-5">
+      <div class="icon-text">
+        <div class="icon is-medium">
+          <i class="far fa-comment fa-2x"></i>
+        </div>
+        <div class="">{{ comentarios }}</div>
+      </div>
+    </a>
+    <br /><br />
+    <div *ngIf="ownPost" class="mt-6">
+      <app-mapa-versiones></app-mapa-versiones>
+    </div>
+  </div>
+</div>

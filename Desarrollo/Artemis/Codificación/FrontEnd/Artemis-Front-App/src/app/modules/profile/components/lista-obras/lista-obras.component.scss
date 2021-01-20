@@ -1,0 +1,99 @@
+@import "../../../../../styles.scss";
+
+$box-background-color: transparent;
+$box-radius: 1px;
+$box-shadow: none;
+
+.title {
+  font-size: $h6;
+}
+
+.is-body-2 {
+  font-size: $body2;
+}
+
+.is-subtitle-2 {
+  font-family: $family-secondary;
+  font-size: $subtitle2;
+}
+
+.box {
+  transition: all 0.3s ease;
+  &:hover {
+    box-shadow: 0 0.5em 1em -0.125em rgba($scheme-invert, 0.1),
+      0 0px 0 1px rgba($scheme-invert, 0.02);
+  }
+}
+
+$midnight: #2c3e50;
+$clouds: #ecf0f1;
+
+input {
+  position: absolute;
+  opacity: 0;
+  z-index: -1;
+}
+.tabs {
+  overflow: hidden;
+  display: block !important;
+
+  a {
+      display: block;
+      border: none;
+  }
+}
+.tab {
+  width: 100%;
+  color: $text-middle;
+  overflow: hidden;
+  &-label {
+    display: flex;
+    justify-content: space-between;
+    background: transparent;
+    cursor: pointer;
+
+    /* Icon */
+    &:hover {
+      color: $secondary;
+    }
+    &::after {
+      content: "\276F";
+      width: 1em;
+      height: 1em;
+      text-align: center;
+      transition: all 0.35s;
+    }
+  }
+  &-content {
+    max-height: 0;
+    padding: 0 1em;
+    transition: all 0.35s;
+  }
+  &-close {
+    display: flex;
+    justify-content: flex-end;
+    padding: 1em;
+    font-size: 0.75em;
+    background: $midnight;
+    cursor: pointer;
+    &:hover {
+      background: transparent;
+    }
+  }
+}
+
+// :checked
+input:checked {
+  + .tab-label {
+    background: transparent;
+    &::after {
+      transform: rotate(90deg);
+    }
+  }
+  ~ .tab-content {
+    max-height: 100%;
+    padding: 1rem;
+  }
+}
+
+@import "../../../../../../node_modules/bulma/sass/elements/box.sass";

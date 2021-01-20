@@ -28,7 +28,7 @@ export class AuthService {
     const authData = {
       ...usuario,
     };
-    return this.http.post(`${this.url}/users`, authData, this.httpOptions).pipe(
+    return this.http.post(`${this.url}/user`, authData, this.httpOptions).pipe(
       map((res: any) => {
         this.guardarToken(res.user._id);
         return res;
@@ -42,7 +42,7 @@ export class AuthService {
     };
 
     return this.http
-      .post(`${this.url}/users/login`, authData, this.httpOptions)
+      .post(`${this.url}/user/login`, authData, this.httpOptions)
       .pipe(
         map((res: any) => {
           this.guardarToken(res.user._id);
@@ -53,7 +53,7 @@ export class AuthService {
 
   signWithGoogle(idtoken: string) {
     return this.http
-      .post(`${this.url}/users/login/google`, { idtoken }, this.httpOptions)
+      .post(`${this.url}/user/login/google`, { idtoken }, this.httpOptions)
       .pipe(
         map((res: any) => {
           this.guardarToken(res.user._id);
@@ -67,12 +67,10 @@ export class AuthService {
     this.token = '';
     this.expires = NaN;
 
-    return this.http.get(`${this.url}/users/logout`, this.httpOptions);
+    return this.http.get(`${this.url}/user/logout`, this.httpOptions);
   }
 
-  getUser() {
-    return this.http.get(`${this.url}/user`, this.httpOptions);
-  }
+  
 
   private guardarToken(idToken: string): void {
     this.token = idToken;

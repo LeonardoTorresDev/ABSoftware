@@ -1,0 +1,46 @@
+<div class="content mt-6 pt-0 section">
+  <div class="content">
+    <p class="">{{ descripcion }}</p>
+  </div>
+  <div class="content mt-4">
+    <figure class="">
+      <img src="{{ urlImagen }}" alt="Imagen-Post" />
+    </figure>
+  </div>
+
+  <div class="content">
+    <div class="columns is-mobile mx-0 is-hidden-desktop">
+      <div class="column">
+        <a href="">
+          <div class="icon-text mb-2">
+            <div class="icon">
+              <i class="far fa-thumbs-up"></i>
+            </div>
+            <span class="">{{ likes }}</span>
+          </div>
+        </a>
+
+        <a href="">
+          <div class="icon-text mb-2">
+            <div class="icon">
+              <i class="far fa-thumbs-down"></i>
+            </div>
+            <span class="">{{ dislikes }}</span>
+          </div>
+        </a>
+
+        <a href="">
+          <div class="icon-text mb-2">
+            <div class="icon">
+              <i class="far fa-comment"></i>
+            </div>
+            <span class="">{{ comments }}</span>
+          </div>
+        </a>
+      </div>
+      <div class="column">
+        <app-opciones-post></app-opciones-post>
+      </div>
+    </div>
+  </div>
+</div>
