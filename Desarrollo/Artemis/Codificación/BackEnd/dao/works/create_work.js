@@ -15,8 +15,6 @@ const cloudinary = require('cloudinary')
 
 async function create_work(req, res){
 
-    let work_folder=req.query.work_folder
-
     User.findById(req.user._id)
     .exec(async (err, user)=>{
 
@@ -26,7 +24,7 @@ async function create_work(req, res){
 
         //Encontró el usuario
 
-        Folder.findOne({name: work_folder, owner: req.user._id})
+        Folder.findOne({name: req.query.folder_name, owner: req.user._id})
         .populate('works')
         .exec(async (err, folder)=>{
  
@@ -70,7 +68,8 @@ async function create_work(req, res){
 
             if(req.files.file[0] != undefined)
             {
-                const result = await cloudinary.v2.uploader.upload(req.files.file[0].path)
+                const result = await cloudinary.v2.uploader.upload(req.files.file[0].path, { resource_type: "auto" }, 
+                function(error, result) {console.log(result, error); })
                 console.log('Archivo subido a cloudinary')
                 
                 //cambiar parametros

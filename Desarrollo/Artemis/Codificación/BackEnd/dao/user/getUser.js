@@ -3,9 +3,9 @@ const {error_response, custom_error_response}=require('../../utils/utils')
 
 let getUser=(req,res)=>{
 
-    let nick_name=req.user.nick_name
+    let id=req.user._id
 
-    User.findOne({nick_name: nick_name})
+    User.findById(id)
         .populate('folders','name')
         .exec((err,user)=>{
 

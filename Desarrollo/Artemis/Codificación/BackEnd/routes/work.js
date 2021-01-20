@@ -21,7 +21,7 @@ router.route('/works/:folder_name?')
         get_works(req, res)
     })
     
-router.route('/work/:work_folder?/:work_name?')
+router.route('/work/:folder_name?/:work_name?')
     .get(authUser,(req,res)=>{
         get_work(req, res)
     })
@@ -43,7 +43,7 @@ router.route('/workVersion/:work_folder?/:work_name?')
         updateWorkVersion(req,res)
     })
 
-router.route('/workStats/:work_folder?/:work_name?')
+router.route('/workStats/:work_folder?/:work_name?/:option?')
     .put(authUser,(req,res)=>{
         updateWorkStats(req,res)
     })
