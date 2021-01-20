@@ -1,13 +1,11 @@
 const mongoose=require('mongoose')
-const uniqueValidator=require('mongoose-unique-validator')
 
 let Schema=mongoose.Schema
 
 let workStatsSchema=new Schema({
     work:{
         type: Schema.Types.ObjectId,
-        ref: 'Work',
-        required: [true, "Work is required"]
+        ref: 'Work'
     },
     likes:{
         type: Number,
@@ -24,9 +22,19 @@ let workStatsSchema=new Schema({
     reports:{
         type: Number,
         default: 0
-    }
+    },
+    usersThatLiked:[{
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+    }],
+    usersThatDisliked:[{
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+    }],
+    usersReport:[{
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+    }]
 })
 
 module.exports=mongoose.model('WorkStats',workStatsSchema)
-
-workSchema.plugin(uniqueValidator,{message:'{PATH} has to be unique'});

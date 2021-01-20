@@ -1,8 +1,6 @@
 const mongoose=require('mongoose')
 const uniqueValidator=require('mongoose-unique-validator')
 
-const Folder=require('./work_folder')
-
 let Schema=mongoose.Schema
 
 let userSchema=new Schema({
@@ -25,9 +23,16 @@ let userSchema=new Schema({
         type: String,
         required:[true,'Password is required']
     },
-    profile_img:{
+    profile_img_url:{
         type: String
     },
+    img_public_id:{
+        type: String
+    },
+    following:[{
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+    }],
     followers:[{
         type: Schema.Types.ObjectId,
         ref: 'User'
@@ -54,17 +59,6 @@ userSchema.methods.toJSON=function(){
     return userObject;
 }
 
-
-userSchema.pre('deleteOne',function(next){   
-
-    let id=this._conditions._id
-
-    Folder.deleteMany({owner:id}).exec()
-    
-    next()
-
-})
-
-userSchema.plugin(uniqueValidator,{message:'{PATH} has to be unique'})
+userSchema.plugin(uniqueValidator,{message:'{PATH} tiene que ser único'})
 
 module.exports=mongoose.model('User',userSchema)

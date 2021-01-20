@@ -1,5 +1,4 @@
 const mongoose=require('mongoose')
-const uniqueValidator=require('mongoose-unique-validator')
 
 let Schema=mongoose.Schema
 
@@ -13,9 +12,16 @@ let workSchema=new Schema({
     }],
     owner:{
         type: Schema.Types.ObjectId,
-        ref: 'User'
+        ref: 'User',
+        required: [true, 'User is required']
     },
-    img:{
+    img_url:{
+        type: String
+    },
+    img_public_id:{
+        type: String
+    },
+    type:{
         type: String
     },
     stats:{
@@ -24,13 +30,12 @@ let workSchema=new Schema({
     },
     private:{
         type: Boolean,
-        default: true
-    },
-    collaborative:{
-        type: Boolean,
         default: false
     },
-    collabs:[{
+    description:{
+        type: String
+    },
+    private_viewers:[{
         type: Schema.Types.ObjectId,
         ref: 'User'
     }],
@@ -45,11 +50,8 @@ let workSchema=new Schema({
     }],
     current_version:{
         type: Schema.Types.ObjectId,
-        ref: 'WorkVersion',
-        required: [true, "Current version id is required"] 
+        ref: 'WorkVersion'
     }
 })
 
-workSchema.plugin(uniqueValidator,{message:'{PATH} has to be unique'});
-
-module.exports=mongoose.model('workSchema', workSchema);
+module.exports=mongoose.model('Work', workSchema)
