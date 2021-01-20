@@ -1,0 +1,27 @@
+<app-navbar></app-navbar>
+
+<section class="content mt-navbar">
+    <!-- Pequeño espacio de separación entre el navbar y el contenido -->
+</section>
+
+<div class="content mb-6">
+    <main class="columns is-variable is-0-mobile is-3-dekstop">
+        <section class="column is-hidden-touch">
+            <app-interacciones [ownPost]="ownPost"></app-interacciones>
+        </section>
+
+        <section class="column is-6-desktop">
+            <app-cabecera-obra></app-cabecera-obra>
+            <app-contenido></app-contenido>
+            <div class="mt-6">
+                <app-comentarios></app-comentarios>
+            </div>
+        </section>
+
+        <section class="column is-hidden-touch">
+            <app-opciones-post [ownPost]="ownPost"></app-opciones-post>
+        </section>
+    </main>
+</div>
+
+<app-footer></app-footer>

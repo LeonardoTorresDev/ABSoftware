@@ -1,0 +1,70 @@
+<section class="hero is-fullheight-with-navbar">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title has-text-centered">Crear obra</h1>
+      <h2 class="subtitle has-text-centered mb-4">
+        Aseguremos tu primera versión
+      </h2>
+    </div>
+  </div>
+  <section class="section">
+    <div class="columns">
+      <div class="column is-half is-offset-one-quarter">
+        <form [formGroup]="form" (ngSubmit)="subirObra()">
+          <div class="field">
+            <label class="label is-label">Nombre de tu primera versión</label>
+            <div class="control">
+              <input
+                class="input"
+                type="text"
+                placeholder="ej: Mi gran primera versión"
+                formControlName="nombreVersion"
+                [class.is-danger]="noValido('nombreVersion')"
+              />
+            </div>
+            <small class="button is-small is-danger" *ngIf="noValido('nombreVersion')">
+              Tiene que ingresar un nombre
+            </small>
+          </div>
+
+          <div class="field">
+            <label class="label is-label">El archivo de tu obra</label>
+            <div class="file has-name is-primary" [class.is-danger]="noValido('archivoObra')">
+              <label class="file-label">
+                <input
+                  class="file-input"
+                  type="file"
+                  name="archivoObra"
+                  (change)="fileChangeEvent($event)"
+                  
+                />
+                <span class="file-cta">
+                  <span class="file-icon">
+                    <i class="fas fa-upload"></i>
+                  </span>
+                  <span class="file-label"> Sube tu obra </span>
+                </span>
+                <span class="file-name"> {{ fileName }} </span>
+              </label>
+            </div>
+            <span class="help" [class.is-danger]="noValido('archivoObra')">Sube el archivo el cual represente tu obra</span>
+          </div>
+
+          <div class="control is-pulled-right mt-5">
+            <button type="submit" class="button is-accent is-medium">
+              Subir obra
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+</section>
+
+<!-- ONLY FOR DEVELOPMENT -->
+<pre>
+    <code>
+      form values: {{ form.value | json }}
+      form status: {{ form.status }}
+    </code>
+  </pre>

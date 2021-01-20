@@ -1,0 +1,12 @@
+@import "../../../../../styles.scss";
+.foto {
+  border-radius: $radius-rounded !important;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.file-icon {
+  margin: 0 !important;
+  padding: 0 !important;
+}

@@ -1,0 +1,39 @@
+@import "../../../../../styles.scss";
+@import "../../../sign/components/form-data/form-data.component.scss";
+
+.title {
+  font-size: $h3;
+}
+
+.subtitle {
+  font-size: $h6;
+  font-weight: 500;
+}
+
+.legend {
+  font-family: $family-secondary;
+  font-weight: 500;
+  font-size: $h6;
+  margin-bottom: 1rem;
+}
+
+.help {
+  color: $grey;
+}
+
+hr {
+  border: none;
+  background-color: rgba($color: #000000, $alpha: 0.25);
+}
+
+.file-name {
+  background-color: white;
+}
+
+$file-radius: 1px;
+$file-border-color: #aaaaaa;
+$input-shadow: none;
+$file-name-border-color: #aaaaaa;
+
+@import "../../../../../../node_modules/bulma/sass/form/file.sass";
+@import "../../../../../../node_modules/bulma/sass/layout/hero.sass";

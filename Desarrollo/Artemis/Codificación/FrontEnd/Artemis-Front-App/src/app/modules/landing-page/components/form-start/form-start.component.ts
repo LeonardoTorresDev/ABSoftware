@@ -49,6 +49,7 @@ export class FormStartComponent implements OnInit {
         this.auth.signWithGoogle(res.idToken).subscribe(() => {
           Swal.close();
           this.router.navigateByUrl('/home');
+          window.scroll(0, 0);
         });
       })
       .catch((err) => console.log(err));

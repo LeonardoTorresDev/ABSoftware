@@ -1,0 +1,24 @@
+@import "../../../../../styles.scss";
+
+$panel-radius: 1px;
+$panel-block-hover-background-color: $grey-lightest;
+$item-height: 3rem;
+
+.level {
+  width: 100%;
+}
+
+.panel-block {
+  padding: 1rem 0.75rem !important;
+}
+
+.panel-body {
+  max-height: ($item-height * 6) + 1.5rem;
+  overflow-y: auto;
+}
+
+.button {
+  margin: auto;
+}
+@import "../../../../../../node_modules/bulma/sass/components/panel.sass";
+@import "../../../../../../node_modules/bulma/sass/elements/button.sass";

@@ -9,6 +9,7 @@ import { InfoLandingComponent } from './components/info-landing/info-landing.com
 import { NavbarLandingComponent } from './components/navbar-landing/navbar-landing.component';
 import { LandingPageComponent } from './landing-page.component';
 import { LandingPageRoutingModule } from './landing-page-routing.module';
+import { SharedModule } from '../../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { LandingPageRoutingModule } from './landing-page-routing.module';
     ReactiveFormsModule,
     RouterModule,
     LandingPageRoutingModule,
+    SharedModule,
   ],
 })
 export class LandingPageModule {}

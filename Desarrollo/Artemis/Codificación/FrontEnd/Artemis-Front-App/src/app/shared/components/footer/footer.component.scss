@@ -1,0 +1,14 @@
+@import "../../../../styles.scss";
+$footer-background-color: $primary-dark;
+$footer-padding: 1rem;
+a {
+  font-size: $size-7;
+  color: $primary-light;
+  transition: all 0.3s ease;
+  &:hover {
+    color: white;
+  }
+}
+
+
+@import "../../../../../node_modules/bulma/sass/layout/footer.sass";
