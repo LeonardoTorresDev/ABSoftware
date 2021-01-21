@@ -10,26 +10,26 @@ function delete_folders_h(id , res)
     //Busco folders
     Folder.find({owner: id})
     .exec((err, folders)=>{
-        if (err) { error_response(500, res, err) }
+        if (err) { return error_response(500, res, err) }
 
         //Por cada folder...
         folders.forEach(folder => {
             //Busco sus obras
             Work.find({folder: folder._id})
             .exec((err, works)=>{
-                if (err) { error_response(500, res, err) }
+                if (err) { return error_response(500, res, err) }
 
                 //Por cada obra..
                 works.forEach(work => {
                     //Busco sus stats
                     Stats.findOne({work: work._id})
                     .exec((err, stats)=>{
-                        if (err) { error_response(500, res, err) }
+                        if (err) { return error_response(500, res, err) }
 
                         //Busco los comentarios
                         Commentary.find({work: work._id})
                         .exec((err, commentaries)=>{
-                            if (err) { error_response(500, res, err) }
+                            if (err) { return error_response(500, res, err) }
 
                             if(commentaries) { 
                                 commentaries.forEach(commentary => {
@@ -44,7 +44,7 @@ function delete_folders_h(id , res)
                     //Busco sus versiones
                     Version.find({work: work._id})
                     .exec((err, versions)=>{
-                        if (err) { error_response(500, res, err) }
+                        if (err) { return error_response(500, res, err) }
 
                         if(versions) { 
                             versions.forEach(version => {

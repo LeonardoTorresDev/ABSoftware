@@ -13,17 +13,14 @@ const {
 }=require('../../utils/utils')
 
 let updateWork= async(req,res)=>{
-
-    let work_name=req.query.work_name
-    let work_folder=req.query.work_folder
  
-    Folder.findOne({name: work_folder,owner: req.user._id})
+    Folder.findOne({name: req.query.folder_name,owner: req.user._id})
     .exec((err,folder)=>{
 
         if(err){ return error_response(400, res, err) }
         if(folder == null){ return custom_error_response(400, res, "Folder no encontrado en el usuario") }
 
-        Work.findOne({name: work_name,owner: req.user._id,folder:folder._id})
+        Work.findOne({name: req.query.work_name,owner: req.user._id,folder:folder._id})
         .populate('folder')
         .exec(async (err,work)=>{
    

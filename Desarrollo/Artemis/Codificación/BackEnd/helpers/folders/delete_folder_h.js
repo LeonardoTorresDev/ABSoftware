@@ -10,25 +10,25 @@ function delete_folder_h(owner_id, folder_name, res)
     //Busco folder
     Folder.findOne({name: folder_name , owner: owner_id})
     .exec((err, folder)=>{
-        if (err) { error_response(500, res, err) }
+        if (err) { return error_response(500, res, err) }
 
-        if(!folder) { custom_response(res, "Folder no encontrado") }
+        if(folder == null) { return custom_response(res, "Folder no encontrado") }
         //Busco sus obras
         Work.find({folder: folder._id})
         .exec((err, works)=>{
-            if (err) { error_response(500, res, err) }
+            if (err) { return error_response(500, res, err) }
 
             //Por cada obra..
             works.forEach(work => {
                 //Busco sus stats
                 Stats.findOne({work: work._id})
                 .exec((err, stats)=>{
-                    if (err) { error_response(500, res, err) }
+                    if (err) { return error_response(500, res, err) }
 
                     //Busco los comentarios
                     Commentary.find({work: work._id})
                     .exec((err, commentaries)=>{
-                        if (err) { error_response(500, res, err) }
+                        if (err) { return error_response(500, res, err) }
 
                         if(commentaries) { 
                             commentaries.forEach(commentary => {
@@ -43,7 +43,7 @@ function delete_folder_h(owner_id, folder_name, res)
                 //Busco sus versiones
                 Version.find({work: work._id})
                 .exec((err, versions)=>{
-                    if (err) { error_response(500, res, err) }
+                    if (err) { return error_response(500, res, err) }
 
                     if(versions) { 
                         versions.forEach(version => {
@@ -60,6 +60,7 @@ function delete_folder_h(owner_id, folder_name, res)
         })
 
         if(folder) { folder.remove() }
+        custom_response(res, "Folder borrado con exito")
     })
 }
 

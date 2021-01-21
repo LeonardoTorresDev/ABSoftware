@@ -14,10 +14,9 @@ const {setOption}=require('../../utils/setOption')
 let updateWorkStats=(req,res)=>{
 
     let option=req.query.option
-
     let work_name=req.query.work_name
-    let work_folder=req.query.work_folder
     let nick_name=req.query.nick_name
+    let folder_name=req.query.folder_name
 
     let validOptions=[
         "like",
@@ -34,8 +33,7 @@ let updateWorkStats=(req,res)=>{
 
         if(err){ return error_response(400, res, err) }
         if(!user){ return custom_error_response(400, res, "Usuario no encontrado") }
-
-        Folder.findOne({name:work_folder,owner: user._id})
+        Folder.findOne({name: folder_name, owner: user._id})
         .exec((err,folder)=>{
 
             if(err){ return error_response(400, res, err) }

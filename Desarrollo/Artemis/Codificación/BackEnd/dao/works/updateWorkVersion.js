@@ -35,7 +35,8 @@ let updateWorkVersion= async(req,res)=>{
 
             if(req.file == undefined){ return custom_error_response(400, res, "El archivo es requerido para crear una nueva versión") }
 
-            const result = await cloudinary.v2.uploader.upload(req.file.path)
+            const result = await cloudinary.v2.uploader.upload(req.file.path, { resource_type: "auto" }, 
+            function(error, result) {console.log(result, error); })
                 console.log('\Archivo Subido a cloudinary')
 
             let version=new WorkVersion({

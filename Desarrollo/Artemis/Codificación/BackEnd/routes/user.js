@@ -43,7 +43,7 @@ router.route('/users')
         getUsers(req,res)
     })
 
-router.post('/users/login/:google?',(req,res)=>{  
+router.post('/user/login/:google?',(req,res)=>{  
     if(req.params.google==="google"){
         googleLogin(req,res)
     }
@@ -52,11 +52,11 @@ router.post('/users/login/:google?',(req,res)=>{
     }   
 })
 
-router.get('/users/logout',authUser,(req,res)=>{
+router.get('/user/logout',authUser,(req,res)=>{
     logout(req,res)
 })
 
-router.put('/users/follow/:nick_name',authUser,(req,res)=>{
+router.put('/user/follow/:nick_name',authUser,(req,res)=>{
     followUser(req,res)
 })
 
