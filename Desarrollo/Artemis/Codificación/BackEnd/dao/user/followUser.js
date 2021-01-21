@@ -5,7 +5,7 @@ const {
     custom_error_response
 }=require('../../utils/utils')
 
-let followUser=(req,res)=>{
+let followUser=(req,res)=>{ 
 
     let nick_name=req.params.nick_name
 

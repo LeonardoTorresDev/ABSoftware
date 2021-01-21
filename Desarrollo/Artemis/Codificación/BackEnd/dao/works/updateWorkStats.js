@@ -30,13 +30,13 @@ let updateWorkStats=(req,res)=>{
 
     User.findOne({nick_name: nick_name})
     .exec((err,user)=>{
+
         if(err){ return error_response(400, res, err) }
         if(!user){ return custom_error_response(400, res, "Usuario no encontrado") }
         Folder.findOne({name: folder_name, owner: user._id})
         .exec((err,folder)=>{
 
             if(err){ return error_response(400, res, err) }
-
             if(!folder){ return custom_error_response(400, res, "Folder no encontrado en el usuario") }
 
             Work.findOne({name:work_name,folder:folder._id,owner: user._id})
