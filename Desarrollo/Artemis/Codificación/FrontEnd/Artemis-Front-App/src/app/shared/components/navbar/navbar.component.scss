@@ -1,0 +1,42 @@
+@import "../../../../../src/styles.scss";
+
+.navbar {
+  background-color: rgba($color: #ffffff, $alpha: 0.5);
+  backdrop-filter: blur(5px);
+}
+
+.icon-link:hover {
+  color: $purple;
+}
+
+.button {
+  border-radius: $radius-rounded;
+}
+
+.navbar-item {
+  &.has-dropdown {
+    .navbar-dropdown {
+      display: none;
+    }
+    &.is-active {
+      .navbar-dropdown {
+        display: block;
+      }
+    }
+  }
+}
+
+.has-gradient-background {
+  background: $gradient-primary;
+  font-family: $family-secondary;
+  color: $white;
+}
+
+.menu-item {
+  color: $black;
+  font-family: $secondary;
+}
+
+img {
+  object-fit: unset;
+}

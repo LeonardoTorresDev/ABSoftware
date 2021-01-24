@@ -1,0 +1,137 @@
+<nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+  <div class="container">
+    <div class="navbar-brand">
+      <a class="navbar-item" routerLink="/home">
+        <img src="../../../../assets/isotipo.svg" width="32" height="64" />
+      </a>
+
+      <a
+        role="button"
+        class="navbar-burger"
+        aria-label="menu"
+        aria-expanded="false"
+        data-target="Opciones"
+        (click)="showNavbarOptions()"
+      >
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+
+    <div id="Opciones" class="navbar-menu">
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <div class="field">
+            <p class="control has-icons-right">
+              <input
+                class="input is-small"
+                type="text"
+                placeholder="Buscar en Artemis"
+              />
+              <span class="icon is-small is-right">
+                <i class="fas fa-search"></i>
+              </span>
+            </p>
+          </div>
+        </div>
+
+        <div class="is-hidden-desktop">
+          <div class="navbar-item">
+            <button class="button is-accent is-outlined">
+              <div class="icon-text" routerLink="/createOpus">
+                <span class="icon is-large">
+                  <i class="fas fa-arrow-circle-up fa-lg"></i>
+                </span>
+                <span>Subir una obra</span>
+              </div>
+            </button>
+          </div>
+        </div>
+
+        <div class="navbar-item">
+          <div class="field is-grouped">
+            <p class="control">
+              <button class="button is-accent is-outlined">
+                <span class="icon">
+                  <i class="fas fa-mug-hot"></i>
+                </span>
+              </button>
+            </p>
+            <div class="dropdown is-hoverable is-right">
+              <div class="dropdown-trigger">
+                <button
+                  class="button is-link"
+                  aria-haspopup="true"
+                  aria-controls="dropdown-menu"
+                >
+                  <span class="icon">
+                    <i class="fas fa-user"></i>
+                  </span>
+                </button>
+              </div>
+              <div class="dropdown-menu" id="dropdown-menu" role="menu">
+                <div class="dropdown-content">
+                  <div class="dropdown-item subtitle-2 has-gradient-background">
+                    Estás en Artemis como @{{ nickname }}
+                  </div>
+                  <a
+                    [routerLink]="['/profile', nickname]"
+                    class="dropdown-item subtitle-2 menu-item"
+                  >
+                    <div class="icon-text">
+                      <span class="icon is-small ml-2">
+                        <i class="fas fa-user"></i>
+                      </span>
+                      <span class="ml-2">Tu Perfil</span>
+                    </div>
+                  </a>
+                  <a
+                    class="dropdown-item subtitle-2 menu-item"
+                    [routerLink]="['/profile', nickname, 'tus-obras']"
+                  >
+                    <div class="icon-text">
+                      <span class="icon is-small ml-2">
+                        <i class="fas fa-circle-notch"></i>
+                      </span>
+                      <span class="ml-2">Tus Obras</span>
+                    </div>
+                  </a>
+                  <p class="dropdown-divider"></p>
+                  <a class="dropdown-item subtitle-2 menu-item">
+                    <div class="icon-text">
+                      <span class="icon is-small ml-2">
+                        <i class="fas fa-cog"></i>
+                      </span>
+                      <span class="ml-2">Configuración</span>
+                    </div>
+                  </a>
+                  <a class="dropdown-item subtitle-2 menu-item">
+                    <div class="icon-text">
+                      <span class="icon is-small ml-2">
+                        <i class="far fa-question-circle"></i>
+                      </span>
+                      <span class="ml-2">Ayuda</span>
+                    </div>
+                  </a>
+                  <p class="dropdown-divider"></p>
+                  <a
+                    class="dropdown-item subtitle-2 menu-item"
+                    (click)="logout()"
+                  >
+                    <div class="icon-text">
+                      <span class="icon is-small ml-2">
+                        <i class="fas fa-times"></i>
+                      </span>
+                      <span class="ml-2">Cerrar Sesión</span>
+                    </div>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>

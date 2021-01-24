@@ -1,0 +1,29 @@
+<div class="screen">
+  <div class="container">
+    <div class="section mb-6">
+      <main class="columns is-variable is-0-mobile is-3-desktop">
+        <section class="column is-hidden-touch"></section>
+
+        <section class="column">
+          <app-artist [ownProfile]="isOwnProfile()" ></app-artist>
+          <app-info-user (nickname)="enviarAlSidebar($event)"></app-info-user>
+        </section>
+
+        <section class="column is-hidden-touch"></section>
+      </main>
+    </div>
+  </div>
+
+  <section class="container">
+    <div class="section">
+      <div class="columns">
+        <div class="column">
+          <app-sidebar [nombreDeUsuario]="nickSidebar"></app-sidebar>
+        </div>
+        <div class="column is-9">
+          <app-lista-obras></app-lista-obras>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

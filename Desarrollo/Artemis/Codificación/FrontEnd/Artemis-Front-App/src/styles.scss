@@ -1,0 +1,120 @@
+@charset "utf-8";
+
+// Importación de la tipografía
+@import url("https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&family=Open+Sans:wght@400;700&display=swap");
+
+@import "../node_modules/bulma/sass/utilities/initial-variables.sass";
+
+// Colores corporativos, primera fase
+$purple: #6638b6;
+// $red: #b00020;
+$black: rgba(0, 0, 0, 0.87);
+$grey-light: rgba(0, 0, 0, 0.6);
+$grey-lighter: rgba(0, 0, 0, 0.38);
+
+// Colores corporativos, segunda fase
+$primary: $purple;
+$primary-light: #9965e9;
+$primary-dark: #310885;
+
+$gradient-primary: linear-gradient(71.07deg, #9965e9 0%, #6200ea 98.25%);
+$gradient-primary-dark: linear-gradient(180deg, #6638b6 0%, #310885 100%);
+$gradient-alternative: linear-gradient(85.03deg, #9965e9 0%, #6200ea 100%);
+$background: linear-gradient(9.33deg, #eeeeee 7.06%, #ffffff 92.94%);
+
+$secondary: #6200ea;
+$secondary-light: #9d46ff;
+$secondary-dark: #0a00b6;
+$secondary-invert: $white;
+
+$link: $secondary;
+
+$text: $black;
+$text-light: $grey-light;
+$text-middle: $text-light;
+$text-disabled: $grey-lighter;
+$text-error: $red;
+
+//Se añade la gama del color secundario al mapa de colores de Bulma
+$custom-colors: (
+  "accent": (
+    $secondary,
+    $secondary-invert,
+    $secondary-light,
+    $secondary-dark,
+  ),
+);
+
+// Se actualizan y añaden los estilos tipográficos
+$family-sans-serif: "Open Sans", -apple-system, "Helvetica", "Arial", sans-serif;
+$family-primary: $family-sans-serif;
+$family-secondary: "Jost", -apple-system, "Century Gothic", sans-serif;
+
+$h1: 6.938rem;
+$h2: 4.313rem;
+$h3: 3.438rem;
+$h4: 2.438rem;
+$h5: 1.75rem;
+$h6: 1.438rem;
+$title-family: $family-secondary;
+$title-weight: 400;
+
+$subtitle1: 1.125rem;
+$subtitle2: 1rem;
+$subtitle-family: $family-secondary;
+
+$body1: 1rem;
+$body2: 0.875rem;
+$body-size: $body1;
+
+$button: 0.875rem;
+$caption: 0.75rem;
+$overline: 0.625rems;
+.button {
+  text-transform: uppercase;
+  font-size: $button;
+  font-weight: 700;
+  border-radius: 0;
+}
+/*Posible uso
+  $button-padding-vertical: $h5;
+  $button-padding-horizontal: $h6;
+*/
+$control-radius: 1px;
+
+// Update some of Bulma's component variables
+$input-border-color: #aaaaaa;
+$input-shadow: none;
+$input-radius: 1px;
+
+//.has-background-white{
+//    background: $white;
+//}
+
+body {
+  min-height: 100vh;
+  background: $background;
+}
+
+.screen {
+  min-height: 100vh;
+}
+
+img {
+  object-fit: cover;
+}
+
+// Se importan los módulos de Bulma
+@import "../node_modules/bulma-o-steps/bulma-steps.sass";
+@import "../node_modules/bulma/sass/utilities/_all.sass";
+@import "../node_modules/bulma/sass/base/_all.sass";
+@import "../node_modules/bulma/sass/elements/button.sass";
+@import "../node_modules/bulma/sass/elements/container.sass";
+@import "../node_modules/bulma/sass/elements/title.sass";
+@import "../node_modules/bulma/sass/form/_all.sass";
+@import "../node_modules/bulma/sass/components/navbar.sass";
+@import "../node_modules/bulma/sass/layout/hero.sass";
+@import "../node_modules/bulma/sass/layout/section.sass";
+@import "../node_modules/bulma/sass/elements/icon.sass";
+@import "../node_modules/bulma-floating-button/dist/css/bulma-floating-button.sass";
+@import "../node_modules/bulma-social/bulma-social.sass";

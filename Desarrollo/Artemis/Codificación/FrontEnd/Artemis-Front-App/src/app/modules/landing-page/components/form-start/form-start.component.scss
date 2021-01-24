@@ -1,0 +1,13 @@
+@import "src/styles.scss";
+.has-background-light-medium {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.has-background-primary {
+  background: $gradient-primary;
+}
+
+.title {
+  font-size: $h3;
+  color: $white;
+}

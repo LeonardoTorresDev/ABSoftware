@@ -1,0 +1,65 @@
+<a [routerLink]="['/post']">
+  <div class="card mb-6">
+    <div class="card-image">
+      <figure class="image">
+        <img src="{{ imagen }}" alt="Imagen publicación" />
+      </figure>
+    </div>
+    <div class="card-content">
+      <div class="media">
+        <div class="media-content">
+          <p class="title is-4 is-hidden-desktop">{{ titulo }}</p>
+          <p class="title is-hidden-touch">{{ titulo }}</p>
+          <div class="columns is-gapless is-mobile">
+            <div class="column">
+              <div class="content">
+                <a class="link-to-user">
+                  <span class="icon-text">
+                    <span class="icon mr-2">
+                      <i class="fas fa-user"></i>
+                    </span>
+                    <span>Bansky</span>
+                  </span>
+                </a>
+              </div>
+
+              <div class="content">
+                <span class="icon-text">
+                  <span class="icon mr-2">
+                    <i class="fas fa-calendar"></i>
+                  </span>
+                  <span> {{ fecha | date }} </span>
+                </span>
+              </div>
+            </div>
+
+            <div class="column has-text-right">
+              <div class="content">
+                <div class="icon-text">
+                  <span class="post-text">{{ likes | numStat }}</span>
+                  <span class="icon ml-2">
+                    <i class="fas fa-thumbs-up"></i>
+                  </span>
+                </div>
+              </div>
+
+              <div class="content">
+                <div class="icon-text">
+                  <span class="post-text">{{ comentarios | numStat}}</span>
+                  <span class="icon ml-2">
+                    <i class="fas fa-comment"></i>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <span *ngFor="let tag of tags">
+            <span class="post-tag button is-small is-accent is-outlined"
+              >{{ tag }}
+            </span>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</a>

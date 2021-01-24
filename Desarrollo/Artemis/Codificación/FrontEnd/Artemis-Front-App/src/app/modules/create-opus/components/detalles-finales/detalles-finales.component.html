@@ -1,0 +1,136 @@
+<section class="hero is-fullheight-with-navbar">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title has-text-centered">Crear obra</h1>
+      <h2 class="subtitle has-text-centered mb-4">
+        Completemos unos detalles más
+      </h2>
+    </div>
+  </div>
+  <section class="section">
+    <div class="columns">
+      <div class="column is-half is-offset-one-quarter">
+        <form [formGroup]="form" (ngSubmit)="enviarObra()">
+          <legend class="legend">Información básica</legend>
+          <div class="field">
+            <label class="label is-label">Nombre de la obra *</label>
+            <div class="control">
+              <input
+                class="input"
+                type="text"
+                placeholder="ej: Opus Dominum"
+                formControlName="nombreObra"
+                [class.is-danger]="noValido('nombreObra')"
+              />
+            </div>
+            <small class="button is-small is-danger" *ngIf="noValido('nombreObra')">
+              Ingrese el nombre de la obra
+            </small>
+          </div>
+
+          <div class="field">
+            <label class="label is-label">Descripción</label>
+            <div class="control">
+              <textarea
+                class="textarea"
+                placeholder="Una descripción de lo que es tu obra"
+                formControlName="descripcion"
+              ></textarea>
+            </div>
+          </div>
+
+          <div class="field">
+            <label class="label is-label">Etiquetas</label>
+            <div class="control">
+              <input
+                class="input"
+                type="text"
+                placeholder="Separadas por una coma: tag1, tag2, ..."
+                formControlName="etiquetas"
+              />
+            </div>
+          </div>
+
+          <div class="field">
+            <label class="label is-label">Foto de portada</label>
+            <div class="file has-name is-primary">
+              <label class="file-label">
+                <input
+                  class="file-input"
+                  type="file"
+                  multiple
+                  name="resume"
+                  (change)="fileChangeEvent($event)"
+                />
+                <span class="file-cta">
+                  <span class="file-icon">
+                    <i class="fas fa-upload"></i>
+                  </span>
+                  <span class="file-label"> Sube tu foto de portada </span>
+                </span>
+                <span class="file-name"> {{ fileName }} </span>
+              </label>
+            </div>
+            <span class="help">Esta imagen servirá como portada para el post. Si no lo deseas, puedes omitir este paso.</span>
+          </div>
+
+          <hr />
+          <fieldset>
+            <legend class="legend">Visibilidad de la obra</legend>
+
+            <div class="control mb-3">
+              <label class="radio">
+                <input
+                  type="radio"
+                  name="private"
+                  [value]="false"
+                  formControlName="private"
+                  (click)="selectViewers(false)"
+                  [checked]
+                />
+                Pública
+                <p class="help ml-4">
+                  Cualquiera que tenga una cuenta en Artemis podrá ver tu obra.
+                </p>
+              </label>
+            </div>
+            <div class="control">
+              <label class="radio">
+                <input
+                  type="radio"
+                  [value]="true"
+                  name="private"
+                  formControlName="private"
+                  (click)="selectViewers(true)"
+                />
+                Privada
+                <p class="help ml-4">
+                  Solo tú o quienes decidas podrán ver tu obra.
+                </p>
+              </label>
+            </div>
+          </fieldset>
+
+          <app-agregar-colaborador
+            [showFollowers]="showFollowers"
+            *ngIf="showFollowers"
+          ></app-agregar-colaborador>
+
+          <div class="control is-pulled-right mt-5">
+            <button type="submit" class="button is-accent is-medium">
+              Siguiente
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+</section>
+
+<!-- ONLY FOR DEVELOPMENT -->
+<pre>
+  <code>
+    form values: {{ form.value | json }}
+    form status: {{ form.status }}
+  </code>
+</pre>

@@ -1,0 +1,42 @@
+@import "../../../../../styles.scss";
+
+.title {
+  font-size: $h4;
+  font-family: $family-secondary;
+}
+
+.post-tag {
+  border: none;
+  color: $text-middle !important;
+  &:hover {
+    color: white !important;
+  }
+}
+
+.post-tag,
+.title {
+  font-family: $family-secondary;
+}
+
+.post-text {
+  font-family: $family-primary;
+}
+.card {
+  transition: all 0.3s ease;
+  &:hover {
+    box-shadow: 0 0.5em 1em -0.125em rgba($scheme-invert, 0.1),
+      0 0px 0 1px rgba($scheme-invert, 0.02);
+  }
+}
+
+.link-to-user {
+  color: $text;
+}
+@media (min-width: 480px) {
+  $card-content-padding: 1.5rem 0;
+}
+$card-background-color: transparent;
+$card-shadow: none;
+$card-radius: 0;
+
+@import "../../../../../../node_modules/bulma/sass/components/card.sass";
