@@ -1,0 +1,56 @@
+<app-navbar></app-navbar>
+
+<section class="content mt-navbar">
+  <!-- Pequeño espacio de separación entre el navbar y el contenido -->
+</section>
+
+<div class="container">
+  <main class="columns is-variable is-0-mobile is-3-tablet">
+    <section class="column is-hidden-touch">
+      <app-sidebar></app-sidebar>
+    </section>
+
+    <section class="column is-6">
+      <app-publicacion></app-publicacion>
+      <!--Para cargar todos los posts se usará el siguiente template-->
+      <div *ngFor="let post of postsLoaded">
+        <!-- Para que no esté dando error por mientras -->
+        <!-- <app-publicacion [this]="post"></app-publicacion> -->
+      </div>
+    </section>
+
+    <section class="column is-hidden-touch">
+      <!-- Espacio negativo -->
+    </section>
+  </main>
+</div>
+
+<pre>Zona de pruebas</pre>
+
+<p>¡Hola, {{ usuario }}!, qué gusto tenerte en Artemis 😊</p>
+
+<button class="button is-danger" (click)="logout()">Cerrar sesión</button>
+
+<div class="file has-name">
+  <label class="file-label">
+    <input
+      class="file-input"
+      type="file"
+      name="resume"
+      accept=".jpg"
+      (change)="handleFile($event)"
+    />
+    <span class="file-cta">
+      <span class="file-icon">
+        <i class="fas fa-upload"></i>
+      </span>
+      <span class="file-label"> Choose a file… </span>
+    </span>
+  </label>
+</div>
+
+<button class="button is-info" (click)="update()">
+  Actualizar datos (con imagen)
+</button>
+
+<app-footer></app-footer>

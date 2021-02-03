@@ -1,0 +1,25 @@
+<aside [class.section]="!isTouch()">
+  <div *ngIf="ownPost" class="container mx-6-desktop">
+    <button class="button is-primary">Actualizar/Editar Obra</button>
+  </div>
+  <div class="content" [class.has-text-right]="isTouch()">
+    <div class="icon-text">
+      <a>
+        <span class="icon">
+          <i class="fas fa-share-alt"></i>
+        </span>
+
+        <span *ngIf="!ownPost" class="ml-2">Compartir obra</span>
+        <span *ngIf="ownPost" class="ml-2">Comparte tu obra</span>
+      </a>
+    </div>
+    <div *ngIf="!ownPost" class="icon-text mt-2">
+      <a>
+        <span class="icon">
+          <i class="far fa-flag"></i>
+        </span>
+        <span class="ml-2">Reportar obra</span>
+      </a>
+    </div>
+  </div>
+</aside>

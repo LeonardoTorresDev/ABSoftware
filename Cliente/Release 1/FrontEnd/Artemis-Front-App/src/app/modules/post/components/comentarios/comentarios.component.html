@@ -1,0 +1,48 @@
+<div class="container mx-5">
+  <div class="subtitle">Comentarios</div>
+  <form [formGroup]="comentario" (ngSubmit)="comentar()" class="mb-4">
+    <div class="field">
+      <p class="control">
+        <textarea
+          class="textarea"
+          placeholder="¿Qué tal te pareció la obra?"
+          formControlName="comment"
+          [class.is-danger]="noValido('comment')"
+        ></textarea>
+        <small class="button is-small is-danger" *ngIf="noValido('comment')">
+          Ingrese al menos 1 caracter
+        </small>
+      </p>
+    </div>
+    <button type="submit" class="button is-accent">Comentar</button>
+  </form>
+
+  <article class="media">
+    <div class="media-content">
+      <article class="media">
+        <figure class="media-left">
+          <p class="image is-48x48">
+            <img
+              class="is-rounded"
+              src="https://bulma.io/images/placeholders/96x96.png"
+            />
+          </p>
+        </figure>
+        <div class="media-content">
+          <div class="content ml-3">
+            <p>
+              <strong>Artista  &bull;  {{ nickname }}</strong>
+              <br />
+              Donec sollicitudin urna eget eros malesuada sagittis. Pellentesque
+              habitant morbi tristique senectus et netus et malesuada fames ac
+              turpis egestas. Aliquam blandit nisl a nulla sagittis, a lobortis
+              leo feugiat.
+              <br />
+              <small>hace 2 hrs</small>
+            </p>
+          </div>
+        </div>
+      </article>
+    </div>
+  </article>
+</div>

@@ -1,0 +1,16 @@
+@import "../../../../../styles.scss";
+@import "../../../home/components/publicacion/publicacion.component.scss";
+
+.title {
+  font-size: $h3;
+}
+.subtitle {
+  font-size: $h6;
+  font-weight: 500;
+}
+
+.field.is-grouped {
+  justify-content: space-evenly;
+}
+
+@import "../../../../../../node_modules/bulma/sass/layout/hero.sass";

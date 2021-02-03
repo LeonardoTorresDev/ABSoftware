@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Artemis Back Side</title>
+
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <meta
+      name="google-signin-client_id"
+      content="12773282290-heah8rpv61jhoppeetnodg0rnqhufupt.apps.googleusercontent.com"
+    />
+
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&family=Open+Sans:wght@400;700&display=swap");
+
+      body {
+        background: linear-gradient(71.07deg, #9965e9 0%, #6200ea 98.25%);
+        color: white;
+        font-family: "Open Sans", sans-serif;
+        min-height: 100vh;
+        text-align: center;
+      }
+
+      .container {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+      }
+      h1 {
+        text-transform: uppercase;
+        letter-spacing: 1rem;
+      }
+
+      h2 {
+        font-weight: 300;
+      }
+
+      h1,
+      h2 {
+        font-family: "Jost", sans-serif;
+      }
+
+      a {
+        margin-top: 1rem;
+        background: #0a00b6;
+        padding: 0.5rem 1rem;
+        text-decoration: none;
+        text-transform: uppercase;
+        font-weight: 700;
+        font-size: 16px;
+        color: white;
+        transition: all 0.5s ease;
+      }
+
+      a:hover {
+        background: #310885;
+      }
+
+      .google-button {
+        margin: 0 auto;
+        }
+
+        .container-google {
+        margin: 0 auto;
+        max-width: 50%;
+        }
+
+        .abcRioButton {
+            margin: 0 auto;
+            max-width: 50%;
+            }
+        hr{
+            margin-left: 20%;
+            margin-right: 20%;
+        }
+    </style>
+  </head>
+  <body>
+      
+    <div class="container">
+      <h1>Artemis</h1>
+      <hr/>
+      <h2>Back-End Side</h2>
+
+      <p>Página de back-end de Artemis.</p>
+      <div class="container-google">
+        <div class="g-signin2 google-button" data-onsuccess="onSignIn"></div>
+     </div>
+     <br/>
+      <a href="#" onclick="signOut();">Sign out</a>
+    </div>
+
+    <script>
+      function signOut() {
+        var auth2 = gapi.auth2.getAuthInstance();
+        auth2.signOut().then(function () {
+          console.log("User signed out.");
+        });
+      }
+    </script>
+
+    <script>
+      function onSignIn(googleUser) {
+        var profile = googleUser.getBasicProfile();
+        console.log("ID: " + profile.getId()); // Do not send to your backend! Use an ID token instead.
+        console.log("Name: " + profile.getName());
+        console.log("Image URL: " + profile.getImageUrl());
+        console.log("Email: " + profile.getEmail()); // This is null if the 'email' scope is not present.
+
+        var id_token = googleUser.getAuthResponse().id_token;
+        console.log(id_token);
+        //SENT AJAX REQUEST
+
+        var xhr = new XMLHttpRequest(); //create request
+        xhr.open("POST", "users/login/google"); //create POST request
+        xhr.setRequestHeader(
+          "Content-Type",
+          "application/x-www-form-urlencoded"
+        ); //send info
+        xhr.onload = function () {
+          console.log("Signed in as: " + xhr.responseText);
+        };
+        xhr.send("idtoken=" + id_token);
+      }
+    </script>
+
+  </body>
+</html>

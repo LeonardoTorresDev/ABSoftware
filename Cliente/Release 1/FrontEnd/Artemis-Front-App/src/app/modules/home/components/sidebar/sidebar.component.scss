@@ -1,0 +1,11 @@
+@import "../../../../../styles.scss";
+
+a {
+  font-size: $subtitle1;
+  transition: all 0.3s ease;
+}
+$menu-item-color: $black;
+$menu-item-hover-color: $white;
+$menu-item-hover-background-color: $primary-light;
+
+@import "../../../../../../node_modules/bulma/sass/components/menu.sass";

@@ -1,0 +1,22 @@
+@import "../../../../../../node_modules/bulma/sass/utilities/initial-variables.sass";
+@import "src/styles.scss";
+
+.feat-icon {
+  margin: $size-4 auto;
+  border-radius: $radius-rounded;
+  border: 2px solid black;
+  height: 3.75rem;
+  width: 3.75rem;
+}
+
+#features {
+  border-radius: 1.25rem 1.25rem 0 0;
+}
+
+.has-background-primary {
+  background: $gradient-primary;
+}
+
+.is-h4 {
+  font-size: $h4;
+}
